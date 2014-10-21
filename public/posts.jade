@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        include partials/head.jade
+        link(rel="stylesheet" href="./css/style-twoside.css")
+
+    body.index.loading(ng-modules="index.crud,node.crud")
+        include partials/sidebar.jade
+
+        .right-side(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"2"}')
+            div(ng-init="crud.query()")
+                include partials/post.jade
+
+            div(style="text-align:center;margin-bottom:10px")
+                .row
+                    .col-xs-12
+                        ul.pagination
+                            li(ng-repeat="page in crud.pagination.display")
+                                a(ng-click="crud.goto(page)",ng-class="{active:page==crud.pagination.index}") {{page+1}}
+
+
+        include partials/scripts.jade
+        include partials/preload-string
+        script(src="./system/node/crud.js")
+        script(src="./system/index/crud.js")

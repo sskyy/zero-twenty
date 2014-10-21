@@ -1,0 +1,18 @@
+article(ng-repeat="post in crud.data.records")
+    header
+        h2
+            a(href="/page/post/{{post.id}}") {{post.title}}
+        .meta
+            span.category(ng-if="post.category.length!==0")
+                i.fa.fa-tag
+                | {{post.category[0].name}}
+            span.created
+                i.fa.fa-clock-o
+                | {{post.createdAt|time:"YYYY-MM-DD hh:mm:ss"}}
+
+    section.content
+        section(ng-if="post.brief")
+            p {{post.brief}}
+            a(href="/page/post/{{post.id}}") Read More
+        section(ng-if="!post.brief", ng-bind-html="post.content")
+            p {{post.content}}

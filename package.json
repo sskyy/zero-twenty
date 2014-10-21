@@ -1,0 +1,17 @@
+{
+  "name": "zero-twenty",
+  "version": "0.0.5",
+  "description": "zero module",
+  "zero": {
+    "dependencies": {
+      "file": "^0.0.1",
+      "index": "^0.0.1",
+      "node": "^0.0.1",
+      "model": "^0.0.1",
+      "rest": "^0.0.1",
+      "theme": "^0.0.1"
+    },
+    "name": "twenty"
+  },
+  "author": "jiamiu"
+}

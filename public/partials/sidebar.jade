@@ -1,0 +1,17 @@
+.left-side(ng-controller="index.crud",crud-config='{"type":"category"}',crud-params='{"limit":"2"}')
+    .inner
+        header
+            h3
+               img(src="./images/logo.svg")
+        p
+            | More than Blogging
+
+    ul.categories(ng-init="crud.query()")
+        li.category(ng-repeat="category in crud.data.records")
+            a(href="/page/post?category.id={{category.id}}&preload=string")
+                i.fa.fa-tag
+                | {{category.name}}
+        li.category
+            a(href="/page/static/about")
+                i.fa.fa-tag
+                | 关于我

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    include partials/head.jade
+    link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+
+  body.index.loading
+    // Header
+    include partials/header.jade
+
+    article
+      header.special.container.text-center
+        h2.
+          #{data.post.title}
+      // One
+      section.style4.container.small
+        // Content
+        .content
+          section.
+            !{data.post.content}
+    // Footer
+
+    //include duoshuo
+    include partials/duoshuo.jade
+    include partials/footer.jade
