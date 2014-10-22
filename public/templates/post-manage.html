@@ -1,12 +1,12 @@
-<div  class="margin">
+<div  class="margin" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10"}'>
 
     <div style="margin-bottom: 10px">
         <a class="btn btn-info" ui-sref="create">create</a>
     </div>
 
-    <div class="box"  node-type="post" ng-controller="node.crud">
+    <div class="box">
     <!-- /.box-header -->
-        <div class="box-body table-responsive  no-padding">
+        <div class="box-body table-responsive  no-padding" ng-init="crud.query()">
             <table class="table crud">
                 <thead>
                     <tr>
@@ -16,14 +16,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="node in nodes">
+                    <tr ng-repeat="post in crud.data.records">
                         <td>
-                            <h5><a href="/page/post/{{node.id}}">{{node.title}}</a></h5>
+                            <h5><a href="/page/post/{{post.id}}">{{post.title}}</a></h5>
                         </td>
-                        <td><h5>{{node.statistic.view||0}}|{{node.statistic.feed||0}}</h5></td>
+                        <td><h5>{{post.statistic.view||0}}|{{post.statistic.feed||0}}</h5></td>
                         <td class="operation">
-                            <a class="btn btn-info " href="#/edit/{{node.id}}">edit</a>
-                            <a class="btn btn-danger " ng-click="remove(node, $index)">remove</a>
+                            <a class="btn btn-info " href="#/edit/{{post.id}}">edit</a>
+                            <a class="btn btn-danger " ng-click="crud.remove(post, $index,true)">remove</a>
                         </td>
                     </tr>
                 </tbody>
@@ -32,8 +32,8 @@
     <!-- /.box-body -->
         <div class="box-footer clearfix">
             <ul class="pagination pagination-sm inline">
-                <li ng-repeat="page in pages">
-                    <a ng-click="goto(page)" ng-class="{active:page==currentPage()}">{{page+1}}</a>
+                <li ng-repeat="page in crud.pagination.display">
+                    <a ng-click="crud.goto(page)" ng-class="{active:page==crud.pagination.index}">{{page+1}}</a>
                 </li>
             </ul>
         </div>

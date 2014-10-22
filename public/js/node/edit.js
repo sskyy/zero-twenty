@@ -27,7 +27,7 @@ angular.module('node.edit', ['textAngular', 'node.upload','node.index'])
 
       $http.put('/'+type+'/'+$scope.node.id, toPlainObject($scope.node)).success(function (node) {
         //TODO let user specify when done
-        window.location.href = "/page/"+type+'/' + node.id
+        window.location.href = "/twenty/"+type+'/' + node.id
       }).error(function (err) {
         console.log(err)
       })

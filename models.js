@@ -16,7 +16,7 @@ module.exports = [{
   isIndex : true,
   rest : true
 },{
-  identity : 'picture',
+  identity : 'media',
   attributes : {
     'name' : 'string',
     'originalname' : 'string',

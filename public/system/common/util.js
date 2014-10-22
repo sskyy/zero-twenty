@@ -90,7 +90,7 @@ angular.module('util',['ngResource'])
       })
 
       var crud = _.defaults( config, {
-        Resource :  $resource( config.url+'/:id', params),
+        Resource :  $resource( config.url+'/:id', params,{"remove":{isArray:true,method:"DELETE"}}),
         pagination : {
           index:null,
           count:null,

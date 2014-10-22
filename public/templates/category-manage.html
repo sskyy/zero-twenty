@@ -1,4 +1,4 @@
-<div class="margin" ng-controller="index.crud" index-type="category">
+<div class="margin" ng-controller="index.crud"crud-config='{"type":"category"}' crud-params='{}' >
 
     <div class="row" style="margin-bottom: 10px">
         <div class="col-xs-6" ng-init="newItem={}">
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="box" >
+    <div class="box" ng-init="crud.query()">
         <!-- /.box-header -->
         <div class="box-body table-responsive  no-padding"  >
             <table class="table crud">
@@ -21,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="index in indexes">
+                <tr ng-repeat="index in crud.data.records">
                     <td>
                         <h5>{{index.name}}</h5>
                     </td>
@@ -37,8 +37,8 @@
         <!-- /.box-body -->
         <div class="box-footer clearfix">
             <ul class="pagination pagination-sm inline">
-                <li ng-repeat="page in pages">
-                    <a ng-click="goto(page)" ng-class="{active:page==currentPage()}">{{page+1}}</a>
+                <li ng-repeat="page in crud.pagination.display">
+                    <a ng-click="crud.goto(page)" ng-class="{active:page==crud.pagination.index}">{{page+1}}</a>
                 </li>
             </ul>
         </div>
