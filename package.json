@@ -1,6 +1,6 @@
 {
   "name": "zero-twenty",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "zero module",
   "zero": {
     "dependencies": {
@@ -9,7 +9,8 @@
       "node": "^0.0.1",
       "model": "^0.0.1",
       "rest": "^0.0.1",
-      "theme": "^0.0.1"
+      "theme": "^0.0.1",
+      "statistic": "^0.0.1"
     },
     "name": "twenty"
   },

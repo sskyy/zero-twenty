@@ -10,5 +10,14 @@ module.exports = {
         duoshuo : 'twenty'
       }
     }
+  },
+  statistics : {
+    log : {
+      "GET /*" : "daily",
+      "rest.fire.after" : {
+        strategy : "feed",
+        argv : ["post"]
+      }
+    }
   }
 }

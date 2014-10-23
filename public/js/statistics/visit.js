@@ -1,6 +1,6 @@
 angular.module('statistic.visit',['ngResource','angles']).controller('visits',function( $scope, $http,$resource ){
 
-  var type = 'dailyPageView',
+  var type = 'GET /*-dailyView',
     url = '/statistic',
     limit = 7,
     sort = 'key DESC',

@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th>标题</th>
-                        <th>浏览量|源</th>
+                        <th>浏览量</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -20,7 +20,7 @@
                         <td>
                             <h5><a href="/page/post/{{post.id}}">{{post.title}}</a></h5>
                         </td>
-                        <td><h5>{{post.statistic.view||0}}|{{post.statistic.feed||0}}</h5></td>
+                        <td><h5>{{post.statistic.view||0}}</h5></td>
                         <td class="operation">
                             <a class="btn btn-info " href="#/edit/{{post.id}}">edit</a>
                             <a class="btn btn-danger " ng-click="crud.remove(post, $index,true)">remove</a>
