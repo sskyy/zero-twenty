@@ -1,17 +1,24 @@
 {
   "name": "zero-twenty",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "zero module",
   "zero": {
     "dependencies": {
       "file": "^0.0.1",
+      "bus": "^0.0.1",
+      "request": "^0.0.1",
       "index": "^0.0.1",
       "node": "^0.0.1",
       "model": "^0.0.1",
       "rest": "^0.0.1",
       "theme": "^0.0.1",
+      "configure": "^0.0.1",
+      "rbac": "^0.0.1",
       "statistic": "^0.0.1"
     },
+    "configs": [
+      "./config.js"
+    ],
     "name": "twenty"
   },
   "author": "jiamiu"

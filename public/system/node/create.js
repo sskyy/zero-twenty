@@ -22,6 +22,9 @@ angular.module('node.create', ['node.index'])
 
       $http.post('/'+type, toPlainObject($scope.node)).success(function (node) {
         $rootScope.$broadcast(type + ".create.after", node)
+        if( $attrs['redirect']){
+          window.location.href = $attrs['redirect']
+        }
       }).error(function (err) {
         $rootScope.$broadcast(type+".create.error", err)
       })

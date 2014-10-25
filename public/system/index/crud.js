@@ -2,7 +2,7 @@
  * Created by jiamiu on 14-8-9.
  * You must use `angular.module('index.curd').value('config',{})` to specify which type of index you want to operate.
  */
-angular.module('index.crud', ['util', 'ngResource']).controller('index.crud', function ($scope, $resource, $attrs, crud,util) {
+angular.module('index.crud', ['util', 'ngResource']).controller('index.crud', function ($scope, $resource, $attrs, crud,util,$http) {
 
   var parsedConfig = util.parseJSON($attrs['crudConfig'],$scope)
 
@@ -47,6 +47,16 @@ angular.module('index.crud', ['util', 'ngResource']).controller('index.crud', fu
   $scope.$on( config.type+'.query',function(){
     $scope.crud.query()
   })
+
+  //create
+
+  $scope.create = function( category){
+    $http.post('/'+parsedConfig.type,category).success(function(){
+      $scope.crud.query()
+    }).error(function(err){
+      console.log( err)
+    })
+  }
 })
   .filter('countNodesForIndex', function () {
     return function (nodes) {

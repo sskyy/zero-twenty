@@ -18,12 +18,12 @@
                 <tbody>
                     <tr ng-repeat="post in crud.data.records">
                         <td>
-                            <h5><a href="/page/post/{{post.id}}">{{post.title}}</a></h5>
+                            <h5><a href="/twenty/post/{{post.id}}">{{post.title}}</a></h5>
                         </td>
                         <td><h5>{{post.statistic.view||0}}</h5></td>
                         <td class="operation">
-                            <a class="btn btn-info " href="#/edit/{{post.id}}">edit</a>
-                            <a class="btn btn-danger " ng-click="crud.remove(post, $index,true)">remove</a>
+                            <a class="btn btn-info list " href="#/edit/{{post.id}}">edit</a>
+                            <a class="btn btn-danger list" ng-click="crud.remove(post, $index,true)">remove</a>
                         </td>
                     </tr>
                 </tbody>

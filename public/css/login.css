@@ -1,4 +1,5 @@
-.form-box .header{
+.form-box .header img{
+ width: 90%;
 }
 
 .form-box .header h2 {
@@ -10,4 +11,54 @@
     position: relative;
     text-transform: uppercase;
     text-align: center;
+
+}
+html,body{
+	background-color: #323339;
+}
+
+.form-group input{
+	 margin: 0 auto;
+	 background-color: #2E2F35;
+	 border: solid 1px #3A3B42;
+	 width: 300px;
+	 height: 40px;
+	 border-radius: 5px !important;
+	 color: #fff!important;
+}
+.form-group input[type=text]{
+	 color: #fff;
+}
+.form-group input:focus {
+	
+	border-color: #5d6472 !important;
+}
+.bg-aqua{
+	background-color: #40C27D!important;
+	border-radius: 5px !important;
+	width: 80px;
+	height: 38px;
+	float: left;
+	margin-left: 12px;
+	margin-top: -12px;
+}
+.callout{
+
+}
+.callout.callout-danger {
+	background-color: #f3c658;
+	 width: 300px;
+	 height: 60px;
+	 border-radius: 5px !important;
+	 color: #fff;
+	 margin: 0 auto;
+     border-color:#fff;
+     border-left:0px;
+}
+.Prompt{
+	margin-top: 42px;
+}
+.callout.callout-danger.ng-scope p{
+	color: #2d2c29;
+	margin-top:5px;
 }

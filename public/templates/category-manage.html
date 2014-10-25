@@ -1,11 +1,11 @@
 <div class="margin" ng-controller="index.crud"crud-config='{"type":"category"}' crud-params='{}' >
 
     <div class="row" style="margin-bottom: 10px">
-        <div class="col-xs-6" ng-init="newItem={}">
-            <input type="text" ng-model="newItem.name" class="form-control" placeholder="name">
+        <div class="col-xs-6" ng-init="newCategory={}">
+            <input type="text" ng-model="newCategory.name" class="form-control" placeholder="name">
         </div>
         <div class="col-xs-2">
-            <a class="btn btn-info" ng-click="create(newItem)">create</a>
+            <a class="btn btn-info" ng-click="create(newCategory)">create</a>
         </div>
     </div>
 
@@ -27,8 +27,8 @@
                     </td>
                     <td><h5>{{index.nodes|countNodesForIndex}}</h5></td>
                     <td class="operation">
-                        <a class="btn btn-info" ng-click="edit(index, $index)">edit</a>
-                        <a class="btn btn-danger" ng-click="remove(index, $index)">remove</a>
+                        <a class="btn btn-info list" ng-click="edit(index, $index)">edit</a>
+                        <a class="btn btn-danger list" ng-click="remove(index, $index)">remove</a>
                     </td>
                 </tr>
                 </tbody>

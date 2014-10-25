@@ -47,6 +47,6 @@ angular.module('admin',['ui.router','admin.post.manage','admin.dashboard','index
       $urlRouterProvider.otherwise("/");
       //configure html5 to get links working on jsfiddle
 //      $locationProvider.html5Mode(true);
-    }]).controller( 'admin',function($scope,session){
+    }]).controller( 'admin',function($scope,session,$rootScope){
       $scope.user = session.item('user')
   })
