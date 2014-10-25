@@ -201,7 +201,7 @@ ul li {
 /* ==========================================================================
 Hero
 ========================================================================== */
-.hero { background:url(../images/hero-bg.jpg); no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0px 0 140px 0; height: auto; }
+.hero { background:url(../images/hero-bg.jpg); no-repeat center center; -webkit-background-size:cover;  -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0px 0 140px 0; height: auto; }
 .hero h1 { font-size: 38px; letter-spacing: 6px; margin: 10px; }
 .hero h1 span { color: #a1a9b0; display: inline-block; letter-spacing: 4px;}
 .hero p { letter-spacing: 1px;font-size: 16px; padding-top: 30px; color: #fff;}
@@ -289,7 +289,7 @@ Subscribe
   border-radius: 5px;
   outline: none;
   padding: 10px 15px; color: #fff; text-transform: uppercase; letter-spacing: 1px; transition: all 0.5s ease; -moz-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -o-transition: all 0.5s ease; }
-.subscribe input[type=submit]:hover { background: rgba(64, 71, 85, 1); border: solid 1px rgba(64, 71, 85, 1); color: #fff; }
+.subscribe input[type=submit]:hover { background: rgba(64, 71, 85, 0.6); border: solid 1px rgba(64, 71, 85, 0.6); color: #fff; }
 /* ==========================================================================
 CTA
 ========================================================================== */
