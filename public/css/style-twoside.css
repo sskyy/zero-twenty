@@ -65,6 +65,10 @@ ul.categories li a:hover{
     color:#fff;
 }
 
+ul.categories li a.active{
+    color:#fff;
+}
+
 .right-side article{
     margin-bottom:70px
 }

@@ -1,17 +1,17 @@
 doctype html
-html
+html(ng-modules="index.crud,node.crud")
     head
         include partials/head.jade
         link(rel="stylesheet" href="./css/style-twoside.css")
 
-    body.index.loading(ng-modules="index.crud,node.crud")
+    body.index.loading(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5"}',crud-search-fields="['category.id']")
         include partials/sidebar.jade
 
-        .right-side(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"2"}')
+        .right-side
             div(ng-init="crud.query()")
                 include partials/post.jade
 
-            div(style="text-align:center;margin-bottom:10px")
+            div(style="text-align:center;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
                 .row
                     .col-xs-12
                         ul.pagination

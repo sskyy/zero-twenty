@@ -904,19 +904,12 @@
 /* Footer */
 
 	#footer {
-		background: #fff;
-		color: #7c8081;
-		padding: 5em 5em 10em 5em;
-		text-align: center;
+		position: fixed;
+		bottom:0;
+		left: 0;
+		width: 100%;
 	}
 
-		#footer .copyright {
-			font-size: 0.8em;
-		}
-
-			#footer .copyright a {
-				color: inherit;
-			}
 
 /* Layers */
 

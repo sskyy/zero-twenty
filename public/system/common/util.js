@@ -10,14 +10,18 @@ angular.module('util',['ngResource'])
   })
   .filter('countChildren',function(){
     function count( input ){
+      console.log("counting", input)
       var num = 0
-      _.forEach( input, function( child ){
-        if(_.isObject( child ) ){
-          num += count( child)
-        }else{
-          num++
-        }
-      })
+      if( input ){
+        _.forEach( input, function( child ){
+          if(_.isObject( child ) ){
+            num += count( child)
+          }else{
+            num++
+          }
+        })
+      }
+
       return num
     }
 
@@ -142,7 +146,6 @@ angular.module('util',['ngResource'])
           }
           if( ( crud.data.count===null || crud.data.count<(crud.params.skip+crud.data.records.length)) ){
             crud.data.count = crud.params.skip+crud.data.records.length
-            console.log("update ")
           }
         },
         edit : function(){
@@ -172,7 +175,6 @@ angular.module('util',['ngResource'])
           var extraParams = _.pick( crud.params, _.without.apply(_,[Object.keys(crud.params),'limit','skip','sort']))
           var extraParamsString = Object.keys(extraParams)? "?"+ util.makeQuery( extraParams ) : ""
 
-          console.log("sending query",'/count'+extraParamsString)
           $http({method:'get',url:config.url+'/count'+extraParamsString}).success(function(data){
             crud.data.count = data.count
 
@@ -198,11 +200,11 @@ angular.module('util',['ngResource'])
 
           if( !crud.data.unCountable ){
             crud.pagination.count = Math.ceil( crud.data.count/ crud.params.limit )
-            console.log("setting pagination count", crud.pagination.count)
+            //console.log("setting pagination count", crud.pagination.count)
           }else{
             if( crud.pagination.count === null || crud.pagination.count < crud.pagination.index+1){
               crud.pagination.count = crud.pagination.index+1
-              console.log("setting pagination count", crud.pagination.count)
+              //console.log("setting pagination count", crud.pagination.count)
             }
           }
 
@@ -247,7 +249,7 @@ angular.module('util',['ngResource'])
           pagination.display.push( max )
         }
 
-      console.log("update pagination.display", pagination.display)
+      //console.log("update pagination.display", pagination.display)
       return pagination.display
     }
   })

@@ -1,7 +1,3 @@
-.form-box .header img{
- width: 90%;
-}
-
 .form-box .header h2 {
     font-size: 2.5em;
     font-weight: 900;
@@ -41,9 +37,6 @@ html,body{
 	float: left;
 	margin-left: 12px;
 	margin-top: -12px;
-}
-.callout{
-
 }
 .callout.callout-danger {
 	background-color: #f3c658;

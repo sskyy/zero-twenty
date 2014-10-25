@@ -23,8 +23,6 @@ angular.module('index.crud', ['util', 'ngResource']).controller('index.crud', fu
   })
 
 
-  console.log( params, $scope, $scope.$parent )
-
   var preload = util.inject("preload","preload")
   var records = false
 

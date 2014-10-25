@@ -1,17 +1,18 @@
-.left-side(ng-controller="index.crud",crud-config='{"type":"category"}',crud-params='{"limit":"2"}')
+.left-side(ng-controller="index.crud ",crud-config='{"type":"category"}')
     .inner
         header
             h3
-               img(src="./images/logo.svg")
+                a(href="/")
+                    img(src="./images/logo.svg")
         p
             | More than Blogging
 
     ul.categories(ng-init="crud.query()")
         li.category(ng-repeat="category in crud.data.records")
-            a(href="/page/post?category.id={{category.id}}&preload=string")
+            a(href="/twenty/posts?category.id={{category.id}}" ng-class="{'active':category.id==$parent.$parent.crud.params['category.id']}")
                 i.fa.fa-tag
                 | {{category.name}}
         li.category
-            a(href="/page/static/about")
+            a(href="/twenty/about")
                 i.fa.fa-tag
                 | 关于我

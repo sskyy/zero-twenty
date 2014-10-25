@@ -23,7 +23,6 @@ var app = angular.module('node.crud',['util','ngResource','ngSanitize'])
     })
 
 
-    console.log( params, $scope, $scope.$parent )
 
     var preload = util.inject("preload","preload")
     var records = false
@@ -37,6 +36,8 @@ var app = angular.module('node.crud',['util','ngResource','ngSanitize'])
       //read configuration from search and attributes
       var crudSearchOptions = $attrs['crudSearchFields']?util.parseJSON($attrs['crudSearchFields'],$scope): []
       var search = _.pick( util.parseQuery(window.location.search.slice(1) ), crudSearchOptions)
+
+      console.log( crudSearchOptions, search )
 
       params = _.extend(params, _.pick(search , crudSearchOptions))
     }
