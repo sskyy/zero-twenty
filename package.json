@@ -1,6 +1,6 @@
 {
   "name": "zero-twenty",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "zero module",
   "zero": {
     "dependencies": {
