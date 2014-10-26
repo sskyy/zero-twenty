@@ -40,7 +40,7 @@
 
                 <table class="table ">
                     <tr ng-repeat="file in upload.files">
-                        <td>{{file.filename}}</td>
+                        <td>{{file.originalname}}</td>
                         <td width="90"><a class="btn btn-primary" ng-click="select(file)">insert</a></td>
                         <td width="90">
                             <span class="label label-success" ng-show="file.inserted">inserted</span>
