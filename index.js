@@ -30,6 +30,10 @@ var twentyModule = {
           next()
         }
       })
+    },
+    "GET /user/logout" : function(req, res){
+      req.session = null
+      res.redirect("/")
     }
   },
   acl : {
