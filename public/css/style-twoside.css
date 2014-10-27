@@ -39,6 +39,7 @@ html,body{
     padding: 20px 15px;
     box-sizing: border-box;
     margin-left: 250px;
+
 }
 
 ul.categories{
@@ -74,12 +75,23 @@ ul.categories li a.active{
 }
 
 .right-side article header{
-    text-align: center;
-}
+    text-align: left;
+    padding-left: 50px;
+    margin-top: 10px;
 
+}
+.right-side article header h2 a{
+    color:#666666;
+    margin-bottom: 0;
+}
 .right-side article header h2{
     color:#333;
     margin-bottom: 0;
+}
+
+.right-side article header .meta{
+
+    margin-top: 5px;
 }
 
 .right-side article header .meta span{
@@ -87,4 +99,9 @@ ul.categories li a.active{
     margin-right: 10px;
     color:#999;
     font-size: 14px;
+}
+
+.right-side section.content{
+    padding-left:50px;
+    max-width: 960px;
 }

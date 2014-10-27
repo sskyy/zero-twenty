@@ -54,7 +54,7 @@ Typography
 /* * Addresses font sizes and margins set differently in IE 6/7.
 * Addresses font sizes within `section` and `article` in Firefox 4+, Safari 5, * and Chrome. */
 
-h1 { font-size: 2em; margin: 0.67em 0; color: #353535; }
+h1 { font-size: 2em; margin: 0.67em 0; color: #666666; }
 h2 { font-size: 1.5em; margin: 0.83em 0; }
 h3 { font-size: 1.17em; margin: 1em 0; }
 h4 { font-size: 1em; margin: 1.33em 0; }
@@ -179,11 +179,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* ==========================================================================
 Global Styles
 ========================================================================== */
-a { color: #353535; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
-a:hover, a:focus { color: #3dc9b3; text-decoration: none; }
+a { color: #666666; }
+a:hover, a:focus { color: #53cf8e; text-decoration: none; }
 p { color: #8c9398; word-spacing: 1px; line-height: 25px; font-size: 14px; }
 h2 { font-size: 15px; color: #353535; text-transform: uppercase; font-weight: bold; }
-h2::after { content: " "; border: solid 2px #53cf8e; display: block; width: 35px; margin: 25px auto; }
 .section-padding { padding: 90px 0 100px }
 .dark-bg { background: #f3f5f8; }
 .light-bg { background-color: #fff; }
@@ -389,7 +388,7 @@ HeaderBar
   position: absolute;
   right: 1.5em;
   text-transform: uppercase;
-  top: 0.75em;
+  top: 0;
 }
 
 #headerbar nav ul li {
@@ -474,4 +473,16 @@ HeaderBar
 	padding-top:100px;
 }
 
+.pagination>li>a{
+    color:#666;
+}
 
+.pagination>.active>a{
+    background-color: rgba(64, 71, 85, 1);
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    background-color: rgba(64, 71, 85, 1);
+    border-color: rgba(64, 71, 85, 1);
+    cursor: default;
+}

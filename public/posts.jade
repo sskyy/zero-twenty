@@ -11,12 +11,12 @@ html(ng-modules="index.crud,node.crud")
             div(ng-init="crud.query()")
                 include partials/post.jade
 
-            div(style="text-align:center;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
+            div(style="padding-left:50px;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
                 .row
                     .col-xs-12
                         ul.pagination
-                            li(ng-repeat="page in crud.pagination.display")
-                                a(ng-click="crud.goto(page)",ng-class="{active:page==crud.pagination.index}") {{page+1}}
+                            li(ng-repeat="page in crud.pagination.display",ng-class="{active:page==crud.pagination.index}")
+                                a(ng-click="crud.goto(page)") {{page+1}}
 
 
         include partials/scripts.jade
