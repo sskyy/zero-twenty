@@ -49,4 +49,8 @@ angular.module('admin',['ui.router','admin.post.manage','admin.dashboard','index
 //      $locationProvider.html5Mode(true);
     }]).controller( 'admin',function($scope,session,$rootScope){
       $scope.user = session.item('user')
+  }).filter('markdown',function(){
+    return function( content ){
+      return markdown.toHTML(content)
+    }
   })

@@ -22,24 +22,20 @@ var twentyModule = {
     }
   },
   route : {
-    "GET /twenty/install" : function( req, res,next){
-      twentyModule.dep.model.models.user.find({limit:1}).then(function(users){
-        if( users && users.length !==0){
-          return res.redirect("/")
-        }else{
-          next()
-        }
-      })
-    },
     "GET /user/logout" : function(req, res){
       req.session = null
       res.redirect("/")
     }
   },
   acl : {
+    roles : {
+      "loggedIn" : function(req){
+        return req.session.user && req.session.user.id
+      }
+    },
     routes : {
       "/twenty/admin" : [{
-        role:"admin",
+        role:"loggedIn",
         "redirect":"/twenty/login"
       }]
     }

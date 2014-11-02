@@ -148,10 +148,14 @@ angular.module('util',['ngResource'])
             crud.data.count = crud.params.skip+crud.data.records.length
           }
         },
-        edit : function(){
-          console.log("you need to implement edit function")
+        edit : function( node, refresh ){
+          var promise =$http.put('/'+crud.type,node)
+          if( refresh ){
+            crud.query()
+          }
+          return promise
         },
-        remove : function( r, $index, refresh){
+        remove : function( r, refresh){
           var promise = crud.Resource.remove({id:r.id}).$promise
           if( refresh ){
             crud.query()

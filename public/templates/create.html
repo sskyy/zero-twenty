@@ -19,11 +19,28 @@
                 </div>
                 <div class="form-group">
                     <label>内容</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="node.type" value="html"> HTML
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" ng-model="node.type" value="markdown"> markdown
+                    </label>
                     <!--<textarea text-angular class="form-control" rows="17" ng-model="htmlVariable" placeholder="Enter ..."></textarea>-->
-                    <div text-angular
+                    <div text-angular ng-show="node.type!=='markdown'"
                          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','ul','ol'],[
                          'justifyLeft','justifyCenter','justifyRight','indent','outdent','insertImage','insertLink','insertVideo','uploadFile','html']]"
                          ng-model="node.content" placeholder="Enter ..."></div>
+
+                    <div ng-show="node.type==='markdown'">
+                        <div class="form-group">
+                            <textarea ng-model="node.content" class="form-control" rows="20">
+
+                            </textarea>
+                        </div>
+
+                        <div ng-bind-html="node.content|markdown">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <a class="btn btn-primary" ng-click="submit()">submit</a>

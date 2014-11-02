@@ -1,11 +1,12 @@
 doctype html
 html
     head
-        include partials/head.jade
+        include partials/head
         link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+        script(src="/twenty/js/lib/markdown.min.js")
     body.index.loading
         // Header
-        include partials/header.jade
+        include partials/header
 
         article
             header.special.container.text-center
@@ -15,8 +16,12 @@ html
                 // Content
                 .content
                     section !{content}
+
         // Footer
-        //include partials/scripts.jade
+        include partials/scripts.jade
         //script(src="/twenty/system/node/detail.js")
-        include partials/duoshuo.jade
-        include partials/footer.jade
+        if type == 'markdown'
+            script.
+                $(".content section").html(markdown.toHTML($(".content section").html()))
+        include partials/duoshuo
+        include partials/footer

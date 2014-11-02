@@ -1,15 +1,15 @@
 doctype html
 html(ng-modules="index.crud,node.crud")
     head
-        include partials/head.jade
+        include partials/head
         link(rel="stylesheet" href="./css/style-twoside.css")
 
     body.index.loading(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5"}',crud-search-fields="['category.id']")
-        include partials/sidebar.jade
+        include partials/sidebar
 
         .right-side
             div(ng-init="crud.query()")
-                include partials/post.jade
+                include partials/post
 
             div(style="padding-left:50px;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
                 .row
@@ -19,7 +19,7 @@ html(ng-modules="index.crud,node.crud")
                                 a(ng-click="crud.goto(page)") {{page+1}}
 
 
-        include partials/scripts.jade
+        include partials/scripts
         include partials/preload-string
         script(src="./system/node/crud.js")
         script(src="./system/index/crud.js")

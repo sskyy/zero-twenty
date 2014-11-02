@@ -1,9 +1,13 @@
 module.exports = [{
   identity: 'post',
+  connection : 'mongo',
   attributes: {
     title : 'string',
     content : 'string',
     category : 'array'
+  },
+  security : {
+    "content" : ['xss']
   },
   isNode : true,
   rest : true

@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    include partials/head.jade
+    include partials/head
     script(src="/default/js/lib/angular.js")
     script(src="/default/js/lib/angular-resource.min.js")
     script(src="/default/js/lib/angular-route.min.js")
@@ -13,7 +13,7 @@ html
     link(rel="stylesheet",href="/default/styles/font-awesome.min.css")
   body.contact.loading
     // Header
-    include partials/header.jade
+    include partials/header
     // Main
     article
       header.special.container
@@ -36,4 +36,4 @@ html
                   li
                     a.button.special(ng-click="submit()") Submit
     // Footer
-    include partials/footer.jade
+    include partials/footer
