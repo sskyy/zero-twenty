@@ -2,7 +2,9 @@
   "name": "zero-twenty",
   "version": "0.0.16",
   "description": "zero module",
-  "dependencies": {},
+  "dependencies": {
+    "xss": "^0.1.12"
+  },
   "zero": {
     "dependencies": {
       "file": "^0.0.1",
