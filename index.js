@@ -4,6 +4,7 @@ var Promise = require('bluebird')
 var twentyModule = {
   models : require('./models'),
   config : config,
+  i18n : require("./dict"),
   theme : [{
     directory : "admin",
     prefix : "admin",

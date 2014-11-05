@@ -3,7 +3,7 @@ html
     head
         title Twenty
         include partials/head
-    body#top
+    body#top(ng-modules='i18n')
         header#home
             section#hero.hero
                 div.container
@@ -156,7 +156,14 @@ html
 
         include partials/footer
         script(src="./js/jquery.js")
+        script(src="./js/i18next-1.7.4.min.js")
         script(src="./js/jquery.flexslider.js")
         script(src="./js/modernizr.js")
         script(src="./js/waypoints.min.js")
         script(src="./js/scripts.js")
+
+        script(src="./js/angular.min.js")
+        script(src="./js/angular.ng-modules.js")
+        script(src="./js/angular-resource.min.js")
+        script(src="./system/common/util.js")
+        script(src="./system/i18n/i18n.js")
