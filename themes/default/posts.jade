@@ -1,0 +1,30 @@
+doctype html
+html(ng-modules="index.crud,node.crud")
+    head
+        include ./partials/head
+        link(rel="stylesheet" href="./css/style-twoside.css")
+
+    body.index.loading(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5"}',crud-search-fields="['category.id']")
+        include ./partials/sidebar
+
+        .right-side
+            div(ng-init="crud.query()")
+                include ./partials/post
+
+            div(style="padding-left:50px;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
+                .row
+                    .col-xs-12
+                        ul.pagination
+                            li(ng-repeat="page in crud.pagination.display",ng-class="{active:page==crud.pagination.index}")
+                                a(ng-click="crud.goto(page)") {{page+1}}
+
+
+        script(src="./js/moment.min.js")
+        script(src="./js/lodash.compat.min.js")
+        script(src="./js/angular.min.js")
+        script(src="./js/angular.ng-modules.js")
+        script(src="./js/angular-resource.min.js")
+        script(src="./js/angular-sanitize.min.js")
+        script(src="./system/common/util.js")
+        script(src="./system/node/crud.js")
+        script(src="./system/index/crud.js")

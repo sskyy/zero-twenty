@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        include ./partials/head
+        link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+        script(src="../js/markdown.min.js")
+    body.index.loading
+        // Header
+        include ./partials/header
+
+        article
+            header.special.container.text-center
+                h2 #{title}
+            // One
+            section.style4.container.small
+                // Content
+                .content
+                    section !{content}
+
+        // Footer
+        if type == 'markdown'
+            script(src="../js/jquery.js")
+            script.
+                $(".content section").html(markdown.toHTML($(".content section").html()))
+        include ./partials/duoshuo
+        include ./partials/footer

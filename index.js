@@ -4,14 +4,11 @@ var Promise = require('bluebird')
 var twentyModule = {
   models : require('./models'),
   config : config,
-  theme : {
-    directory : 'public',
-    mock : {
-      "/post/:id" : "post.jade"
-    },
-    locals : config.locals,
-    index : "/twenty/index"
-  },
+  theme : [{
+    directory : "admin",
+    prefix : "admin",
+    locals : config.locals
+  },config.theme],
   listen : {
     "user.register.after" : function addRoleAdmin(){
       var bus = this
@@ -30,13 +27,13 @@ var twentyModule = {
   acl : {
     roles : {
       "loggedIn" : function(req){
-        return req.session.user && req.session.user.id
+        return !!(req.session.user && req.session.user.id)
       }
     },
     routes : {
-      "/twenty/admin" : [{
+      "/twenty/admin/index" : [{
         role:"loggedIn",
-        "redirect":"/twenty/login"
+        "redirect":"/twenty/admin/login"
       }]
     }
   },

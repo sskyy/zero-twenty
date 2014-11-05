@@ -1,6 +1,5 @@
 module.exports = [{
   identity: 'post',
-  connection : 'mongo',
   attributes: {
     title : 'string',
     content : 'string',
