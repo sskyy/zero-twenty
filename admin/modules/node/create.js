@@ -5,7 +5,7 @@
  */
 
 
-angular.module('node.create', ['textAngular', 'node.upload','node.index'])
+angular.module('node.create', ['textAngular', 'node.upload','node.index','ngTagEditor'])
   .controller( 'node.create', function( $http, $attrs, uploadFactory,$scope){
     var type = $attrs['nodeType']
     if (!type ) {

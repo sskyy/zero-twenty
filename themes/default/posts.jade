@@ -1,15 +1,15 @@
 doctype html
 html(ng-modules="index.crud,node.crud")
     head
-        include ./partials/head
+        include partials/head
         link(rel="stylesheet" href="./css/style-twoside.css")
 
     body.index.loading(ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5"}',crud-search-fields="['category.id']")
-        include ./partials/sidebar
+        include partials/sidebar
 
         .right-side
             div(ng-init="crud.query()")
-                include ./partials/post
+                include partials/post
 
             div(style="padding-left:50px;margin-bottom:10px" ng-show="crud.pagination.display.length>1")
                 .row

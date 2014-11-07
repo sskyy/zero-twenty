@@ -1,0 +1,1 @@
+angular.module('admin.post.manage',['node.create','node.crud','node.edit','node.detail'])

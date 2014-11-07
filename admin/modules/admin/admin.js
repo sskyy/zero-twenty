@@ -1,13 +1,8 @@
-angular.module('admin',['ui.router','admin.post.manage','admin.dashboard','index.crud','user.edit','user.session','comments.duoshuo.newest','statistic.duoshuo.hotest','setting.crud'])
+angular.module('admin',['ui.router','admin.post.manage','index.crud','user.edit','user.session','comments.duoshuo.newest','statistic.duoshuo.hotest','setting.crud'])
   .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
       var path = window.location.pathname
       $stateProvider
-        .state('dashboard', {
-          url : "/",
-          templateUrl: './templates/dashboard.html',
-          controller: 'dashboard'
-        })
         .state('posts', {
           url : "/posts",
           templateUrl: './templates/post-manage.html'
@@ -20,15 +15,10 @@ angular.module('admin',['ui.router','admin.post.manage','admin.dashboard','index
           url : "/edit/:id",
           templateUrl: './templates/edit.html'
         })
-        .state('categories',{
-          url : '/categories',
-          templateUrl : './templates/category-manage.html'
-        })
-        .state('comments',{
-          url : '/comments',
-          templateUrl : './templates/comments.html',
-          controller: ''
-        })
+        //.state('categories',{
+        //  url : '/categories',
+        //  templateUrl : './templates/category-manage.html'
+        //})
         .state('statistics',{
           url : '/statistics',
           templateUrl : './templates/statistics.html',
@@ -44,7 +34,7 @@ angular.module('admin',['ui.router','admin.post.manage','admin.dashboard','index
           templateUrl : './templates/setting.html'
         })
 
-      $urlRouterProvider.otherwise("/");
+      $urlRouterProvider.otherwise("/posts");
       //configure html5 to get links working on jsfiddle
 //      $locationProvider.html5Mode(true);
     }]).controller( 'admin',function($scope,session,$rootScope){

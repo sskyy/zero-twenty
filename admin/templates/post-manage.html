@@ -1,43 +1,41 @@
-<div  class="margin" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10"}'>
+<div class="margin" ng-controller="node.detail" node-type="post">
 
     <div style="margin-bottom: 10px">
         <a class="btn btn-info" ui-sref="create">create</a>
     </div>
 
-    <div class="box">
-    <!-- /.box-header -->
-        <div class="box-body table-responsive  no-padding" ng-init="crud.query()">
-            <table class="table crud">
-                <thead>
-                    <tr>
-                        <th>标题</th>
-                        <th>浏览量</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="post in crud.data.records">
-                        <td>
-                            <h5><a href="/twenty/post/{{post.id}}">{{post.title}}</a></h5>
-                        </td>
-                        <td><h5>{{post.statistic.view||0}}</h5></td>
-                        <td class="operation">
-                            <a class="btn btn-info list " href="#/edit/{{post.id}}">edit</a>
-                            <a class="btn btn-danger list" ng-click="crud.remove(post, $index,true)">remove</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-sm-6" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10"}'>
+            <div class="box-body table-responsive  no-padding" ng-init="crud.query()">
+                <div ng-repeat="post in crud.data.records">
+                    <h5>
+                        <a href="/twenty/post/{{post.id}}">{{post.title}}</a>
+                        <span>{{post.statistic.view||0}}</span>
+                        <a class="btn btn-info list " href="#/edit/{{post.id}}">edit</a>
+                        <a class="btn btn-danger list" ng-click="crud.remove(post, $index,true)">remove</a>
+                    </h5>
+                    <div ng-click="get(post.id)">
+                        <div class="" ng-if="post.brief" ng-bind-html="post.content"></div>
+                        <div class="" ng-if="post.content" ng-bind-html="post.content" ></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm inline">
+                    <li ng-repeat="page in crud.pagination.display">
+                        <a ng-click="crud.goto(page)" ng-class="{active:page==crud.pagination.index}">{{page+1}}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    <!-- /.box-body -->
-        <div class="box-footer clearfix">
-            <ul class="pagination pagination-sm inline">
-                <li ng-repeat="page in crud.pagination.display">
-                    <a ng-click="crud.goto(page)" ng-class="{active:page==crud.pagination.index}">{{page+1}}</a>
-                </li>
-            </ul>
+
+        <!--preiview-->
+        <div class="col-sm-6">
+            <div ng-if="node">
+                <div class=""  ng-bind-html="node.title" ></div>
+                <div class="" ng-bind-html="node.content" ></div>
+            </div>
         </div>
     </div>
-    <!-- /.box -->
-
 </div>
