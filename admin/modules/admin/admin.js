@@ -1,11 +1,17 @@
-angular.module('admin',['ui.router','admin.post.manage','index.crud','user.edit','user.session','comments.duoshuo.newest','statistic.duoshuo.hotest','setting.crud'])
+angular.module('admin',['ui.router',
+  'admin.post.manage',
+  'index.crud',
+  'user.edit',
+  'user.session',
+  'statistic',
+  'setting.crud'])
   .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
       var path = window.location.pathname
       $stateProvider
         .state('posts', {
           url : "/posts",
-          templateUrl: './templates/post-manage.html'
+          templateUrl: './templates/posts.html'
         })
         .state('create', {
           url : "/create",
@@ -15,10 +21,6 @@ angular.module('admin',['ui.router','admin.post.manage','index.crud','user.edit'
           url : "/edit/:id",
           templateUrl: './templates/edit.html'
         })
-        //.state('categories',{
-        //  url : '/categories',
-        //  templateUrl : './templates/category-manage.html'
-        //})
         .state('statistics',{
           url : '/statistics',
           templateUrl : './templates/statistics.html',

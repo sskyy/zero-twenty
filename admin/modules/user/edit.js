@@ -13,7 +13,8 @@ angular.module('user.edit',['user.session']).controller('user.edit',function($sc
     }
 
     $scope.saved = false
-    $http.put('/user/'+$scope.user.id,$scope.user).success(function(savedUser){
+    var user = JSON.parse(angular.toJson($scope.user))
+    $http.put('/user/'+$scope.user.id,user).success(function(savedUser){
       $scope.user = savedUser
       $scope.saved = true
     })

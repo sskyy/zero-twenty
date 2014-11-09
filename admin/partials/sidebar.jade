@@ -1,15 +1,15 @@
-aside.left-side.sidebar-offcanvas
+aside.left-side.sidebar
     // sidebar: style can be found in sidebar.less
-    section.sidebar
-        .logo
+    section
+        .logo.pd10
             a(href='/')
                 img(src='/twenty/images/logo.svg',alt='User Image')
         .slogon
             | More than blogging
-        .user-panel(styel)
+        .user-panel
             .info
                 a Hello, {{user.name}}
-                a(href="/user/logout") 退出
+
         // sidebar menu: : style can be found in sidebar.less
         ul.sidebar-menu
             li(ui-sref-active='active')
@@ -28,5 +28,7 @@ aside.left-side.sidebar-offcanvas
                 a(ui-sref='setting')
                     span Settings
 
+        div.logout
+            a(href="/user/logout") Log out
 
     // /.sidebar

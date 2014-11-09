@@ -1,48 +1,52 @@
-<div  class="margin">
-    <div class="box">
-        <div class="box-body">
-            <form role="form">
-                <div class="form-group">
-                    <label>用户名</label>
-                    <input type="text" class="form-control" placeholder="Enter ..." ng-disabled="!user.id" ng-model="user.name">
+<div class="ink-flex vertical page user" >
+    <header class="column-group page-head pd10 list horizontal" ng-controller="visits">
+        <div class="item">
+            <h5>用户名</h5>
+            <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
+        </div>
+        <div class="item">
+            <h5>邮箱</h5>
+            <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
+        </div>
+        <div class="item ">
+            <a class="btn btn-gray" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">edit</a>
+            <a class="btn btn-primary" ng-show="user.$$editing=='basic'" ng-click="update()">save</a>
+            <a class="btn btn-danger" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">cancel</a>
+        </div>
+    </header>
+    <div class="all-auto ink-flex">
+        <div class="all-50 page-left pd10 list " >
+            <h5 class="title">Custom Fields</h5>
+            <div class="items">
+                <div ng-repeat="(fieldName, fieldContent) in user" class="item clearfix" ng-show="!isSystemField(fieldName)&&fieldContent!==null&&fieldName!=='about'">
+                    <input type="text" class="form-control" disabled placeholder="字段名" ng-model="fieldName">
+                    <input type="text" class="form-control" disabled ng-model="fieldContent" placeholder="内容">
+                    <a class="btn btn-danger pull-right" type="button" ng-click="user[fieldName]=null">DELETE</a>
                 </div>
-                <div class="form-group">
-                    <label>邮箱</label>
-                    <input type="text" class="form-control" placeholder="Enter ..." ng-disabled="!user.id" ng-model="user.email">
-                </div>
-                <div class="form-group">
-                    <label>自定义字段</label>
-                    <div class="form-group" ng-repeat="(fieldName, fieldContent) in user">
-                        <div class="row" ng-show="!isSystemField(fieldName)&&fieldContent!==null">
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" disabled placeholder="字段名" ng-model="fieldName">
-                            </div>
-                            <div class="col-xs-7">
-                                <input type="text" class="form-control" disabled ng-model="fieldContent" placeholder="内容">
-                            </div>
-                            <div class="col-xs-1">
-                                <button class="btn btn-danger btn-block" type="button" ng-click="user[fieldName]=null">-</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="字段名" ng-disabled="!user.id"  ng-model="newFieldName">
-                        </div>
-                        <div class="col-xs-7">
-                            <input type="text" class="form-control" ng-model="newFieldContent" ng-disabled="!user.id"  placeholder="内容">
-                        </div>
-                        <div class="col-xs-1">
-                            <button class="btn btn-info btn-block" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">+</button>
-                        </div>
-                    </div>
+                <div class="item clearfix">
+                    <input type="text" class="form-control " placeholder="字段名" ng-disabled="!user.id"  ng-model="newFieldName">
+                    <input type="text" class="form-control " ng-model="newFieldContent" ng-disabled="!user.id"  placeholder="内容">
+                    <a class="btn btn-info pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">ADD</a>
                 </div>
-                <div class="form-group">
-                    <a class="btn btn-primary" ng-click="update()" ng-disabled="!user.id">submit</a>
-                    <label class="label label-info" ng-show="saved">saved</label>
-                </div>
-            </form>
+            </div>
+
+            <div class="pdv10">
+                <a class="btn btn-primary pull-right" ng-click="update()" ng-disabled="!user.id">submit</a>
+                <label class="label label-info" ng-show="saved">saved</label>
+            </div>
+
+        </div>
+
+        <div class="all-50 page-right pd10" >
+            <div>
+                <a class="btn btn-gray pull-right" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about'" ng-disabled="!user.id">edit</a>
+                <a class="btn btn-danger pull-right" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false" ng-disabled="!user.id">cancel</a>
+                <a class="btn btn-blue pull-right" ng-show="user.$$editing=='about'" ng-click="update()" ng-disabled="!user.id">save</a>
+            </div>
+            <div class="form-group">
+                <textarea ng-model="user.about" class="form-control all-100 js-auto-resize" rows="20" placeholder="about me"></textarea>
+            </div>
         </div>
     </div>
 </div>

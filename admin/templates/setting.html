@@ -1,45 +1,30 @@
-<div  class="margin">
-    <div class="box" ng-controller="setting.crud">
-        <div class="box-body">
-            <form role="form">
-                <div class="form-group">
-                    <label>新增字段</label>
-                    <div class="form-group" ng-init="newConfig={}">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" placeholder="字段名" ng-model="newConfig.key">
-                            </div>
-                            <div class="col-xs-6">
-                                <input type="text" class="form-control" ng-model="newConfig.value" placeholder="内容">
-                            </div>
-                            <div class="col-xs-2">
-                                <a class="btn btn-primary" ng-click="add(newConfig.key, newConfig.value);newConfig={}">添加</a>
-                            </div>
-                        </div>
-                    </div>
+<div class="page settings pd10" ng-controller="setting.crud">
+    <div class="page-left all-100 ">
+        <div class="list">
+            <h5 class="title">
+                Settings
+            </h5>
+            <div class="items">
+
+                <div class="item" ng-repeat="(configName, configContent) in config">
+                    <input type="text" class="form-control" disabled placeholder="字段名" ng-model="configName">
+                    <input type="text" class="form-control" ng-model="config[configName]" placeholder="内容">
+                    <a class="btn btn-danger" ng-click="delete(configName);">删除</a>
                 </div>
-                <div class="form-group">
-                    <label>自定义字段</label>
-                    <div class="form-group" ng-repeat="(configName, configContent) in config">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <input type="text" class="form-control" disabled placeholder="字段名" ng-model="configName">
-                            </div>
-                            <div class="col-xs-6">
-                                <input type="text" class="form-control" ng-model="config[configName]" placeholder="内容">
-                            </div>
-                            <div class="col-xs-2">
-                                <a class="btn btn-danger" ng-click="delete(configName);">删除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <a class="btn btn-danger" ng-click="reset()">reset</a>
-                    <a class="btn btn-primary" ng-click="save()">save</a>
-                    <label class="label label-info" ng-show="saved">saved</label>
-                </div>
-            </form>
+            </div>
+
+            <div class="item" ng-init="newConfig={}">
+                <input type="text" class="form-control" placeholder="字段名" ng-model="newConfig.key">
+                <input type="text" class="form-control" ng-model="newConfig.value" placeholder="内容">
+                <a class="btn btn-primary" ng-click="add(newConfig.key, newConfig.value);newConfig={}">添加</a>
+            </div>
         </div>
     </div>
+    <div class="form-group">
+        <a class="btn btn-danger" ng-click="reset()">reset</a>
+        <a class="btn btn-primary" ng-click="save()">save</a>
+        <label class="label label-info" ng-show="saved">saved</label>
+    </div>
+    </div>
+
 </div>

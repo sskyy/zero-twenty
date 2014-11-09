@@ -4,17 +4,18 @@
 */
 
 .sidebar {
-    margin-bottom: 5px;
-    // remove shadow from form
-    .sidebar-form {
-        input:focus {
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-            border-color: transparent!important;
+    background: #323339;
+    padding: 20px 30px;
+    a {
+        display: block;
+        font-size:13px;
+        color:#fff;
+        &:hover{
+            color:#fff;
+            text-decoration: none;
         }
     }
-    // Sidebar menu 
+
     .sidebar-menu {
         list-style: none;
         margin: 0;
@@ -26,39 +27,29 @@
                 padding: 14px 5px 14px 15px;
                 display: block;
                 font-size:13px;
-                > .fa, > .glyphicon, > .ion {
-                    width: 20px;
-                    margin-right:10px
-                }
-            }
-        }
+                color:#fff;
 
-        // Tree view menu 
-        .treeview-menu {
-            display: none;
-            list-style: none;
-            padding:0;
-            margin:0;
-            > li {
-                margin: 0;
-                > a {
-                    padding: 5px 5px 5px 15px;
-                    display: block;
-                    font-size: 14px;
-                    margin: 0px 0px;
-                    > .fa, > .glyphicon, > .ion {
-                        width: 20px;
-                    }
+                &.active{
+                    text-decoration: underline;
                 }
             }
         }
+    }
+    .slogon{
+        text-align: center;
+    }
+
+    .logout{
+        position: absolute;
+        bottom: 10px;
+        display: block;
+        text-align: center;
     }
 }
 
 //Sidebar user panel
 .user-panel {
     padding: 10px;
-    background: #323339;
     .clearfix();
     > .image > img {
         width: 45px;
@@ -67,7 +58,6 @@
     > .info {
         font-weight: 600;
         font-size: 14px;
-        padding-left: 10px;
         line-height: 45px;
     }
     > .info > p {
@@ -75,64 +65,13 @@
     }
     > .info > a {
         text-decoration: none;
+        color:#fff;
         padding-right: 5px;
         margin-top: 3px;
         font-size: 11px;
         font-weight: normal;
         > .fa, > .ion, > .glyphicon {
             margin-right: 3px;
-        }
-    }
-}
-
-/*
- * Off Canvas
- * --------------------------------------------------
- *  Gives us the push menu effect
- */
-@media screen and (max-width: @screen-md) {
-
-    .relative {
-        position: relative;
-    }
-
-    .row-offcanvas-right
-    .sidebar-offcanvas {
-        right: -@left-side-width;
-    }
-
-    .row-offcanvas-left
-    .sidebar-offcanvas {
-        left: -@left-side-width;
-    }
-
-    .row-offcanvas-right.active {
-        right: @left-side-width;
-    }
-
-    .row-offcanvas-left.active {
-        left: @left-side-width;
-    }
-
-    .sidebar-offcanvas {
-        left: 0;
-    }
-
-    body.fixed {
-        .sidebar-offcanvas {
-            margin-top: 50px;
-            left: -@left-side-width;
-        }
-        .row-offcanvas-left.active {
-            .navbar {
-                left: @left-side-width!important;
-                right: 0;
-
-            }
-            .sidebar-offcanvas {
-                left: 0px;
-            }
-
         }
     }
 }

@@ -1,75 +1,23 @@
-/* 
-   All form elements including input, select, textarea etc.
------------------------------------------------------------------
-*/
-
-
-&.form-control {
-
-    .border-radius(@input-radius)!important;
-    box-shadow: none;
-
-    &:focus {
-        border-color: #999 !important;
+input[type="text"],textarea{
+    &.form-control{
+        outline: none;
         box-shadow: none;
-       
-    }               
+        line-height: 34px;
+        border: none;
+        border-bottom: 1px #eee solid;
 
-}
 
-.form-group {
-    &.has-success {
-        label {
-            color: @green;
-        }
-        .form-control {
-            border-color: @green !important;
-            box-shadow: none;
-            border-radius: 3px;
-        }
-    }
-
-    &.has-warning {
-        label {
-            color: @yellow;
-        }
-        .form-control {
-            border-color: @yellow !important;
+        &:focus{
+            outline: none;
+            border-bottom: 1px #888 solid;
             box-shadow: none;
         }
-    }
 
-    &.has-error {
-        label {
-            color: @red;
-        }
-        .form-control {
-            border-color: @red !important;
-            box-shadow: none;
+
+        &[disabled]{
+            border: 0 solid #000;
         }
     }
+
 }
 
-/* Input group */
-.input-group {
-    > .input-group-btn > .btn {
-
-    }
-    .input-group-addon {
-        border-radius: 0;
-        background-color: #f4f4f4;
-    }
-}
-/* button groups */
-.btn-group-vertical {
-    .btn {
-        &.btn-flat:first-of-type, &.btn-flat:last-of-type {
-            border-radius: 0;
-        }
-    }
-}
-
-/* Checkbox and radio inputs */
-.checkbox, .radio {
-    padding-left: 0;
-}

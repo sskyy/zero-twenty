@@ -1,48 +1,49 @@
-<div class="margin" ng-controller="node.create" node-type="post" redirect="/twenty/post">
-    <div class="row" ng-controller="node.index" index-type='tag'>
-        <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./js/ngTagEditor/ngTagEditor.html"></tag-editor>
-    </div>
-    <a class="btn btn-primary" ng-click="submit()">publish</a>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter ..." ng-model="node.title">
+<div class="ink-flex vertical page create" ng-controller="node.create" node-type="post" redirect="/twenty/post">
+    <header class="column-group page-head pd10">
+        <div class="all-90" ng-controller="node.index" index-type='tag'>
+            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./js/ngTagEditor/ngTagEditor.html"></tag-editor>
+        </div>
+        <div class="all-10">
+            <a class="btn btn-primary" ng-click="submit()">publish</a>
+        </div>
+    </header>
+    <div class="all-auto ink-flex">
+        <div class="all-50 page-left pd10">
+            <div class="form-group " ng-init="node.type='markdown'">
+                <a ng-click="node.type='markdown'" class="type" ng-class="{active:node.type=='markdown'}">markdown</a>
+                <a ng-click="node.type='html'" class="type mgh10" ng-class="{active:node.type=='html'}">html</a>
             </div>
-            <div class="form-group">
-                <label class="radio-inline">
-                    <input type="radio" name="type" ng-model="node.type" value="html"> HTML
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="type" ng-model="node.type" value="markdown"> markdown
-                </label>
+            <div class="form-group pdv10">
+                <input type="text" class="form-control title pdv10" placeholder="title" ng-model="node.title">
+            </div>
+            <div class="form-group" >
                 <!--<textarea text-angular class="form-control" rows="17" ng-model="htmlVariable" placeholder="Enter ..."></textarea>-->
                 <div text-angular ng-show="node.type!=='markdown'"
                      ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','ul','ol'],[
-                     'justifyLeft','justifyCenter','justifyRight','indent','outdent','insertImage','insertLink','insertVideo','uploadFile','html']]"
+                 'justifyLeft','justifyCenter','justifyRight','indent','outdent','insertImage','insertLink','insertVideo','uploadFile','html']]"
                      ng-model="node.content" placeholder="Enter ..."></div>
 
                 <div ng-show="node.type==='markdown'">
                     <div class="form-group">
-                        <textarea ng-model="node.content" class="form-control" rows="20">
-
-                        </textarea>
+                        <textarea ng-model="node.content" class="form-control all-100 js-auto-resize" rows="20" placeholder="content"></textarea>
                     </div>
-
                 </div>
             </div>
         </div>
+        <div class="all-50 page-right pd10" ng-if="node" >
+            <a class="type" >preview</a>
 
-
-        <div class="col-sm-6">
-            <div ng-if="node">
-                <div class=""  ng-bind-html="node.title" ></div>
-                <div class="" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>
-                <div class="" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>
-            </div>
+            <h1 class=""  ng-bind-html="node.title" ></h1>
+            <div class="" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>
+            <div class="" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>
         </div>
-
     </div>
+
+    <script>
+        $(function(){
+            $('textarea.js-auto-resize').textareaAutoSize();
+        })
+    </script>
 
     <div class="modal" ng-show="upload.active">
         <div class="modal-content small">

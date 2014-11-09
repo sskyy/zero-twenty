@@ -3,18 +3,12 @@ html(ng-app='admin')
     head
         include partials/head
         include partials/preload-string
-    body.skin-black(ng-controller='admin')
+    body(ng-controller='admin')
         // header logo: style can be found in header.less
-        //include partials/header-admin.jade
-        .wrapper.row-offcanvas.row-offcanvas-left
-            // Left side column. contains the logo and sidebar
+        .container.ink-flex
             include partials/sidebar
-            // Right side column. Contains the navbar and content of the page
-            aside.right-side
+            aside.right-side.all-auto(ui-view)
 
-                section.content(ui-view)
+    include partials/scripts
 
-                // /.content
-            // /.right-side
-        // ./wrapper
 

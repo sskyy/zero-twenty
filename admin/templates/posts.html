@@ -1,0 +1,44 @@
+<div class="page posts ink-flex vertical" ng-controller="node.detail" node-type="post">
+    <div class="column-group page-head pd10">
+        <a class="btn btn-info" ui-sref="create">create</a>
+    </div>
+    <div class="all-auto ink-flex">
+        <div class="all-50 page-left" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
+            <div class="posts" ng-init="crud.query()">
+                <div class="post pd10" ng-repeat="post in crud.data.records" ng-click="get(post.id)">
+                    <h5>
+                        <a class="title" href="/twenty/post/{{post.id}}">{{post.title}}</a>
+                        <a class="pull-right action" ng-click="crud.remove(post, $index,true)">
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <a class="pull-right action" href="#/edit/{{post.id}}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    </h5>
+                    <div class="brief" >
+                        <div class="" ng-if="post.brief" ng-bind-html="post.brief"></div>
+                        <div class="" ng-if="!post.brief" ng-bind-html="post.content" ></div>
+                    </div>
+                    <div class="statistics pdv10">
+                        <span class="statistic">{{post.createdAt | time:"YYYY-MM-DD"}}</span>
+                        <span class="statistic">{{post.view||0}}</span>
+                        <span class="statistic" ng-repeat="tag in post.tags">{{tag.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pages clearfix">
+                <ul class="pagination pagination-sm inline">
+                    <li ng-repeat="page in crud.pagination.display">
+                        <a ng-click="crud.goto(page)" ng-class="{active:page==crud.pagination.index}">{{page+1}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="all-50 page-right pd10" class="preview">
+            <div ng-if="node">
+                <h1 class="title"  ng-bind-html="node.title" ></h1>
+                <div class="content" ng-bind-html="node.content" ></div>
+            </div>
+        </div>
+    </div>
+</div>

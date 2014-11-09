@@ -52,7 +52,7 @@ angular.module('node.edit', ['textAngular', 'node.upload','node.index'])
 
 
       hrefMatches = hrefMatches && hrefMatches.slice(1)
-      console.log( tokens,hrefMatches, wildcard,tokenRex, wildcard.replace(tokenRex,"/(\\w+)"),href )
+      //console.log( tokens,hrefMatches, wildcard,tokenRex, wildcard.replace(tokenRex,"/(\\w+)"),href )
       for( var i in tokens ){
         results[tokens[i]] = hrefMatches[i]
       }
