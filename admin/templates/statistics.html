@@ -1,17 +1,17 @@
 <div class="ink-flex vertical page statistics" >
     <header class="column-group page-head pd20" ng-controller="visits">
         <div class="visit">
-            <span>visits of week</span>
+            <span>Visits of week</span>
             <h2 class="mgv10">{{week}}</h2>
         </div>
         <div>
-            <span>visits of today</span>
+            <span>Visits of today</span>
             <h2 class="mgv10">{{today}}</h2>
         </div>
     </header>
     <div class="all-auto ink-flex">
         <div class="all-50 page-left pd20 list" ng-controller="board">
-            <h5 class="title">Top Read</h5>
+            <h5 class="statistics title">Top Read</h5>
             <div class="items">
                 <div ng-repeat="post in posts" class="item">
                     <span class="text">
@@ -24,7 +24,7 @@
 
         <div class="all-50 page-right pd20" ng-controller="comments.duoshuo.newest" duoshuo-name="">
             <div class="list">
-                <h5 class="title">Latest Comments</h5>
+                <h5 class="statistics title">Latest Comments</h5>
                 <div class="items">
                     <div class="item comment" ng-repeat="comment in comments">
                         <img ng-src="{{comment.author.avatar_url}}" alt="user image" class="">

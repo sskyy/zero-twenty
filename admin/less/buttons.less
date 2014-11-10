@@ -4,7 +4,7 @@
     background: transparent;
 }
 
-@btn-height : 34px;
+@btn-height : 32px;
 
 .btn {
     display: inline-block;
@@ -14,6 +14,7 @@
     height: @btn-height;
     line-height: @btn-height;
     cursor: pointer;
+    text-align: center;
     .border-radius( @btn-height/2);
     background: transparent;
     &:hover, &:active, &.hover {
@@ -30,9 +31,10 @@
     }
 
     &.btn-primary {
-        .btn-color(@light-blue);
+        text-align: center;
+        .btn-color(@light-green);
         &:hover, &:active, &.hover {
-            .btn-color(lighten( @light-blue, 25%) )
+            .btn-color(lighten( @light-green, -20%) )
         }
     }
     &.btn-success {

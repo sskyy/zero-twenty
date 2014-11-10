@@ -1,11 +1,11 @@
 <div class="ink-flex vertical page user" >
     <header class="column-group page-head pd20 list horizontal" ng-controller="visits">
         <div class="item">
-            <h5>用户名</h5>
+            <h5>User name</h5>
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
         </div>
         <div class="item">
-            <h5>邮箱</h5>
+            <h5>Your email</h5>
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
         </div>
         <div class="item ">
@@ -21,20 +21,17 @@
                 <div ng-repeat="(fieldName, fieldContent) in user" class="item clearfix" ng-show="!isSystemField(fieldName)&&fieldContent!==null&&fieldName!=='about'">
                     <input type="text" class="form-control" disabled placeholder="字段名" ng-model="fieldName">
                     <input type="text" class="form-control" disabled ng-model="fieldContent" placeholder="内容">
-                    <a class="btn btn-danger pull-right" type="button" ng-click="user[fieldName]=null">DELETE</a>
+                    <a class="btn btn-danger pull-right" type="button" ng-click="user[fieldName]=null">Delete</a>
                 </div>
 
                 <div class="item clearfix">
                     <input type="text" class="form-control " placeholder="字段名" ng-disabled="!user.id"  ng-model="newFieldName">
                     <input type="text" class="form-control " ng-model="newFieldContent" ng-disabled="!user.id"  placeholder="内容">
-                    <a class="btn btn-gray pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">ADD</a>
+                    <a class="btn btn-gray pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">Aadd</a>
                 </div>
             </div>
 
-            <div class="pdv10">
-                <a class="btn btn-primary pull-right" ng-click="update()" ng-disabled="!user.id">save</a>
-                <label class="label label-info" ng-show="saved">saved</label>
-            </div>
+           
 
         </div>
 
