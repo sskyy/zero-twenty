@@ -1,5 +1,5 @@
 <div class="ink-flex vertical page user" >
-    <header class="column-group page-head pd10 list horizontal" ng-controller="visits">
+    <header class="column-group page-head pd20 list horizontal" ng-controller="visits">
         <div class="item">
             <h5>用户名</h5>
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
@@ -15,7 +15,7 @@
         </div>
     </header>
     <div class="all-auto ink-flex">
-        <div class="all-50 page-left pd10 list " >
+        <div class="all-50 page-left pd20 list " >
             <h5 class="title">Custom Fields</h5>
             <div class="items">
                 <div ng-repeat="(fieldName, fieldContent) in user" class="item clearfix" ng-show="!isSystemField(fieldName)&&fieldContent!==null&&fieldName!=='about'">
@@ -27,26 +27,30 @@
                 <div class="item clearfix">
                     <input type="text" class="form-control " placeholder="字段名" ng-disabled="!user.id"  ng-model="newFieldName">
                     <input type="text" class="form-control " ng-model="newFieldContent" ng-disabled="!user.id"  placeholder="内容">
-                    <a class="btn btn-info pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">ADD</a>
+                    <a class="btn btn-gray pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">ADD</a>
                 </div>
             </div>
 
             <div class="pdv10">
-                <a class="btn btn-primary pull-right" ng-click="update()" ng-disabled="!user.id">submit</a>
+                <a class="btn btn-primary pull-right" ng-click="update()" ng-disabled="!user.id">save</a>
                 <label class="label label-info" ng-show="saved">saved</label>
             </div>
 
         </div>
 
-        <div class="all-50 page-right pd10" >
-            <div>
-                <a class="btn btn-gray pull-right" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about'" ng-disabled="!user.id">edit</a>
-                <a class="btn btn-danger pull-right" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false" ng-disabled="!user.id">cancel</a>
-                <a class="btn btn-blue pull-right" ng-show="user.$$editing=='about'" ng-click="update()" ng-disabled="!user.id">save</a>
+        <div class="all-50 page-right pd20 list" >
+            <h5 class="title">
+                <span>About me</span>
+                <a class="btn btn-gray" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about'" ng-disabled="!user.id">edit</a>
+                <a class="btn btn-danger" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false" ng-disabled="!user.id">cancel</a>
+                <a class="btn btn-blue" ng-show="user.$$editing=='about'" ng-click="update()&&(user.$$editing=false)" ng-disabled="!user.id">save</a>
+            </h5>
+            <div class="pd20">
+                <div class="" ng-show="user.$$editing!='about'" ng-bind-html="user.about|markdown" ></div>
+                <textarea ng-model="user.about" ng-show="user.$$editing=='about'" class="form-control all-100 js-auto-resize" rows="20" placeholder="about me"></textarea>
+
             </div>
-            <div class="form-group">
-                <textarea ng-model="user.about" class="form-control all-100 js-auto-resize" rows="20" placeholder="about me"></textarea>
-            </div>
+
         </div>
     </div>
 </div>

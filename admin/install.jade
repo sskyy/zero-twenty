@@ -4,7 +4,7 @@ html
         meta(charset='UTF-8')
         title Twenty | Install
         meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
-        link(href='./css/bootstrap.css', rel='stylesheet', type='text/css')
+        link(href='./css/twenty.css', rel='stylesheet', type='text/css')
         link(href='./css/animate.css', rel='stylesheet', type='text/css')
         link(href='./css/login.css', rel='stylesheet', type='text/css')
         script(src='./js/lib/jquery-1.10.2.min.js')
@@ -25,7 +25,7 @@ html
                     .form-group
                         input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password')
                 .footer.text-center
-                    button.btn.bg-aqua(type='submit',ng-click='register(user)') Install
+                    a.btn.btn-success(type='submit',ng-click='register(user)') Install
         script.
             $(function(){
                 $('.form-box').addClass('fadeIn animated').removeClass('hide')

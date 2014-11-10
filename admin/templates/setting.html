@@ -11,20 +11,20 @@
                     <input type="text" class="form-control" ng-model="config[configName]" placeholder="内容">
                     <a class="btn btn-danger" ng-click="delete(configName);">删除</a>
                 </div>
+                <div class="item" ng-init="newConfig={}">
+                    <input type="text" class="form-control" placeholder="字段名" ng-model="newConfig.key">
+                    <input type="text" class="form-control" ng-model="newConfig.value" placeholder="内容">
+                    <a class="btn btn-primary" ng-click="add(newConfig.key, newConfig.value);newConfig={}">添加</a>
+                </div>
             </div>
 
-            <div class="item" ng-init="newConfig={}">
-                <input type="text" class="form-control" placeholder="字段名" ng-model="newConfig.key">
-                <input type="text" class="form-control" ng-model="newConfig.value" placeholder="内容">
-                <a class="btn btn-primary" ng-click="add(newConfig.key, newConfig.value);newConfig={}">添加</a>
-            </div>
+
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group pdv10">
         <a class="btn btn-danger" ng-click="reset()">reset</a>
         <a class="btn btn-primary" ng-click="save()">save</a>
         <label class="label label-info" ng-show="saved">saved</label>
-    </div>
     </div>
 
 </div>

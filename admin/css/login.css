@@ -1,3 +1,18 @@
+.form-box input[type=text],input[type=password]{
+	border: 0 #fff solid;
+}
+
+.form-box{
+	width: 400px;
+	margin: 100px auto 0 auto;
+	text-align: center;
+}
+
+.form-box img{
+	width: 100%;
+	margin: 15px 0;
+}
+
 .form-box .header h2 {
     font-size: 2.5em;
     font-weight: 900;
@@ -11,6 +26,10 @@
 }
 html,body{
 	background-color: #323339;
+}
+
+.form-group{
+	margin-bottom: 15px;
 }
 
 .form-group input{
@@ -29,15 +48,7 @@ html,body{
 	
 	border-color: #5d6472 !important;
 }
-.bg-aqua{
-	background-color: #40C27D!important;
-	border-radius: 5px !important;
-	width: 80px;
-	height: 38px;
-	float: left;
-	margin-left: 12px;
-	margin-top: -12px;
-}
+
 .callout.callout-danger {
 	background-color: #f3c658;
 	 width: 300px;

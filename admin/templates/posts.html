@@ -5,7 +5,7 @@
     <div class="all-auto ink-flex">
         <div class="all-50 page-left" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
             <div class="posts" ng-init="crud.query()">
-                <div class="post pd10" ng-repeat="post in crud.data.records" ng-click="get(post.id)">
+                <div class="post pd20" ng-repeat="post in crud.data.records" ng-click="get(post.id)">
                     <h5>
                         <a class="title" href="/twenty/post/{{post.id}}">{{post.title}}</a>
                         <a class="pull-right action" ng-click="crud.remove(post, $index,true)">
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        <div class="all-50 page-right pd10" class="preview">
+        <div class="all-50 page-right pd20" class="preview">
             <div ng-if="node">
                 <h1 class="title"  ng-bind-html="node.title" ></h1>
                 <div class="content" ng-bind-html="node.content" ></div>

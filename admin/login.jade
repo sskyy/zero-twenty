@@ -3,7 +3,7 @@ html
     head
         meta(charset='UTF-8')
         title Twenty | Login
-        //link(href='./css/bootstrap.css', rel='stylesheet', type='text/css')
+        link(href='./css/twenty.css', rel='stylesheet', type='text/css')
         link(href='./css/login.css', rel='stylesheet', type='text/css')
 
         script(src='./js/lib/jquery-1.10.2.min.js')
@@ -14,7 +14,7 @@ html
     body(ng-app='user.login')
         .form-box.transparent.hide(ng-controller='login',redirect="/twenty/admin/index")
             .header
-                   img(src="/twenty/images/logo.svg")
+                   img(src="/twenty/admin/images/logo.svg")
             form()
                 .body
                     .form-group
@@ -25,7 +25,7 @@ html
                         input(type='checkbox', name='remember_me')
                         | Remember me
                 .footer.text-center
-                    button.btn.bg-aqua(type='button',ng-click="login(user)") Sign in
+                    a.btn.btn-success(ng-click="login(user)") Sign in
               div.Prompt
                     .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
                         p(ng-switch-when="404") 用户名或密码错误。

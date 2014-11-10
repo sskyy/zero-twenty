@@ -1,14 +1,14 @@
 .page.posts{
     .posts{
         .post{
-            border-bottom: 1px #eee solid;
+            border-bottom: 1px @gray-lightest solid;
             a.action{
                 display: none;
                 color : #aaa;
                 margin-right: 5px;
             }
             &:hover{
-                background: #eee;
+                background: @gray-lightest;
                 a.action{
                     display: inline-block;
                 }
@@ -16,17 +16,18 @@
 
             }
             a.title{
-                color : #888;
+                color : @gray;
                 font-size: 20px;
             }
+
             .brief{
-                color : #999;
+                color : @gray-light;
                 &:hover{
                 }
             }
             .statistic{
                 margin-right: 5px;
-                color : #aaa;
+                color : @gray-lighter;
             }
         }
     }

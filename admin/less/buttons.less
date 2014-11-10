@@ -13,6 +13,7 @@
     padding:0 @btn-height/2;
     height: @btn-height;
     line-height: @btn-height;
+    cursor: pointer;
     .border-radius( @btn-height/2);
     background: transparent;
     &:hover, &:active, &.hover {
@@ -22,9 +23,9 @@
 
 
     &.btn-gray {
-        .btn-color(@gray);
+        .btn-color(@gray-light);
         &:hover, &:active, &.hover {
-            .btn-color(lighten( @gray, 25%) )
+            .btn-color(lighten( @gray-light, 15%) )
         }
     }
 

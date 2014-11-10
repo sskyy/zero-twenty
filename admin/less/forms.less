@@ -1,15 +1,15 @@
-input[type="text"],textarea{
+input[type="text"],input[type="password"],textarea{
     &.form-control{
         outline: none;
         box-shadow: none;
         line-height: 34px;
         border: none;
-        border-bottom: 1px #eee solid;
-
+        border-bottom: 1px @gray-lighter solid;
+        padding: 0 10px;
 
         &:focus{
             outline: none;
-            border-bottom: 1px #888 solid;
+            border-bottom: 1px @gray-light solid;
             box-shadow: none;
         }
 
@@ -18,6 +18,14 @@ input[type="text"],textarea{
             border: 0 solid #000;
         }
     }
+}
+
+
+textarea.form-control{
+    padding: 10px;
+    border: 1px @gray-lighter solid;
+    line-height: 150%;
 
 }
+
 

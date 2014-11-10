@@ -1,50 +1,23 @@
 doctype html
-html
+html(ng-app="user")
     head
-        include ../../admin/partials/head
+        include partials/head
+        link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+        script(src="./js/markdown.min.js")
+        script(src="./js/angular.min.js")
+        script(src="./js/angular-sanitize.min.js")
+        script(src="./modules/user.js")
     body.index.loading
         // Header
-        include ../../admin/partials/header
-        article.clearfix
-            div.col-md-8.col-md-offset-2.inner
-                h1 关于我们
-
-                // One
-                section
-                    // Content
-                    .content
-                        section
-                            p 我们是三个怀揣着的理想的年轻人，奔跑在追梦的道路上。
-                                br  
-                                | 理想可以让三个毫无交集的人聚在一起。
-                                br
-                                | 理想可以驱动我们对自己这份事业的热爱。
-                                br
-                                | 年少的时候，我们就在想，等自己有了能力，能做点什么？
-                                br
-                                | 后来，我们渐渐的明白了一个道理，无论你有没有能力，喜欢就去做，喜欢就去尝试，人总是要迈出那一步，一直害怕，那不叫青春！所以我们三个小伙伴组建了Zerojs开源团队，我们的目标就是做自己喜欢做的事情，今天我们做了一个很好的CMS框架，明天我们也在筹划着一些更酷的事情，欢迎更多的小伙伴加入我们，我们不承诺给你带去丰厚的利益，我们只能承诺给你，让你开开心心的做你自己喜欢做的事情，仅此而已
-                                br
-                h1 关于ZERO
-
-                // two
-                section
-                    // Content
-                    .content
-                        section
-                            p 这是一个CMS框架，由Node驱动，
-                                | 在前后端分离的大前景下面，我们尝试去做更多更酷的事情，
-                                | 相比臃肿的wordpress，我们更加轻量化，相比新潮的Ghost，我们更加多元化，ZEROJS下面可以有很多个模块，你可以做很多很多事情，博客？ 不！ 不仅仅是博客，ZEROJS可以去做社区，可以去做商城，甚至你可以做一个邮件发送系统
-                                br 
-                                | 目前我们做了一个博客系统，取名“Twenty” 我们的博客非常友好的针对开发者，能够让开发者更加顺手去编写一个属于你自己的博客，如果需要，你也可以找我们的设计师为你量身定制主题，这一切都免费！作为贡献，你也可以把这个主题分享，带给更多的人使用我们还在做代号为“Twentyone”的产品，这是一个社区的模型，目前各项功能都已经开发完毕，期待我们上线
-                h1 关于感谢
-
-                // two
-                section
-                    // Content
-                    .content
-                        section
-                            p 在发布预览的版本的一天后，我们就陆续收到了很多童鞋的捐助，万分感谢
-                                | ，为了保护捐助童鞋的隐私，团队决定不公布捐助名单，但是，我们一直会承诺当初你们对这份事业的肯定，以及后面我们会把ZEROJS周边分享给捐助者的计划！再一次感谢！我们会做的更好。如果您想加入我们，欢迎发邮件到我们邮箱：admin@zerojs.io,或者找我们三个！
-                              
-        div.inner
-        include ../../admin/partials/footer
+        include partials/header
+        article
+            header.special.container.text-center
+                h2 About me
+            // One
+            section.style4.container.small(ng-controller="me")
+                // Content
+                .content
+                    section(ng-if="!me.about") 博主什么也没写
+                    section(ng-if="me.about" ng-bind-html="me.about")
+        // Footer
+        include partials/footer
