@@ -1,6 +1,7 @@
 <div class="page posts ink-flex vertical" ng-controller="node.detail" node-type="post">
     <div class="column-group page-head pd10">
-        <a class="btn btn-info" ui-sref="create">create</a>
+        <img class＝"avatar" src="{{user.avatar}}">
+        <a ui-sref="create">+ New Story</a>
     </div>
     <div class="all-auto ink-flex">
         <div class="all-50 page-left" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
