@@ -37,7 +37,7 @@ angular.module('ngTagEditor', [])
 
 				$scope.options = [];
 				$scope.options.output = $attrs.output || 'name';
-				$scope.options.placeholder = $attrs.placeholder || 'Enter a few letters...';
+				$scope.options.placeholder = $attrs.placeholder || 'Tags';
 				$scope.options.apiOnly = $attrs.apiOnly || false;
 				$scope.search = '';
 			
