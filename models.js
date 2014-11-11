@@ -35,7 +35,7 @@ module.exports = [{
   index : 'name',
   rest : true
 },{
-  identity : 'media',
+  identity : 'avatar',
   attributes : {
     'name' : 'string',
     'originalname' : 'string',

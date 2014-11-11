@@ -1,16 +1,24 @@
-<div class="ink-flex vertical page user" >
-    <header class="column-group page-head pd20 list horizontal" ng-controller="visits">
-        <div class="item">
-            <h5>User name</h5>
-            <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
+<div class="ink-flex vertical page user" ng-controller="user.edit" >
+    <header class="column-group page-head pd20 list horizontal" >
+        <div class="item avatar" node-upload='{"domain":"http://127.0.0.1:3000/avatar","attach":"user","field":"avatar","cb":"user.$$editing=\"basic\"","auto":true}'>
+            <div>
+                <img ng-src="/{{user.avatar.path}}">
+                <i class="fa fa-edit" browse-trigger ng-show="!user.avatar.status"></i>
+            </div>
+            <div ng-show="user.avatar.status==1" ng-click="upload()">update</div>
         </div>
-        <div class="item">
+
+        <div class="item ink-flex vertical push-middle">
+                <h5>User name</h5>
+                <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
+        </div>
+        <div class="item ink-flex vertical push-middle">
             <h5>Your email</h5>
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
         </div>
-        <div class="item ">
+        <div class="item ink-flex vertical push-middle">
             <a class="btn btn-gray" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">edit</a>
-            <a class="btn btn-primary" ng-show="user.$$editing=='basic'" ng-click="update()">save</a>
+            <a class="btn btn-primary" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.avatar,name:user.name,email:user.email})">save</a>
             <a class="btn btn-danger" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">cancel</a>
         </div>
     </header>
@@ -24,15 +32,12 @@
                     <a class="btn btn-danger pull-right" type="button" ng-click="user[fieldName]=null">Delete</a>
                 </div>
 
-                <div class="item clearfix">
+                <div class="item clearfix" ng-init="newField={}">
                     <input type="text" class="form-control " placeholder="字段名" ng-disabled="!user.id"  ng-model="newFieldName">
                     <input type="text" class="form-control " ng-model="newFieldContent" ng-disabled="!user.id"  placeholder="内容">
-                    <a class="btn btn-gray pull-right" type="button" ng-disabled="!user.id" ng-click="user[newFieldName]=newFieldContent;newFieldName='';newFieldContent='';">Aadd</a>
+                    <a class="btn btn-gray pull-right" type="button" ng-disabled="!user.id" ng-click="newField[newFieldName]=newFieldContent;update(newField);newFieldName='';newFieldContent='';">ADD</a>
                 </div>
             </div>
-
-           
-
         </div>
 
         <div class="all-50 page-right pd20 list" >
@@ -40,7 +45,7 @@
                 <span>About me</span>
                 <a class="btn btn-gray" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about'" ng-disabled="!user.id">edit</a>
                 <a class="btn btn-danger" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false" ng-disabled="!user.id">cancel</a>
-                <a class="btn btn-blue" ng-show="user.$$editing=='about'" ng-click="update()&&(user.$$editing=false)" ng-disabled="!user.id">save</a>
+                <a class="btn btn-blue" ng-show="user.$$editing=='about'" ng-click="update({about:user.about})&&(user.$$editing=false)" ng-disabled="!user.id">save</a>
             </h5>
             <div class="pd20">
                 <div class="" ng-show="user.$$editing!='about'" ng-bind-html="user.about|markdown" ></div>

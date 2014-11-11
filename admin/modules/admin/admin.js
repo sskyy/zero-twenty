@@ -3,6 +3,7 @@ angular.module('admin',['ui.router',
   'index.crud',
   'user.edit',
   'user.session',
+  'upload',
   'statistic',
   'setting.crud'])
   .config(['$stateProvider', '$urlRouterProvider',
@@ -29,7 +30,6 @@ angular.module('admin',['ui.router',
         .state('user',{
           url : '/user',
           templateUrl : './templates/user.html',
-          controller : 'user.edit'
         })
         .state('setting',{
           url : '/setting',
@@ -37,10 +37,15 @@ angular.module('admin',['ui.router',
         })
 
       $urlRouterProvider.otherwise("/posts");
-      //configure html5 to get links working on jsfiddle
-//      $locationProvider.html5Mode(true);
     }]).controller( 'admin',function($scope,session,$rootScope){
       $scope.user = session.item('user')
+
+    //global helper
+    $scope.focus = function( selector ){
+      $(selector).focus()
+    }
+
+
   }).filter('markdown',function(){
     return function( content ){
       return markdown.toHTML(content)
