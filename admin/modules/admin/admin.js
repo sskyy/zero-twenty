@@ -48,6 +48,38 @@ angular.module('admin',['ui.router',
 
   }).filter('markdown',function(){
     return function( content ){
-      return markdown.toHTML(content)
+      return "<div>" + markdown.toHTML(content) + "</div>"
     }
-  })
+  }).directive('autoFocus', function($timeout) {
+    return {
+      link: function ( scope, element, attrs ) {
+        scope.$watch( attrs.autoFocus, function ( val ) {
+          console.log( val)
+          if ( angular.isDefined( val ) && val ) {
+            $timeout( function () { element[0].focus(); } );
+          }
+        }, true);
+
+        element.bind('blur', function () {
+          if ( angular.isDefined( attrs.autoFocusLost ) ) {
+            scope.$apply( attrs.autoFocusLost );
+
+          }
+        });
+      }
+    };
+  }).directive('elastic', [
+    '$timeout',
+    function($timeout) {
+      return {
+        restrict: 'A',
+        link: function($scope, element) {
+          var resize = function() {
+            return element[0].style.height = "" + element[0].scrollHeight + "px";
+          };
+          element.on("blur keyup change", resize);
+          $timeout(resize, 0);
+        }
+      };
+    }
+  ]);

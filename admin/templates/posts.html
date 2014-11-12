@@ -1,7 +1,13 @@
 <div class="page posts ink-flex vertical" ng-controller="node.detail" node-type="post">
-    <div class="column-group page-head pd10">
-        <img class＝"avatar" src="{{user.avatar}}">
-        <a ui-sref="create">+ New Story</a>
+    <div class="page-head ink-flex  pd10 list horizontal ">
+        <div class="item">
+            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
+        </div>
+        <div class="item push-middle" >
+            <div>
+                <a ui-sref="create">+ New Story</a>
+            </div>
+        </div>
     </div>
     <div class="all-auto ink-flex">
         <div class="all-50 page-left" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
@@ -38,7 +44,10 @@
         <div class="all-50 page-right pd20" class="preview">
             <div ng-if="node">
                 <h1 class="title"  ng-bind-html="node.title" ></h1>
-                <div class="content" ng-bind-html="node.content" ></div>
+                <!--<div class="content" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>-->
+                <div class="content">{{node.content}}</div>
+                <!--<div class="content" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>-->
+                <!--<div class="content" ng-bind-html="node.content" ></div>-->
             </div>
         </div>
     </div>

@@ -1,9 +1,12 @@
-<div class="ink-flex vertical page create" ng-controller="node.create" node-type="post" redirect="/twenty/post">
-    <header class="column-group page-head pd10">
-        <div class="all-90" ng-controller="node.index" index-type='tag'>
-            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./js/ngTagEditor/ngTagEditor.html"></tag-editor>
+<div class="ink-flex vertical page create" ng-controller="node.create" node-type="post" redirect="/twenty/admin/index#/posts">
+    <header class="column-group page-head pd10 ink-flex list horizontal">
+        <div class="item" ng-controller="node.index" index-type='tag'>
+            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
         </div>
-        <div class="all-10">
+        <div class="item push-middle" >
+            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+        </div>
+        <div class="item push-middle">
             <a class="btn btn-primary" ng-click="submit()">Publish</a>
         </div>
     </header>
@@ -13,7 +16,7 @@
                 <p class="fontmark">Markdown</p>
             </div>
             <div class="form-group pdv10">
-                <input type="text" class="form-control title pdv10" placeholder="Title" ng-model="node.title">
+                <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="node.title">
             </div>
             <div class="form-group" >
                 <!--<textarea text-angular class="form-control" rows="17" ng-model="htmlVariable" placeholder="Enter ..."></textarea>-->

@@ -1,9 +1,12 @@
 <div class="ink-flex vertical page create" ng-controller="node.edit" node-type="post" node-href-id="/twenty/admin/index#/edit/:id">
     <header class="column-group page-head pd10">
-        <div class="all-90" ng-controller="node.index" index-type='tag'>
-            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./js/ngTagEditor/ngTagEditor.html"></tag-editor>
+        <div class="item" ng-controller="node.index" index-type='tag'>
+            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
         </div>
-        <div class="all-10">
+        <div class="item push-middle" >
+            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+        </div>
+        <div class="item push-middle">
             <a class="btn btn-primary" ng-click="submit()">Update</a>
         </div>
     </header>
@@ -33,12 +36,16 @@
         </div>
         <div class="all-50 page-right pd10" ng-if="node" >
             <p class="fontmark">Preview</p>
-
             <h1 class=""  ng-bind-html="node.title" ></h1>
             <div class="" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>
             <div class="" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>
         </div>
     </div>
+
+    <script>
+        $(function(){
+        })
+    </script>
 
     <div class="modal" ng-show="upload.active">
         <div class="modal-content small">
@@ -60,9 +67,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $(function(){
-            $('textarea.js-auto-resize').textareaAutoSize();
-        })
-    </script>
+
+
 </div>
