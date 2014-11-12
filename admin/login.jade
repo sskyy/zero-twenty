@@ -17,20 +17,21 @@ html
                    img(src="/twenty/admin/images/logo.svg")
             form()
                 .body
-                    .form-group
-                        input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
-                    .form-group
-                        input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password',ng-keyup='$event.which==13&&login()')
-                    //.form-group
-                        input(type='checkbox', name='remember_me')
-                        | Remember me
-                .footer.text-center
-                    a.btn.btn-success(ng-click="login(user)") Sign in
-              div.Prompt
-                    .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
-                        p(ng-switch-when="404") 用户名或密码错误。
-                        p(ng-switch-when="500") 服务器出错，请查看后台记录。
-                        p(ng-switch-default) 未知错误，请查看后台记录。
+                    .login
+                        .form-group
+                            input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
+                        .form-group
+                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password',ng-keyup='$event.which==13&&login()')
+                        //.form-group
+                            input(type='checkbox', name='remember_me')
+                                | Remember me
+                        .signin
+                            a.btn(ng-click="login(user)") Sign in
+                     div.Prompt
+                            .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
+                                p(ng-switch-when="404") 用户名或密码错误。
+                                p(ng-switch-when="500") 服务器出错，请查看后台记录。
+                                p(ng-switch-default) 未知错误，请查看后台记录。
 
 
         script.

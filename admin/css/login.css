@@ -9,7 +9,7 @@
 }
 
 .form-box img{
-	width: 100%;
+	width: 75%;
 	margin: 15px 0;
 }
 
@@ -27,31 +27,41 @@
 html,body{
 	background-color: #323339;
 }
-
+.login{
+    margin-top: 20px;
+}
+.install{
+    margin-top: 20px;
+}
 .form-group{
 	margin-bottom: 15px;
 }
 
 .form-group input{
+    padding-left: 20px;
 	 margin: 0 auto;
-	 background-color: #2E2F35;
+	 background-color: #fff;
 	 border: solid 1px #3A3B42;
-	 width: 300px;
+	 width: 280px;
 	 height: 40px;
 	 border-radius: 5px !important;
-	 color: #fff!important;
+	 color: #666666!important;
 }
 .form-group input[type=text]{
-	 color: #fff;
+	color: #fff;
+    padding-left: 15px;
+}
+.form-group input[type=password]{
+    color: #fff;
+    padding-left: 15px;
 }
 .form-group input:focus {
 	
 	border-color: #5d6472 !important;
 }
-
 .callout.callout-danger {
-	background-color: #f3c658;
-	 width: 300px;
+	background-color: #292A2E;
+	 width: 280px;
 	 height: 60px;
 	 border-radius: 5px !important;
 	 color: #fff;
@@ -63,6 +73,31 @@ html,body{
 	margin-top: 42px;
 }
 .callout.callout-danger.ng-scope p{
-	color: #2d2c29;
+	color: #fff;
 	margin-top:5px;
+    text-align: center;
+    padding-top: 18px;
+}
+.signin{
+    text-align: left;
+    padding-left: 59px;
+}
+.signup{
+    text-align: left;
+    padding-left: 59px;
+}
+.btn{
+    color: #fff;
+    background:#50C971;
+    border:1px #50C971 solid;
+    height: 38px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 0 15px;
+}
+
+.btn:hover{
+    color: #1D903D;
+    background:#47C76A;
 }

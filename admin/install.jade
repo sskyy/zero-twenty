@@ -18,14 +18,15 @@ html
                  img(src="/twenty/images/logo.svg")
             form(ng-controller="register",redirect='/twenty/admin/index')
                 .body
-                    .form-group
-                        input.form-control(type='text', name='name', placeholder='Full name',ng-model='user.name')
-                    .form-group
-                        input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
-                    .form-group
-                        input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password')
-                .footer.text-center
-                    a.btn.btn-success(type='submit',ng-click='register(user)') Install
+                    .install
+                        .form-group
+                            input.form-control(type='text', name='name', placeholder='Full name',ng-model='user.name')
+                        .form-group
+                            input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
+                        .form-group
+                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password')
+                    .signup
+                        a.btn(type='submit',ng-click='register(user)') Install
         script.
             $(function(){
                 $('.form-box').addClass('fadeIn animated').removeClass('hide')
