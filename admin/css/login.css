@@ -4,7 +4,7 @@
 
 .form-box{
 	width: 400px;
-	margin: 100px auto 0 auto;
+	margin: 200px auto 0 auto;
 	text-align: center;
 }
 
@@ -25,43 +25,76 @@
 
 }
 html,body{
-	background-color: #323339;
+	background-color: #292929;
+}
+p{
+    color: #6C6C6C;
+    
+}
+h5{
+    color: #6C6C6C;
+    padding-right: 70px;
+}
+h3{
+    color: #fff;
+    padding-right: 10px;
 }
 .login{
-    margin-top: 20px;
+    padding-top: 30px;
+    width: 320px;
+    margin: 0px auto;
 }
 .install{
-    margin-top: 20px;
+    padding-top: 30px;
+    width: 320px;
+    margin: 0px auto;
 }
 .form-group{
 	margin-bottom: 15px;
+    text-align: center;
 }
 
 .form-group input{
-    padding-left: 20px;
-	 margin: 0 auto;
-	 background-color: #fff;
-	 border: solid 1px #3A3B42;
-	 width: 280px;
-	 height: 40px;
-	 border-radius: 5px !important;
-	 color: #666666!important;
+    display: block;
+    margin: 0;
+    padding: 0 0 0.15em;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #232323;
+    background-color: transparent;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 0;
+    margin-bottom: 20px;
+
 }
 .form-group input[type=text]{
-	color: #fff;
+	color: #fff ;
     padding-left: 15px;
+    border-bottom: 2px solid #232323;
+
 }
 .form-group input[type=password]{
     color: #fff;
     padding-left: 15px;
+    border-bottom: 2px solid #232323;
+
 }
 .form-group input:focus {
 	
-	border-color: #5d6472 !important;
+	border-bottom: 2px solid #232323;
+
+}
+input::-webkit-input-placeholder {
+    color:    #6C6C6C;
+}
+input:-moz-placeholder {
+    color:    #6C6C6C;
 }
 .callout.callout-danger {
-	background-color: #292A2E;
-	 width: 280px;
+	background-color: #1F1F1F;
+	 width: 320px;
 	 height: 60px;
 	 border-radius: 5px !important;
 	 color: #fff;
@@ -80,24 +113,28 @@ html,body{
 }
 .signin{
     text-align: left;
-    padding-left: 59px;
+    padding-top: 10px;
 }
 .signup{
     text-align: left;
-    padding-left: 59px;
+    padding-top: 10px;
 }
 .btn{
-    color: #fff;
-    background:#50C971;
-    border:1px #50C971 solid;
+    padding: 0.5em 1.0em;
+    border:2px solid #1F1F1F;
+    border-radius: 40px;
+    font-weight: 600;
+    color: #1F1F1F;
+    font-size: 1.25em;
     height: 38px;
-    line-height: 35px;
+    line-height: 32px;
     text-align: center;
-    border-radius: 5px;
-    padding: 0 15px;
+    display: inline;
 }
 
 .btn:hover{
-    color: #1D903D;
-    background:#47C76A;
+    color: #fff;
+    background:#1F1F1F;
+
+
 }

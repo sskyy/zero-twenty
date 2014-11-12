@@ -15,7 +15,8 @@ html
     body
         .form-box.transparent.hide(ng-app="user.login")
             .header
-                 img(src="/twenty/images/logo.svg")
+                h3 Hi ~ welcome to twentyjs
+                h5 Show your story in graceful words
             form(ng-controller="register",redirect='/twenty/admin/index')
                 .body
                     .install
@@ -25,8 +26,8 @@ html
                             input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
                         .form-group
                             input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password')
-                    .signup
-                        a.btn(type='submit',ng-click='register(user)') Install
+                        .signup
+                            a.btn(type='submit',ng-click='register(user)') Install
         script.
             $(function(){
                 $('.form-box').addClass('fadeIn animated').removeClass('hide')
