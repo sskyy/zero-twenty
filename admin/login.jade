@@ -15,7 +15,7 @@ html
         .form-box.transparent.hide(ng-controller='login',redirect="/twenty/admin/index")
             .header
                 h3 Hi ~ welcome come back
-                h5 Show your story in graceful words
+                h5 Show your story in graceful words 
             form()
                 .body
                     .login
@@ -30,9 +30,9 @@ html
                             a.btn(ng-click="login(user)") Sign in
                      div.Prompt
                             .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
-                                p(ng-switch-when="404") 用户名或密码错误。
-                                p(ng-switch-when="500") 服务器出错，请查看后台记录。
-                                p(ng-switch-default) 未知错误，请查看后台记录。
+                                p(ng-switch-when="404") Login/password combination not found^_^
+                                p(ng-switch-when="500") Server error, check background records.
+                                p(ng-switch-default) Unknown error, check background records.
 
 
         script.

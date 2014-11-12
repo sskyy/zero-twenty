@@ -4,7 +4,7 @@
 
 .form-box{
 	width: 400px;
-	margin: 200px auto 0 auto;
+	margin: 170px auto 0 auto;
 	text-align: center;
 }
 
@@ -93,11 +93,10 @@ input:-moz-placeholder {
     color:    #6C6C6C;
 }
 .callout.callout-danger {
-	background-color: #1F1F1F;
+	background-color: rgba(31,31,31,0.2);
 	 width: 320px;
 	 height: 60px;
 	 border-radius: 5px !important;
-	 color: #fff;
 	 margin: 0 auto;
      border-color:#fff;
      border-left:0px;
@@ -106,7 +105,7 @@ input:-moz-placeholder {
 	margin-top: 42px;
 }
 .callout.callout-danger.ng-scope p{
-	color: #fff;
+	color: #6C6C6C;
 	margin-top:5px;
     text-align: center;
     padding-top: 18px;
@@ -124,9 +123,8 @@ input:-moz-placeholder {
     border:2px solid #1F1F1F;
     border-radius: 40px;
     font-weight: 600;
-    color: #1F1F1F;
+    color: #1E1E1E;
     font-size: 1.25em;
-    height: 38px;
     line-height: 32px;
     text-align: center;
     display: inline;
