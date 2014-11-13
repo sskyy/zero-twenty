@@ -4,12 +4,11 @@
 */
 
 .sidebar {
-    background: #323339;
-    padding: 20px 30px;
+    background: #292929;
+    padding: 20px 22px;
     a {
         display: block;
-        font-size:13px;
-        color:#fff;
+        font-size:14px;
         &:hover{
             color:#fff;
             text-decoration: none;
@@ -26,24 +25,38 @@
             > a {
                 padding: 14px 5px 14px 15px;
                 display: block;
-                font-size:13px;
-                color:#fff;
+                font-size:14px;
+                color:rgba(255,255,255,0.65);
+                outline: none;
+                text-decoration: none;
+                letter-spacing:0.02em;
+                :hover{
+                    color:rgba(255,255,255,1);
 
-                &.active{
-                    text-decoration: underline;
                 }
+                
+                
             }
+
+            &.active  a {
+                    color: rgba(255,255,255,1);
+                }
         }
     }
     .slogon{
         text-align: center;
+        font-size: 14px;
     }
 
     .logout{
         position: absolute;
-        bottom: 10px;
+        bottom: 14px;
         display: block;
-        text-align: center;
+        text-align: center;   
+        padding: 13px;    
+        a{
+            color:rgba(255,255,255,0.65);
+        }
     }
 }
 

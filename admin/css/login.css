@@ -1,3 +1,4 @@
+
 .form-box input[type=text],input[type=password]{
 	border: 0 #fff solid;
 }
@@ -33,11 +34,14 @@ p{
 }
 h5{
     color: #6C6C6C;
-    padding-right: 70px;
+    text-align: left;
+    padding-left: 55px;
 }
 h3{
     color: #fff;
-    padding-right: 10px;
+    text-align: left;
+    padding-left: 55px;
+
 }
 .login{
     padding-top: 30px;
@@ -114,6 +118,7 @@ input:-moz-placeholder {
     text-align: left;
     padding-top: 10px;
 }
+
 .signup{
     text-align: left;
     padding-top: 10px;
