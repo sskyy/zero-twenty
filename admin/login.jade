@@ -14,7 +14,7 @@ html
     body(ng-app='user.login')
         .form-box.transparent.hide(ng-controller='login',redirect="/twenty/admin/index")
             .header
-                h3 Hi ~ welcome come back
+                h3 Hi ~ welcome back
                 h5 Show your story in graceful words 
             form()
                 .body
@@ -30,9 +30,9 @@ html
                             a.btn(ng-click="login(user)") Sign in
                      div.Prompt
                             .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
-                                p(ng-switch-when="404") Login/password combination not found^_^
-                                p(ng-switch-when="500") Server error, check background records.
-                                p(ng-switch-default) Unknown error, check background records.
+                                p(ng-switch-when="404") Wrong login name or password
+                                p(ng-switch-when="500") Server error, check server logs.
+                                p(ng-switch-default) Unknown error, check server logs.
 
 
         script.
