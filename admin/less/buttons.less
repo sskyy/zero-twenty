@@ -26,7 +26,7 @@
     &.btn-gray {
         .btn-color(@gray-light);
         &:hover, &:active, &.hover {
-            .btn-color(lighten( @gray-light, 15%) )
+            .btn-color(lighten( @gray-light, -15%) )
         }
     }
 
@@ -34,7 +34,7 @@
         text-align: center;
         .btn-color(@light-green);
         &:hover, &:active, &.hover {
-            .btn-color(lighten( @light-green, -20%) )
+            .btn-color(lighten( @light-green, -15%) )
         }
     }
     &.btn-success {
@@ -53,7 +53,7 @@
     &.btn-danger {
         .btn-color(@red);
         &:hover, &:active, &.hover {
-            .btn-color(lighten( @red, 25%) )
+            .btn-color(lighten( @red, -15%) )
         }
     }
     &.btn-warning {
