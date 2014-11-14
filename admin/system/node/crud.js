@@ -51,8 +51,18 @@ var app = angular.module('node.crud',['util','ngResource','ngSanitize'])
     $scope.crud = crud(config, params, records )
 
 
+    //if it is create page, we need to rewrite create method
+    if( $attrs['redirect'] ){
+      $scope.crud._create = $scope.crud.create
+      $scope.crud.create = function( node ){
+        return $scope.crud._create(node).then(function(){
+          window.location.href = $attrs['redirect']
+        })
+      }
+    }
 
-    //if it is a update page, we need to get the node
+
+    //if it is update page, we need to get the node
     var id
     if( id = (config.id || ( config.hrefId && matchHref( window.location.pathname + window.location.hash, config.hrefId )['id'] ))) {
       //pick useful param from search

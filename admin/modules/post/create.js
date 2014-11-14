@@ -16,8 +16,6 @@ angular.module('post.create', ['ui.codemirror','ngTagEditor','node.crud'])
       var sync = function(e){
         var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
         ele[0].scrollTop = percentage * (ele[0].scrollHeight - ele[0].offsetHeight);
-        // Firefox workaround. Rebinding without delay isn't enough.
-        setTimeout( function(){ $(ele[0]).on('scroll', sync ); },10);
       }
       $target.on( 'scroll', sync);
     }
