@@ -1,10 +1,10 @@
-angular.module('user.edit',['user.session']).controller('user.edit',function($scope,$http,session){
+angular.module('user.edit',['user.session']).controller('user.edit',function($scope,$http,session,$attrs){
 
   $scope.user = session.item('user')
-  $scope.systemFields = ['id','name','password','email','createdAt','updatedAt','lastLogin']
+  $scope.omitFields = $attrs['omit'] ? $attrs['omit'].split(",") : []
 
-  $scope.isSystemField = function( name ){
-    return _.indexOf($scope.systemFields, name) !== -1
+  $scope.isOmitField = function( name ){
+    return _.indexOf($scope.omitFields, name) !== -1
   }
 
   $scope.update = function( updateObj ){

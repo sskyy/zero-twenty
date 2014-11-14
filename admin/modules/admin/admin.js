@@ -1,37 +1,16 @@
 angular.module('admin',['ui.router',
   'post',
-  'user.edit',
+  'user',
   'user.session',
   'statistic',
-  'setting.crud'])
-  .config(['$stateProvider', '$urlRouterProvider',
-    function ($stateProvider, $urlRouterProvider) {
-      var path = window.location.pathname
-      $stateProvider
-        .state('statistics',{
-          url : '/statistics',
-          templateUrl : './templates/statistics.html',
-          controller: function(){}
-        })
-        .state('user',{
-          url : '/user',
-          templateUrl : './templates/user.html'
-        })
-        .state('setting',{
-          url : '/setting',
-          templateUrl : './templates/setting.html'
-        })
-
-      $urlRouterProvider.otherwise("/posts");
-    }]).controller( 'admin',function($scope,session,$rootScope){
+  'setting'])
+  .controller( 'admin',function($scope,session,$rootScope){
       $scope.user = session.item('user')
 
     //global helper
     $scope.focus = function( selector ){
       $(selector).focus()
     }
-
-
   }).filter('markdown',function(){
     return function( content ){
       return "<div>" + (content?markdown.toHTML(content):"") + "</div>"

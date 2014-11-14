@@ -1,1 +1,0 @@
-angular.module('statistic',['statistic.board','statistic.visit','statistic.duoshuo.hottest','statistic.duoshuo.newest'])

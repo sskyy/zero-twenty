@@ -1,0 +1,41 @@
+<div class=" vertical page user" ng-controller="user.edit" omit="id,name,avatar,password,email,createdAt,updatedAt,lastLogin" >
+    <header class="column-group page-head pd20 list horizontal flex-display align-items-center" >
+        <div class="item avatar flex-none" node-upload='{"url":"/avatar","attach":"user","field":"avatar","cb":"user.$$editing=\"basic\"","auto":true}'>
+            <div>
+                <img ng-src="/{{user.avatar.path}}">
+                <i class="fa fa-edit" browse-trigger ng-show="!user.avatar.status"></i>
+            </div>
+            <div ng-show="user.avatar.status==1" ng-click="upload()">Update</div>
+        </div>
+
+        <div class="item   vertical flex-none">
+                <h5>User name</h5>
+                <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
+        </div>
+        <div class="item  vertical flex-none">
+            <h5>Your email</h5>
+            <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
+        </div>
+        <div class="item  vertical flex-none">
+            <a class="btn btn-gray" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">Edit</a>
+            <a class="btn btn-primary" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.avatar,name:user.name,email:user.email})">Save</a>
+            <a class="btn btn-danger" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">Cancel</a>
+        </div>
+    </header>
+    <div class="page-body ">
+        <div class=" page-left pd20 list" >
+            <h5 class="title">
+                <span>About me</span>
+                <a class="btn btn-gray" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about';cache=user.about" ng-disabled="!user.id">Edit</a>
+                <a class="btn btn-danger" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false;user.about=cache" ng-disabled="!user.id">Cancel</a>
+                <a class="btn btn-blue" ng-show="user.$$editing=='about'" ng-click="update({about:user.about})&&(user.$$editing=false)" ng-disabled="!user.id">Save</a>
+            </h5>
+            <div class="pd20">
+                <div class="" ng-show="user.$$editing!='about'" ng-bind-html="user.about|markdown" ></div>
+                <div ng-show="user.$$editing=='about'">
+                    <textarea ng-model="user.about" ui-codemirror="{placeholder:'tell something about yourself...'}"  class="form-control" rows="20"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

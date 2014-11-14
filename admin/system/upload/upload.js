@@ -1,12 +1,12 @@
-angular.module('upload',['node.create','ngTagEditor','util'])
+angular.module('upload',[])
 .directive('nodeUpload', function () {
   return function (scope, element, attrs) {
     var config;
-    config = JSON.parse(attrs.nodeUpload);
+    config = scope.$eval(attrs['nodeUpload']);
     console.log( $(element).find("[browse-trigger]"))
     var uploader = new plupload.Uploader({
       runtimes: 'html5,flash,html4',
-      url : '/avatar',
+      url : config.url,
       browse_button: $(element).find("[browse-trigger]")[0],
       container : element[0],
       max_file_size: '100mb',

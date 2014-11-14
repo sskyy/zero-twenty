@@ -1,5 +1,5 @@
 <div class=" vertical page create" ng-controller="node.crud" crud-config="{type:'post'}" ng-init="post={}" redirect="/twenty/admin/index#/posts">
-    <header class="column-group page-head pd10  list horizontal">
+    <header class="column-group page-head pd10  list horizontal align-items-center flex-display">
         <div class="item">
             <img class="avatar small" ng-src="/{{user.avatar.path}}" />
         </div>
@@ -24,7 +24,6 @@
         </div>
         <div class=" page-right pd10" scroll-sync=".page-left">
             <p class="label">Preview</p>
-
             <h1 class=""  ng-bind-html="post.title" ></h1>
             <div class="" ng-bind-html="post.content|markdown"></div>
         </div>

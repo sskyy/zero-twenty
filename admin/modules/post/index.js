@@ -13,4 +13,6 @@ angular.module('post',['post.create','post.edit','post.upload','ui.router'])
         url : "/edit/:id",
         templateUrl: './modules/post/edit.html'
       })
+    $urlRouterProvider.otherwise("/posts");
+
   })

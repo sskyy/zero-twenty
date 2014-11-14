@@ -1,4 +1,12 @@
-angular.module('setting.crud',[]).controller("setting.crud",function($scope, $http){
+angular.module('setting',[]).config(['$stateProvider', '$urlRouterProvider',
+  function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('setting', {
+        url: '/setting',
+        templateUrl: './modules/setting/setting.html'
+      })
+  }])
+      .controller("setting.crud",function($scope, $http){
 
   var originConfig
 
