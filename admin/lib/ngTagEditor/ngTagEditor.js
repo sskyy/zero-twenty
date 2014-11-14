@@ -42,7 +42,7 @@ angular.module('ngTagEditor', [])
 				$scope.search = '';
 			
 				$scope.$watch('search', function(search){
-					if( search ){
+					if( search && $scope.suggestOptions ){
 						$scope.suggestions = $scope.suggestOptions.filter(function(){
 							return (new RegExp( search)).test( $scope.suggestOptions )
 						})

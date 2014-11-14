@@ -1,4 +1,4 @@
-<div class="page posts ink-flex vertical" ng-controller="node.detail" node-type="post">
+<div class="page posts ink-flex vertical" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
     <div class="page-head ink-flex  pd10 list horizontal ">
         <div class="item">
             <img class="avatar small" ng-src="/{{user.avatar.path}}" />
@@ -9,20 +9,20 @@
             </div>
         </div>
     </div>
-    <div class="all-auto ink-flex">
-        <div class="all-50 page-left" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
+    <div class="page-body" >
+        <div class="all-50 page-left" >
             <div class="posts" ng-init="crud.query()">
-                <div class="post pd20" ng-repeat="post in crud.data.records" ng-click="get(post.id)">
+                <div class="post pd20" ng-repeat="post in crud.data.records" ng-click="crud.get(post.id,{populate:'tags'})"  >
                     <h5>
                         <a class="title" href="/twenty/post/{{post.id}}">{{post.title}}</a>
                         <a class="pull-right action" ng-click="crud.remove(post, $index,true)">
                             <i class="fa fa-times"></i>
                         </a>
-                        <a class="pull-right action" href="#/edit/{{post.id}}">
+                        <a class="pull-right action" href="#/edit/{{post.id}}?populate=tags">
                             <i class="fa fa-edit"></i>
                         </a>
                     </h5>
-                    <div class="brief" >
+                    <div class="brief">
                         <div class="" ng-if="post.brief" ng-bind-html="post.brief"></div>
                         <div class="" ng-if="!post.brief" ng-bind-html="post.content" ></div>
                     </div>
@@ -41,13 +41,11 @@
                 </ul>
             </div>
         </div>
-        <div class="all-50 page-right pd20" class="preview">
-            <div ng-if="node">
-                <h1 class="title"  ng-bind-html="node.title" ></h1>
-                <!--<div class="content" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>-->
-                <div class="content">{{node.content}}</div>
-                <!--<div class="content" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>-->
-                <!--<div class="content" ng-bind-html="node.content" ></div>-->
+        <div class="all-50 page-right pd20 preview">
+            <div >
+                <h1 class="title">{{crud.data.detail.title}}</h1>
+                <!--<div>{{crud.data.detail.content}}</div>-->
+                <div ng-bind-html="crud.data.detail.content|markdown"></div>
             </div>
         </div>
     </div>

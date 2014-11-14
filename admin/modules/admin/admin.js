@@ -1,27 +1,13 @@
 angular.module('admin',['ui.router',
-  'admin.post.manage',
-  'index.crud',
+  'post',
   'user.edit',
   'user.session',
-  'upload',
   'statistic',
   'setting.crud'])
   .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
       var path = window.location.pathname
       $stateProvider
-        .state('posts', {
-          url : "/posts",
-          templateUrl: './templates/posts.html'
-        })
-        .state('create', {
-          url : "/create",
-          templateUrl: './templates/create.html'
-        })
-        .state('edit', {
-          url : "/edit/:id",
-          templateUrl: './templates/edit.html'
-        })
         .state('statistics',{
           url : '/statistics',
           templateUrl : './templates/statistics.html',
@@ -29,7 +15,7 @@ angular.module('admin',['ui.router',
         })
         .state('user',{
           url : '/user',
-          templateUrl : './templates/user.html',
+          templateUrl : './templates/user.html'
         })
         .state('setting',{
           url : '/setting',
@@ -48,7 +34,7 @@ angular.module('admin',['ui.router',
 
   }).filter('markdown',function(){
     return function( content ){
-      return "<div>" + markdown.toHTML(content) + "</div>"
+      return "<div>" + (content?markdown.toHTML(content):"") + "</div>"
     }
   }).directive('autoFocus', function($timeout) {
     return {
@@ -68,18 +54,4 @@ angular.module('admin',['ui.router',
         });
       }
     };
-  }).directive('elastic', [
-    '$timeout',
-    function($timeout) {
-      return {
-        restrict: 'A',
-        link: function($scope, element) {
-          var resize = function() {
-            return element[0].style.height = "" + element[0].scrollHeight + "px";
-          };
-          element.on("blur keyup change", resize);
-          $timeout(resize, 0);
-        }
-      };
-    }
-  ]);
+  })

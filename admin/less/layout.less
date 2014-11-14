@@ -7,33 +7,43 @@ html,body{
 .container{
     height: 100%;
     width: 100%;
+    display: flex;
 }
 
 .left-side{
+    flex:none;
     width: 200px;
+    position: relative;
 }
 
 .right-side{
+    flex : 1;
     height: 100%;
     overflow-y: auto ;
 }
 
-.ink-flex{
-    height: 100%;
-    width: 100%;
-}
 
 .page{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
     .page-head{
         border-bottom:1px #eee solid;
-        
+        flex:none;
     }
-    .page-left{
-        overflow-y: auto ;
+    .page-body{
+        flex:1;
+        display: flex;
+        flex-direction: row;
+        .page-left{
+            flex:1;
+            overflow-y: auto ;
+        }
+        .page-right{
+            flex:1;
+            border-left:1px #eee solid;
+            overflow-y: auto ;
+        }
+    }
 
-    }
-    .page-right{
-        border-left:1px #eee solid;
-        overflow-y: auto ;
-    }
 }
