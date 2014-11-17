@@ -25,7 +25,7 @@
               }
 
               //this is strange, showdown will add empty line the text
-              output = '<section data-line="'+(lineNumber-2)+'" class="image-uploader image-uploader-need-init">' +
+              output = '<section data-line="'+(lineNumber-2)+'" class="image-uploader '+(src||"noContent")+'">' +
               result + '<div class="description">Add image of <strong>' + alt + '</strong></div>' +
               '<input class="fileupload" type="file" name="media">' +
               '</section>';
