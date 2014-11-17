@@ -25,7 +25,7 @@
         <div class=" page-right pd10" scroll-sync=".page-left">
             <p class="label">Preview</p>
             <h1 class=""  ng-bind-html="post.title" ></h1>
-            <div class="" ng-bind-html="post.content|markdown"></div>
+            <div class="" markdown-with-image="{model:'post.content',url:'/media'}"></div>
         </div>
     </div>
 </div>

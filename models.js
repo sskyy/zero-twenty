@@ -45,4 +45,15 @@ module.exports = [{
   },
   isFile : true,
   rest : true
+},{
+  identity : 'media',
+  attributes : {
+    'name' : 'string',
+    'originalname' : 'string',
+    'mimetype' : 'string',
+    'extension' : 'string',
+    'size' : 'int'
+  },
+  isFile : true,
+  rest : true
 }]

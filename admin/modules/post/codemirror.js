@@ -6,7 +6,7 @@ angular.module('ui.codemirror', [])
       lineWrapping : true
     }
   })
-  .directive('uiCodemirror', ['uiCodemirrorConfig', function (uiCodemirrorConfig) {
+  .directive('uiCodemirror', ['uiCodemirrorConfig','$rootScope', function (uiCodemirrorConfig) {
 
     return {
       restrict: 'EA',
@@ -27,14 +27,14 @@ angular.module('ui.codemirror', [])
           initialTextValue = iElement.text();
 
           options = uiCodemirrorConfig.codemirror || {};
-          opts = angular.extend({ value: initialTextValue }, options, scope.$eval(iAttrs.uiCodemirror), scope.$eval(iAttrs.uiCodemirrorOpts));
+          opts = angular.extend({value: initialTextValue}, options, scope.$eval(iAttrs.uiCodemirror), scope.$eval(iAttrs.uiCodemirrorOpts));
 
           if (iElement[0].tagName === 'TEXTAREA') {
             // Might bug but still ...
             codeMirror = window.CodeMirror.fromTextArea(iElement[0], opts);
           } else {
             iElement.html('');
-            codeMirror = new window.CodeMirror(function(cm_el) {
+            codeMirror = new window.CodeMirror(function (cm_el) {
               iElement.append(cm_el);
             }, opts);
           }
@@ -42,13 +42,13 @@ angular.module('ui.codemirror', [])
           if (iAttrs.uiCodemirror || iAttrs.uiCodemirrorOpts) {
             var codemirrorDefaultsKeys = Object.keys(window.CodeMirror.defaults);
             scope.$watch(iAttrs.uiCodemirror || iAttrs.uiCodemirrorOpts, function updateOptions(newValues, oldValue) {
-              if (! angular.isObject(newValues)){
+              if (!angular.isObject(newValues)) {
                 return;
               }
               codemirrorDefaultsKeys.forEach(function (key) {
                 if (newValues.hasOwnProperty(key)) {
 
-                  if (oldValue && newValues[key] === oldValue[key]){
+                  if (oldValue && newValues[key] === oldValue[key]) {
                     return;
                   }
 
@@ -71,16 +71,16 @@ angular.module('ui.codemirror', [])
             });
 
 
-            console.log( ngModel)
             // Override the ngModelController $render method, which is what gets called when the model is updated.
             // This takes care of the synchronizing the codeMirror element with the underlying model, in the case that it is changed by something else.
             var firstRender = true
             ngModel.$render = function () {
               //Code mirror expects a string so make sure it gets one
               //Although the formatter have already done this, it can be possible that another formatter returns undefined (for example the required directive)
+              console.log("render again")
               var safeViewValue = ngModel.$viewValue || '';
               codeMirror.setValue(safeViewValue);
-              if( firstRender && safeViewValue !== ''){
+              if (firstRender && safeViewValue !== '') {
                 codeMirror.refresh();
                 firstRender = false
               }
@@ -88,11 +88,11 @@ angular.module('ui.codemirror', [])
 
 
             // Keep the ngModel in sync with changes from CodeMirror
-            codeMirror.on('change', function (instance) {
+            codeMirror.on('change', function (instance, changeObj) {
               var newValue = instance.getValue();
               if (newValue !== ngModel.$viewValue) {
                 // Changes to the model from a callback need to be wrapped in $apply or angular will not notice them
-                scope.$apply(function() {
+                scope.$apply(function () {
                   ngModel.$setViewValue(newValue);
                 });
               }
@@ -110,10 +110,9 @@ angular.module('ui.codemirror', [])
             });
           }
 
-
           // Allow access to the CodeMirror instance through a broadcasted event
           // eg: $broadcast('CodeMirror', function(cm){...});
-          scope.$on('CodeMirror', function(event, callback) {
+          scope.$on('CodeMirror', function (event, callback) {
             if (angular.isFunction(callback)) {
               callback(codeMirror);
             } else {
@@ -128,6 +127,7 @@ angular.module('ui.codemirror', [])
           }
 
         };
+
       }
     };
   }]);

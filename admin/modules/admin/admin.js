@@ -4,16 +4,15 @@ angular.module('admin',['ui.router',
   'user.session',
   'statistic',
   'setting'])
+  .config(function(){
+
+  })
   .controller( 'admin',function($scope,session,$rootScope){
       $scope.user = session.item('user')
 
     //global helper
     $scope.focus = function( selector ){
       $(selector).focus()
-    }
-  }).filter('markdown',function(){
-    return function( content ){
-      return "<div>" + (content?markdown.toHTML(content):"") + "</div>"
     }
   }).directive('autoFocus', function($timeout) {
     return {
@@ -33,4 +32,50 @@ angular.module('admin',['ui.router',
         });
       }
     };
+  }).filter('markdown',function(){
+    var converter = new Showdown.converter({ extensions: 'imageUploader' })
+
+    return function( content ){
+      return converter.makeHtml(content)
+    }
+
+  }).directive('markdownWithImage',function (){
+
+    var converter = new Showdown.converter({ extensions: ['imageupload'] })
+
+    return function( scope, ele, attrs){
+      var config = scope.$eval( attrs['markdownWithImage'] )
+      var $content = $("<div></div>")
+
+      ele.append($content)
+
+      scope.$watch( config.model, function( content){
+        if( content ){
+          $content.html( converter.makeHtml( content ) )
+
+          $content.find(".image-uploader").each(function() {
+            var lineNumber = $(this).data("line")
+
+            $(this).find(".fileupload").fileupload().fileupload('option',{
+              url: config.url,
+              autoUpload: true,
+              add: function (e, data) {
+                data.submit()
+              },
+              done: function (e, data) {
+                var model = scope.$eval(config.model)
+                var replacedWithImage = model.split("\n")
+                replacedWithImage[lineNumber] = replacedWithImage[lineNumber].replace(/\(.*\)/,'') + "(/"+ data.result.path+")"
+                scope.$apply(function(){
+                  scope.$eval( config.model + "='" + replacedWithImage.join("\n")+"'" )
+                })
+              }
+            })
+          })
+        }
+      })
+    }
   })
+
+
+
