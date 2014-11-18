@@ -7,40 +7,41 @@ html,body{
 .container{
     height: 100%;
     width: 100%;
-    display: flex;
+    .flex-display;
 }
 
 .left-side{
-    flex:none;
+    .flex(none);
     width: 200px;
     position: relative;
 }
 
 .right-side{
-    flex : 1;
+    .flex(1);
     height: 100%;
     overflow-y: auto ;
 }
 
 
 .page{
-    display: flex;
+    .flex-display;
     height: 100%;
-    flex-direction: column;
+    .flex-direction(column);
     .page-head{
         border-bottom:1px #eee solid;
-        flex:none;
+        .flex(none);
     }
     .page-body{
-        flex:1;
-        display: flex;
+        .flex(1);
+        .flex-display;
         flex-direction: row;
+        overflow: hidden;
         .page-left{
-            flex:1;
+            .flex(1);
             overflow-y: auto ;
         }
         .page-right{
-            flex:1;
+            .flex(1);
             border-left:1px #eee solid;
             overflow-y: auto ;
         }
