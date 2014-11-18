@@ -59,6 +59,13 @@ var app = angular.module('node.crud',['util','ngResource','ngSanitize'])
           window.location.href = $attrs['redirect']
         })
       }
+
+      $scope.crud._update = $scope.crud.update
+      $scope.crud.update = function( node ){
+        return $scope.crud._update(node).then(function(){
+          window.location.href = $attrs['redirect']
+        })
+      }
     }
 
 

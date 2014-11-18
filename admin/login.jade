@@ -22,7 +22,7 @@ html
                         .form-group
                             input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
                         .form-group
-                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password',ng-keyup='$event.which==13&&login()')
+                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password',ng-keyup='$event.which==13&&login(user)')
                         //.form-group
                             input(type='checkbox', name='remember_me')
                                 | Remember me

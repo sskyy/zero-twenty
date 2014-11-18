@@ -176,7 +176,8 @@ angular.module('util', ['ngResource'])
           }
         },
         update: function (node, refresh) {
-          var promise = $http.put('/' + crud.type, node)
+          if( !node || !node.id ) return false
+          var promise = $http.put('/' + crud.type+ "/" + node.id, node)
           refresh && crud.query()
           return promise
         },

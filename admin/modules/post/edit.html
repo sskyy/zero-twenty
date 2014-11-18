@@ -1,19 +1,19 @@
-<div class="vertical page create" ng-controller="node.crud" crud-config="{type:'post',hrefId:'/twenty/admin/index#/edit/:id'}">
+<div class="vertical page create" ng-controller="node.crud" crud-config="{type:'post',hrefId:'/twenty/admin/index#/edit/:id'}" redirect="/twenty/admin/index#/posts">
     <header class="column-group page-head pd10 list horizontal">
         <div class="item">
             <img class="avatar small" ng-src="/{{user.avatar.path}}" />
         </div>
         <div class="item push-middle" >
-            <tag-editor placeholder="Tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+            <tag-editor placeholder="enter tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
-            <a class="btn btn-primary btn-publish" ng-click="update(crud.data.detail)">Update</a>
+            <a class="btn btn-primary btn-publish" ng-click="crud.data.detail.title&&crud.data.detail.content&&crud.update(crud.data.detail)">Update</a>
         </div>
     </header>
     <div class="page-body ">
         <div class=" page-left pd10">
             <div class="form-group" ng-init="crud.data.detail.type='markdown'">
-                <p class="label">MARKDOWN</p>
+                <p class="label">Markdown</p>
             </div>
             <div class="form-group pdv10">
                 <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="crud.data.detail.title">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class=" page-right pd10" scroll-sync=".page-left">
-            <p class="label">PREVIEW</p>
+            <p class="label">Preview</p>
             <h1 class=""  ng-bind-html="crud.data.detail.title" ></h1>
             <div class="" ng-bind-html="crud.data.detail.content|markdown"></div>
         </div>
