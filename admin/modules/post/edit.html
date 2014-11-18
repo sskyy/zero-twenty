@@ -4,7 +4,7 @@
             <img class="avatar small" ng-src="/{{user.avatar.path}}" />
         </div>
         <div class="item push-middle" >
-            <tag-editor placeholder="enter tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+            <tag-editor placeholder="Tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
             <a class="btn btn-primary btn-publish" ng-click="update(crud.data.detail)">Update</a>
@@ -13,7 +13,7 @@
     <div class="page-body ">
         <div class=" page-left pd10">
             <div class="form-group" ng-init="crud.data.detail.type='markdown'">
-                <p class="label">Markdown</p>
+                <p class="label">MARKDOWN</p>
             </div>
             <div class="form-group pdv10">
                 <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="crud.data.detail.title">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class=" page-right pd10" scroll-sync=".page-left">
-            <p class="label">Preview</p>
+            <p class="label">PREVIEW</p>
             <h1 class=""  ng-bind-html="crud.data.detail.title" ></h1>
             <div class="" ng-bind-html="crud.data.detail.content|markdown"></div>
         </div>

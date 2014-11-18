@@ -21,9 +21,25 @@
         font-size:28px;
         font-weight: bold;
         width: 100%;
-
-
     }
+
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color:#6E6E6E;
+            letter-spacing: 1px;
+
+            }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:#6E6E6E;
+            letter-spacing: 1px;
+            }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:#6E6E6E;
+            letter-spacing: 1px;
+            }
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color:#6E6E6E;
+            letter-spacing: 1px;
+            }
 
 
     textarea{
@@ -41,4 +57,11 @@
             margin-top: -@btn-height/2;
         }
     }
+}
+.label{
+    color: #D9D9D9;
+    margin: 0 3px 10px;
+}
+p{
+    color: #999;
 }

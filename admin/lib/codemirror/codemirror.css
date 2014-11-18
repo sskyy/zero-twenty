@@ -239,6 +239,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal;
+  color: #666;
 }
 
 .CodeMirror-linebackground {

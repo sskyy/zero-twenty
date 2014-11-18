@@ -13,17 +13,17 @@
     <div class="page-body ">
         <div class=" page-left pd10">
             <div class="form-group" ng-init="post.type='markdown'">
-                <p class="label">Markdown</p>
+                <p class="label">MARKDOWN</p>
             </div>
             <div class="form-group pdv10">
                 <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="post.title">
             </div>
             <div class="form-group" >
-                <div ui-codemirror="{placeholder:'enter content...'}" ng-model="post.content" class="form-control all-100"></div>
+                <div ui-codemirror="{placeholder:'Tell your story...'}" ng-model="post.content" class="form-control all-100"></div>
             </div>
         </div>
         <div class=" page-right pd10" scroll-sync=".page-left">
-            <p class="label">Preview</p>
+            <p class="label">PREVIEW</p>
             <h1 class=""  ng-bind-html="post.title" ></h1>
             <div class="" markdown-with-image="{model:'post.content',url:'/media'}"></div>
         </div>
