@@ -33,10 +33,17 @@ angular.module('admin',['ui.router',
       }
     };
   }).filter('markdown',function(){
-    var converter = new Showdown.converter({ extensions: 'imageUploader' })
+    var converter = new Showdown.converter()
 
     return function( content ){
-      return converter.makeHtml(content)
+      var marked = content
+      try{
+        marked = "<div>" + converter.makeHtml(content) +"</div>"
+      }catch(e){
+        console.log( "makeHtml failed", e)
+      }
+      console.log( marked)
+      return marked
     }
 
   }).directive('markdownWithImage',function (){

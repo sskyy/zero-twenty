@@ -162,7 +162,6 @@ angular.module('util', ['ngResource'])
         },
         get : function( id, param ){
           $http.get(config.url+"/"+id + "?"+util.makeQuery(param)).success(function(data){
-            console.log("get it",data)
             replace(crud.data.detail , data)
           })
         },
