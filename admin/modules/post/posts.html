@@ -1,7 +1,7 @@
 <div class="page posts  vertical" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
     <div class="page-head   pd10 list horizontal ">
         <div class="item">
-            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
+            <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}" />
         </div>
         <div class="item push-middle" >
             <div>

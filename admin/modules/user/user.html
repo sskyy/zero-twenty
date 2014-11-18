@@ -2,7 +2,7 @@
     <header class="column-group page-head pd20 list horizontal flex-display align-items-center" >
         <div class="item avatar flex-none" node-upload='{"url":"/avatar","attach":"user","field":"avatar","cb":"user.$$editing=\"basic\"","auto":true}'>
             <div>
-                <img ng-src="/{{user.avatar.path}}">
+                <img ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}">
                 <i class="fa fa-edit" browse-trigger ng-show="!user.avatar.status"></i>
             </div>
             <div ng-show="user.avatar.status==1" ng-click="upload()">Update</div>

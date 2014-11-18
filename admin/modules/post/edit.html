@@ -1,7 +1,7 @@
 <div class="vertical page create" ng-controller="node.crud" crud-config="{type:'post',hrefId:'/twenty/admin/index#/edit/:id'}" redirect="/twenty/admin/index#/posts">
     <header class="column-group page-head pd10 list horizontal">
         <div class="item">
-            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
+            <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}" />
         </div>
         <div class="item push-middle" >
             <tag-editor placeholder="enter tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
