@@ -6,22 +6,20 @@ body {background-color:rgb(255,255,255);color:rgb(136,136,136);font-family:'Open
 
 .inner-wrapper {margin:0 auto;max-width:800px;padding:10px}
 
-h1,h2,h3 {font-size:40px}
+h1,h2,h3 {font-size:36px;font-weight: bold;}
 h1,h2,h3,p,ul,ol {margin-bottom:20px}
 em {font-style:italic}
 strong {font-weight:700}
 
 .site-main {padding:40px;padding-right:70px}
-
 .site-nav ul {font-size:18px;list-style-type:none;overflow:hidden}
 .site-nav li {border-right:1px solid rgb(239,239,239);float:left;margin-right:20px;padding-right:20px}
 .site-nav li a {text-decoration:none}
 .site-nav li:last-child {border-right:none;margin-right:0;padding-right:0}
-
-.blog-post {color:rgb(76,76,76);margin-bottom:40px}
+.blog-post {color:#999;margin-bottom:40px;font-size: 14px;letter-spacing:0.5px;line-height: 16px;}
 .post-header {margin-bottom:10px}
 .post-header a {text-decoration:none}
-.post-footer {color:rgb(136,136,136);font-size:14px;font-style:italic}
+.post-footer {color:rgb(59, 59, 59);font-size:14px;}
 .post-footer h4 {display:inline}
 .post-content {margin-bottom:10px}
 

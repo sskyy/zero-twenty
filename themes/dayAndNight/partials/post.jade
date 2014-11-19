@@ -1,7 +1,7 @@
 article.blog-post(ng-repeat="post in crud.data.records")
     header.post-header
         a(href='/twenty/post/{{post.id}}')
-            h2 {{post.title}}
+            .title {{post.title}}
 
     section.post-content(ng-if="post.brief")
         p {{post.brief}}
