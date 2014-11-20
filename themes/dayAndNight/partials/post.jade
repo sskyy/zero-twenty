@@ -13,4 +13,5 @@ article.blog-post(ng-repeat="post in crud.data.records")
             span.tag(ng-repeat="tag in post.tags")
                 i.fa.fa-tag
                 | {{tag.name}}
-        time(datetime='') {{post.createdAt|time:"YYYY-MM-DD hh:mm:ss"}}
+        .post_time        
+            time(datetime='') {{post.createdAt|time:"YYYY-MM-DD hh:mm:ss"}}

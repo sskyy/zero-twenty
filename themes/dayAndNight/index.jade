@@ -14,9 +14,9 @@ html(ng-modules="index.crud,node.crud")
 
   body(onload='checkNightMode(); addTransitionCSS(); showPage();',ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5","populate":"tags"}',crud-search-fields="['category.id']")
     aside.site-cover
-      header.site-header(style="background-image: url('images/bg1.jpg');")
+      header.site-header(style="background-image: url('images/bg.jpg');")
         h1 The new Twenty
-        p more than blogging~
+        p More than blogging~
     .outer-wrapper
       .inner-wrapper
         main.site-main
