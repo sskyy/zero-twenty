@@ -1,39 +1,187 @@
-.site-cover {background-color:rgb(83,83,83);color:rgb(203,203,203);height:100%;position:fixed;top:0;width:48%;z-index:2}
-.site-cover figcaption {bottom:20px;color:rgb(255,255,255);font-size:14px;position:absolute;right:20px}
-.outer-wrapper {margin-left:50%}
+.site-cover {
+    background-color:rgb(83,83,83);
+    color:rgb(203,203,203);
+    height:100%;
+    position:fixed;
+    top:0;
+    width:48%;
+    z-index:0
+}
+.site-cover figcaption {
+    bottom:20px;
+    color:rgb(255,255,255);
+    font-size:14px;
+    position:absolute;
+    right:20px
+}
+.outer-wrapper {
+    margin-left:50%
+}
 
-.site-header {font-size:20px;padding:40px;color:#fff;height:100%;background-position:center center;font-weight: bold;
-  padding-top: 300px;text-shadow: 0 1px 0px #B0B0B0;background-size: cover;}
-.site-header p:last-child {margin-bottom:0}
+.site-header {
+    font-size:20px;
+    padding:40px;
+    color:#fff;
+    height:100%;
+    background-position:center center;
+    font-weight: bold;
+    padding-top: 250px;
+    background-size: cover;
+    background-image:url(../images/bg.jpg);
+}
+.site-header:after{
+    position: absolute;
+    background-color: rgba(68,68,68,0.7);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    z-index: 1;
+    content: '';
+}
 
-.site-logo {background-size:contain;border-radius:25px;display:inline-block;height:40px;margin-right:10px;position:relative;top:8px;width:40px;box-shadow:0 0 10px #fff}
+.header-wrapper {
+    position: absolute;
+    z-index: 2;
+}
+.blog-title {
+    font-size: 60px;
+}
+.blog-description{
+    font-size: 20px;
+    padding-left: 5px;
+    background-color: #262626;
+    width: 260px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.site-header p:last-child {
+    margin-bottom:0
+}
 
-.blog-page {color:rgb(76,76,76);font-size:24px;margin-bottom:40px}
-.page-header {margin-bottom:10px;back}
-.page-header h2,.page-content p {margin-bottom:20px}
-.page-content blockquote {border-left:2px solid rgb(239,239,239);padding-left:18px}
-.page-content img {display:block;margin:0 auto;max-width:100%}
-.page-content ol, .page-content ul {margin-left:40px}
-.page-content pre {background-color:rgb(239,239,239);border-radius:3px;margin-bottom:20px;padding:10px 6px;overflow:scroll}
-.page-content code {background-color:rgb(239,239,239);border-radius:3px;font-family:monospace;padding:0 4px;white-space:pre;
-    word-break:normal;word-wrap:normal}
-.page-content hr {background-color:rgb(239,239,239);border:none;height:1px}
+.site-logo {
+    background-size:contain;
+    border-radius:25px;
+    display:inline-block;
+    height:40px;
+    margin-right:10px;
+    position:relative;
+    top:8px;
+    width:40px;
+    box-shadow:0 0 10px #fff
+}
 
-article.featured h2:before {background-color:rgb(255,136,0);border-radius:8px;content:"";display:inline-block;height:16px;
-    margin-right:10px;position:relative;width:16px}
-article.featured a:hover h2:before {background-color:rgb(45,166,222)}
+.blog-page {
+    color:rgb(76,76,76);
+    font-size:24px;
+    margin-bottom:40px
+}
+.page-header {
+    margin-bottom:10px;
+}
+.page-header h2,.page-content p {
+    margin-bottom:20px
+}
+.page-content blockquote {
+    border-left:2px solid rgb(239,239,239);
+    padding-left:18px
+}
+.page-content img {
+    display:block;margin:0 auto;
+    max-width:100%
+}
+.page-content ol, .page-content ul {
+    margin-left:40px
+}
+.page-content pre {
+    background-color:rgb(239,239,239);
+    border-radius:3px;
+    margin-bottom:20px;
+    padding:10px 6px;
+    overflow:scroll
+}
+.page-content code {
+    background-color:rgb(239,239,239);
+    border-radius:3px;
+    font-family:monospace;
+    padding:0 4px;
+    white-space:pre;
+    word-break:normal;
+    word-wrap:normal
+}
+.page-content hr {
+    background-color:rgb(239,239,239);
+    border:none;
+    height:1px
+}
 
-aside.night-toggle {background-color:rgb(38,38,38);border-radius:12px;cursor:pointer;height:24px;position:fixed;right:10px;top:10px;width:24px;margin:20px}
-body.night aside.night-toggle {background-color:#B8E986;}
-body.night .blog-post{color:rgb(112,112,112) ;font-size:14px;letter-spacing:0.5px;line-height: 16px;}
-body.night {background-color:rgb(38,38,38)}
+article.featured h2:before {
+    background-color:rgb(255,136,0);
+    border-radius:8px;
+    content:"";
+    display:inline-block;
+    height:16px;
+    margin-right:10px;
+    position:relative;
+    width:16px
+}
+
+article.featured a:hover h2:before {
+    background-color:rgb(45,166,222)
+}
+
+aside.night-toggle {
+    background-color:rgb(38,38,38);
+    border-radius:12px;
+    cursor:pointer;
+    height:24px;
+    position:fixed;
+    right:10px;
+    top:10px;
+    width:24px;
+    margin:20px
+}
+body.night aside.night-toggle {
+    background-color:#B8E986;
+}
+body.night .blog-post{
+    color:rgb(112,112,112) ;
+    font-size:14px;
+    letter-spacing:0.5px;
+    line-height: 16px;
+}
+body.night {
+    background-color:rgb(38,38,38)
+}
 
 @media all and (max-width:954px) {
-	.site-cover {height:140px;width:100%;position:fixed}
-	.outer-wrapper {margin-left:0;position:absolute;top:140px;width:100%}
-    .site-header {height:60px;color:#ddd;text-shadow: 0 0 5px #000}
-    .site-header p{display:none}
-    aside.night-toggle {top:150px}
+	.site-cover {
+        height:140px;
+        width:100%;
+        position:fixed
+    }
+	.outer-wrapper {
+        margin-left:0;
+        position:absolute;
+        top:140px;
+        width:100%
+    }
+    .site-header {
+        height:60px;
+        color:#ddd;
+        text-shadow: 0 0 5px #000
+    }
+    .site-header p{
+        display:none
+    }
+    aside.night-toggle {
+        top:150px
+    }
 }
 a{
     color: #656565;

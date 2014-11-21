@@ -2,7 +2,7 @@ doctype html
 html(ng-modules="index.crud,node.crud")
   head
     meta(charset='UTF-8')
-    title day&amp;night
+    title Twenty
     meta(name='description', content='')
     meta(name='HandheldFriendly', content='True')
     meta(name='MobileOptimized', content='320')
@@ -14,9 +14,11 @@ html(ng-modules="index.crud,node.crud")
 
   body(onload='checkNightMode(); addTransitionCSS(); showPage();',ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5","populate":"tags"}',crud-search-fields="['category.id']")
     aside.site-cover
-      header.site-header(style="background-image: url('images/bg.jpg');")
-        h1 The new Twenty
-        p More than blogging~
+      header.site-header
+        div.header-wrapper
+          .blog-title The new Twenty
+          .blog-description More than blogging
+
     .outer-wrapper
       .inner-wrapper
         main.site-main
