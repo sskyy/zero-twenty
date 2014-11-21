@@ -19,12 +19,7 @@ var twentyModule = {
       }
     }
   },
-  route : {
-    "GET /user/logout" : function(req, res){
-      req.session = null
-      res.redirect("/")
-    }
-  },
+
   acl : {
     roles : {
       "loggedIn" : function(req){
@@ -45,6 +40,12 @@ var twentyModule = {
         strategy : "feed",
         argv : ["post"]
       }
+    }
+  },
+  route : {
+    "GET /user/logout" : function(req, res){
+      req.session = null
+      res.redirect("/")
     }
   }
 }
