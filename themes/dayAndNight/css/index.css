@@ -192,15 +192,15 @@ a:hover{
     text-decoration: none;
 }
 .title{
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
     color: #666;
     letter-spacing: 1px; 
     line-height: 30px;
 }
 .night .title{
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
     color: #98C757;
     letter-spacing: 1px; 
     line-height: 30px;
@@ -210,7 +210,7 @@ a:hover{
     text-decoration: none;
 }
 .night a:hover{
-    color: rgb(191, 180, 143);
+    color: rgb(67, 67, 67);
     text-decoration: none;
 }
 .fa-tag{
