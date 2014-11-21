@@ -147,7 +147,7 @@ aside.night-toggle {
     margin:20px
 }
 body.night aside.night-toggle {
-    background-color:#B8E986;
+    background-color:#98C757;
 }
 body.night .blog-post{
     color:rgb(112,112,112) ;
@@ -184,11 +184,11 @@ body.night {
     }
 }
 a{
-    color: #656565;
+    color: #98C757;
     text-decoration: none;
 }
 a:hover{
-    color: rgb(191, 180, 143);
+    color: #7DAD39;
     text-decoration: none;
 }
 .title{
@@ -196,12 +196,14 @@ a:hover{
     margin-bottom: 20px;
     color: #666;
     letter-spacing: 1px; 
+    line-height: 30px;
 }
 .night .title{
     font-size: 24px;
     margin-bottom: 20px;
-    color: #B8E986;
+    color: #98C757;
     letter-spacing: 1px; 
+    line-height: 30px;
 }
 .night a{
     color: #656565;
@@ -219,11 +221,29 @@ a:hover{
 }
 .post_time {
    color:rgb(199, 199, 199);
+   margin-top:10px;
 }
 .night .post_time {
-    color:rgb(53, 53, 53);
+    color:rgb(53, 53, 53)
 }
-
+.tags{
+    padding-top: 20px;
+}
 .tag{
-   color:rgb(199, 199, 199);
+    background-color: #F3F3F3;
+    color:rgb(199, 199, 199);
+    text-align: center;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+.night .tag{
+    background-color: #232323;
+    color:rgb(85, 85, 85);
+    text-align: center;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    margin-top: 20px;
 }
