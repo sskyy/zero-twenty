@@ -7,6 +7,7 @@ h1,h2,h3 {font-size:36px;font-weight: bold;}
 h1,h2,h3,p,ul,ol {margin-bottom:20px}
 em {font-style:italic}
 strong {font-weight:700}
+a{cursor: pointer}
 
 .site-main {padding:40px;padding-right:70px}
 .site-nav ul {font-size:18px;list-style-type:none;overflow:hidden}

@@ -26,6 +26,9 @@ html(ng-modules="index.crud,node.crud")
           section.blog-list(ng-init="crud.query()")
             include partials/post
           footer.blog-footer
+            nav.pagination
+              a.previous(ng-show="crud.pagination.index > 0",ng-click="crud.prev()") ←
+              a.next(ng-show="crud.pagination.index < crud.pagination.count -1",ng-click="crud.next()") →
 
     script(src="./js/moment.min.js")
     script(src="./js/lodash.compat.min.js")

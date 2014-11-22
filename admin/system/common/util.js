@@ -152,6 +152,7 @@ angular.module('util', ['ngResource'])
             crud.Resource.query(params).$promise.then(function (data) {
               if (data.length < crud.params.limit && crud.data.unCountable) {
                 crud.data.unCountable = false
+                crud.data.count = crud.params.skip + data.length
               }
               crud.updateData(data)
               crud.updatePagination()
@@ -192,12 +193,22 @@ angular.module('util', ['ngResource'])
           return promise
         },
         next: function (useCache) {
-          if (!crud.data.unCountable && !((crud.pagination.index + 1) < crud.pagination.count)) {
-            return false
-          }
-          crud.params.skip = crud.pagination.index * crud.params.limit
+          if (!crud.data.unCountable && crud.pagination.index < (crud.pagination.count -1) ) return false
+
+          crud.params.skip = (crud.pagination.index+1) * crud.params.limit
           crud.query({}, useCache)
           return true
+        },
+        prev: function (useCache) {
+          if ( crud.pagination.index ==  0 )  return false
+
+          crud.params.skip = (crud.pagination.index - 1) * crud.params.limit
+          crud.query({}, useCache)
+          return true
+        },
+        goto: function (page, useCache) {
+          crud.params.skip = page * crud.params.limit
+          crud.query({}, useCache)
         },
         count: function (cb) {
           var extraParams = _.pick(crud.params, _.without.apply(_, [Object.keys(crud.params), 'limit', 'skip', 'sort']))
@@ -215,25 +226,16 @@ angular.module('util', ['ngResource'])
             if (cb) cb(false)
           })
         },
-        prev: function (useCache) {
-
-        },
-        goto: function (page, useCache) {
-          crud.params.skip = page * crud.params.limit
-          crud.query({}, useCache)
-        },
         updatePagination: function () {
           //init pagination
           crud.pagination.index = Math.floor(crud.params.skip / crud.params.limit)
 
           if (!crud.data.unCountable) {
             crud.pagination.count = Math.ceil(crud.data.count / crud.params.limit)
-            //console.log("setting pagination count", crud.pagination.count)
+            console.log("setting pagination count", crud.pagination.count)
           } else {
-            if (crud.pagination.count === null || crud.pagination.count < crud.pagination.index + 1) {
-              crud.pagination.count = crud.pagination.index + 1
-              //console.log("setting pagination count", crud.pagination.count)
-            }
+              crud.pagination.count = crud.pagination.index + 2
+              console.log("setting pagination count", crud.pagination.count)
           }
 
           if (config.advancedPage) {

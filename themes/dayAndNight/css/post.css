@@ -54,3 +54,8 @@ body.night .post-content pre, body.night .post-content code, body.night .post-co
 body.night .post-content blockquote {
     border-left: 2px solid rgb(103, 103, 103)
 }
+
+body header.site-header{
+    color:#fff;
+
+}

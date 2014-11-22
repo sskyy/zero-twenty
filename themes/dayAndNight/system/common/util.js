@@ -2,72 +2,93 @@
  * Created by jiamiu on 14-8-9.
  */
 
-angular.module('util',['ngResource'])
-  .filter('time',function(){
-    return function( input,format){
-      return moment(input).format( format || 'MM-DD hh:mm:ss')
+angular.module('util', ['ngResource'])
+  .filter('time', function () {
+    return function (input, format) {
+      return moment ? moment(input).format(format || 'MM-DD hh:mm:ss') : input
     }
   })
-  .filter('countChildren',function(){
-    function count( input ){
+  .filter('countChildren', function () {
+    function count(input) {
       console.log("counting", input)
       var num = 0
-      if( input ){
-        _.forEach( input, function( child ){
-          if(_.isObject( child ) ){
-            num += count( child)
-          }else{
+      if (input) {
+        _.forEach(input, function (child) {
+          if (_.isObject(child)) {
+            num += count(child)
+          } else {
             num++
           }
         })
       }
-
       return num
     }
 
     return count
   })
-  .service('util',function(){
-    function parseJSON( str, scope ){
+  .service('util', function () {
+    function parseJSON(str, scope) {
       return scope.$eval(str)
     }
 
     return {
-      parseQuery : function( queryStr ){
-        return _.reduce(queryStr.split("&"),function(a, b){
+      parseQuery: function (queryStr) {
+        return _.reduce(queryStr.split("&"), function (a, b) {
           b = b.split("=")
           a[b[0]] = b[1]
           return a
-        },{})
+        }, {})
       },
-      makeQuery : function( obj ){
-        return _.reduce(obj,function(a,v,k){a.push(k+"="+v);return a},[]).join("&")
+      makeQuery: function (obj) {
+        if( !_.isObject) return ""
+
+        return _.reduce(obj, function (a, v, k) {
+          a.push(k + "=" + v);
+          return a
+        }, []).join("&")
       },
-      inject : function( module, wanted ){
+      inject: function (module, wanted) {
         var injected
-        try{
-          angular.module(module) && angular.injector([module]).invoke([wanted,function( $wanted ){ injected = $wanted}])
-        }catch(e){
-          console.log("module preload not loaded",e)
+        try {
+          angular.module(module) && angular.injector([module]).invoke([wanted, function ($wanted) {
+            injected = $wanted
+          }])
+        } catch (e) {
+          console.log("module preload not loaded", e)
           return undefined
         }
         return injected
       },
-      parseJSON : parseJSON
+      parseJSON: parseJSON
     }
   })
-  .factory('crud',function( $resource,$http,pagination,util ){
+  .factory('crud', function ($resource, $http, pagination, util) {
 
-    function append( arr1, arr2 ){
-      arr2.forEach(function(i){
+    function append(arr1, arr2) {
+      arr2.forEach(function (i) {
         arr1.push(i)
       })
     }
 
-    function replace( arr1, arr2 ){
-      arr1.splice(0)
-      append( arr1, arr2)
+    function replace(arr1, arr2) {
+      if(_.isArray( arr1)) {
+        arr1.splice(0)
+        append(arr1, arr2)
+      }else{
+        for( var i in arr1){
+          if( arr1.hasOwnProperty(i)){
+            delete arr1[i]
+          }
+        }
+        for( var j in arr2){
+          if( arr2.hasOwnProperty(j))[
+            arr1[j] = arr2[j]
+          ]
+        }
+      }
+
     }
+
     /**
      * @param options object. keys:{
      *  resource : object,
@@ -75,61 +96,63 @@ angular.module('util',['ngResource'])
      *  edit : function
      * }
      */
-    return function( config, params, data ){
-      if( !config.type ){
-        console.log( 'you need to specify the type of node')
+    return function (config, params, data) {
+      if (!config.type && !config.url) {
+        console.log('you need to specify the type of node')
         return false
       }
 
-      config = _.defaults(config,{
-        range:3,
-        url : "/"+config.type,
-        advancedPage : true
+      config = _.defaults(config, {
+        range: 3,
+        url: config.url ? config.url : "/" + config.type,
+        advancedPage: true
       })
 
-      params = _.defaults( params,{
-        skip : 0,
-        limit : 10,
-        sort : 'id DESC'
+      params = _.defaults(params, {
+        skip: 0,
+        limit: 10,
+        sort: 'id DESC'
       })
 
-      var crud = _.defaults( config, {
-        Resource :  $resource( config.url+'/:id', params,{"remove":{isArray:true,method:"DELETE"}}),
-        pagination : {
-          index:null,
-          count:null,
-          display : []
+      var crud = _.defaults(config, {
+        Resource: $resource(config.url + '/:id', params, {"remove": {isArray: true, method: "DELETE"}}),
+        pagination: {
+          index: null,
+          count: null,
+          display: []
         },
-        data : {
-          cache:null,
-          cacheIndex : null,
-          unCountable : null,
-          count : null,
-          records : []
+        data: {
+          cache: null,
+          cacheIndex: null,
+          unCountable: null,
+          count: null,
+          records: [],
+          detail : {}
         },
-        params : params,
-        query : function( params, useCache ){
+        params: params,
+        query: function (params, useCache) {
           params = params || {}
-          _.extend( crud, params )
+          _.extend(crud, params)
 
           //first time
-          if( crud.data.count === null){
-            crud.count(function(count){
-              if( count ){
+          if (crud.data.count === null) {
+            crud.count(function (count) {
+              if (count) {
                 crud.updatePagination()
               }
             })
           }
 
-          if( useCache ){
-            if( !(params.skip < crud.data.cacheIndex ) && !(params.skip + params.limit > crud.data.cacheIndex + crud.data.cache.length ) ){
+          if (useCache) {
+            if (!(params.skip < crud.data.cacheIndex ) && !(params.skip + params.limit > crud.data.cacheIndex + crud.data.cache.length )) {
               crud.updateData()
               crud.updatePagination()
             }
-          }else{
-            crud.Resource.query(params).$promise.then(function(data){
-              if( data.length < crud.params.limit && crud.data.unCountable ){
+          } else {
+            crud.Resource.query(params).$promise.then(function (data) {
+              if (data.length < crud.params.limit && crud.data.unCountable) {
                 crud.data.unCountable = false
+                crud.data.count = crud.params.skip + data.length
               }
               crud.updateData(data)
               crud.updatePagination()
@@ -138,91 +161,94 @@ angular.module('util',['ngResource'])
 
           return crud.data.records
         },
-        updateData : function( records ){
-          if( !records){
-            replace( crud.data.records, crud.data.cache.slice( params.skip - crud.data.cacheIndex, params.limit) )
-          }else{
-            replace( crud.data.records, records)
+        get : function( id, param ){
+          $http.get(config.url+"/"+id + "?"+util.makeQuery(param)).success(function(data){
+            replace(crud.data.detail , data)
+          })
+        },
+        updateData: function (records) {
+          if (!records) {
+            replace(crud.data.records, crud.data.cache.slice(params.skip - crud.data.cacheIndex, params.limit))
+          } else {
+            replace(crud.data.records, records)
           }
-          if( ( crud.data.count===null || crud.data.count<(crud.params.skip+crud.data.records.length)) ){
-            crud.data.count = crud.params.skip+crud.data.records.length
+          if (( crud.data.count === null || crud.data.count < (crud.params.skip + crud.data.records.length))) {
+            crud.data.count = crud.params.skip + crud.data.records.length
           }
         },
-        edit : function( node, refresh ){
-          var promise =$http.put('/'+crud.type,node)
-          if( refresh ){
-            crud.query()
-          }
+        update: function (node, refresh) {
+          if( !node || !node.id ) return false
+          var promise = $http.put('/' + crud.type+ "/" + node.id, node)
+          refresh && crud.query()
           return promise
         },
-        remove : function( r, refresh){
-          var promise = crud.Resource.remove({id:r.id}).$promise
-          if( refresh ){
-            crud.query()
-          }
+        remove: function (r, refresh) {
+          var promise = crud.Resource.remove({id: r.id}).$promise
+          refresh && crud.query()
           return promise
         },
-        create : function( item, refresh ){
-          var promise =$http.post('/'+crud.type,item)
-          if( refresh ){
-            crud.query()
-          }
+        create: function (item, refresh) {
+          var promise = $http.post( crud.url, item)
+          refresh && crud.query()
           return promise
         },
-        next:function( useCache ){
-          if(!crud.data.unCountable && !((crud.pagination.index+1)<crud.pagination.count) ){ return false }
-          crud.params.skip = crud.pagination.index * crud.params.limit
-          crud.query( {},useCache )
+        next: function (useCache) {
+          if (!crud.data.unCountable && crud.pagination.index < (crud.pagination.count -1) ) return false
+
+          crud.params.skip = (crud.pagination.index+1) * crud.params.limit
+          crud.query({}, useCache)
           return true
         },
-        count : function( cb ){
-          var extraParams = _.pick( crud.params, _.without.apply(_,[Object.keys(crud.params),'limit','skip','sort']))
-          var extraParamsString = Object.keys(extraParams)? "?"+ util.makeQuery( extraParams ) : ""
+        prev: function (useCache) {
+          if ( crud.pagination.index ==  0 )  return false
 
-          $http({method:'get',url:config.url+'/count'+extraParamsString}).success(function(data){
+          crud.params.skip = (crud.pagination.index - 1) * crud.params.limit
+          crud.query({}, useCache)
+          return true
+        },
+        goto: function (page, useCache) {
+          crud.params.skip = page * crud.params.limit
+          crud.query({}, useCache)
+        },
+        count: function (cb) {
+          var extraParams = _.pick(crud.params, _.without.apply(_, [Object.keys(crud.params), 'limit', 'skip', 'sort']))
+          var extraParamsString = Object.keys(extraParams) ? "?" + util.makeQuery(extraParams) : ""
+
+          $http({method: 'get', url: config.url + '/count' + extraParamsString}).success(function (data) {
             crud.data.count = data.count
 
 
             crud.data.unCountable = false
 
-            if( cb ) cb(crud.data.count)
-          }).error(function(){
+            if (cb) cb(crud.data.count)
+          }).error(function () {
             crud.data.unCountable = true
-            if( cb ) cb(false)
+            if (cb) cb(false)
           })
         },
-        prev : function( useCache ){
-
-        },
-        goto : function( page, useCache ){
-          crud.params.skip = page * crud.params.limit
-          crud.query({},useCache)
-        },
-        updatePagination : function(){
+        updatePagination: function () {
           //init pagination
           crud.pagination.index = Math.floor(crud.params.skip / crud.params.limit)
 
-          if( !crud.data.unCountable ){
-            crud.pagination.count = Math.ceil( crud.data.count/ crud.params.limit )
-            //console.log("setting pagination count", crud.pagination.count)
-          }else{
-            if( crud.pagination.count === null || crud.pagination.count < crud.pagination.index+1){
-              crud.pagination.count = crud.pagination.index+1
-              //console.log("setting pagination count", crud.pagination.count)
-            }
+          if (!crud.data.unCountable) {
+            crud.pagination.count = Math.ceil(crud.data.count / crud.params.limit)
+            console.log("setting pagination count", crud.pagination.count)
+          } else {
+              crud.pagination.count = crud.pagination.index + 2
+              console.log("setting pagination count", crud.pagination.count)
           }
 
-          if( config.advancedPage ){
-            pagination( crud.pagination, config,  crud.data.unCountable )
+          if (config.advancedPage) {
+            pagination(crud.pagination, config, crud.data.unCountable)
           }
         }
       })
 
-      if( data) _.extend( crud.data, data)
+      if (data) _.extend(crud.data, data)
       return crud
     }
   })
-.factory('pagination',function(){
+  .factory('pagination', function () {
     /**
      * options : {
      *  limit,
@@ -231,89 +257,90 @@ angular.module('util',['ngResource'])
      *  current
      *  }
      */
-    return function( pagination, config, unCountable ){
+    return function (pagination, config, unCountable) {
 
-        pagination.display.splice(0)
-        pagination.display.push( pagination.index )
+      pagination.display.splice(0)
+      pagination.display.push(pagination.index)
 
-        var min = pagination.index - 1,
-          max = pagination.index +1
+      var min = pagination.index - 1,
+        max = pagination.index + 1
 
-        while( min > -1 && min > (pagination.index- config.range)){
-          pagination.display.unshift(min)
-          min--
-        }
+      while (min > -1 && min > (pagination.index - config.range)) {
+        pagination.display.unshift(min)
+        min--
+      }
 
-        while( max < pagination.count  && max < (pagination.index + config.range)){
-          pagination.display.push(max)
-          max++
-        }
+      while (max < pagination.count && max < (pagination.index + config.range)) {
+        pagination.display.push(max)
+        max++
+      }
 
-        if( unCountable ){
-          pagination.display.push( max )
-        }
+      if (unCountable) {
+        pagination.display.push(max)
+      }
 
       //console.log("update pagination.display", pagination.display)
       return pagination.display
     }
   })
-  .factory('session',function(){
+  .factory('session', function () {
     var session = {},
       registered = {}
     return {
-      item : function( name, setObj ){
-        if( setObj ){
+      item: function (name, setObj) {
+        if (setObj) {
 
-          if(_.isObject( session[name])){
-            _.forEach( session[name],function(v,k){
+          if (_.isObject(session[name])) {
+            _.forEach(session[name], function (v, k) {
               delete session[name][k]
             })
-            _.extend( session[name], setObj )
+            _.extend(session[name], setObj)
 
-          }else if(_.isArray(session[name])){
+          } else if (_.isArray(session[name])) {
             session[name].splice(0)
-            setObj.forEach(function(o){
+            setObj.forEach(function (o) {
               session[name].push(o)
             })
 
-          }else{
+          } else {
             session[name] = setObj
           }
 
           return session[name]
-        }else{
+        } else {
 
-          if( session[name] === undefined ){
-            console.log("no handler registered for ",name,session)
+          if (session[name] === undefined) {
+            console.log("no handler registered for ", name, session)
             return false
           }
           //need construct
-          if( session[name] === null ){
+          if (session[name] === null) {
             session[name] = registered[name].origin
-            registered[name].handler( session[name] )
-            return (_.isObject(session[name]) || _.isArray(session[name])) ? session[name]: session
+            registered[name].handler(session[name])
+            return (_.isObject(session[name]) || _.isArray(session[name])) ? session[name] : session
 
-          }else{
+          } else {
             return session[name]
           }
         }
       },
-      register : function(name , origin, handler){
+      register: function (name, origin, handler) {
         registered[name] = {
-          origin : origin,
-          handler : handler
+          origin: origin,
+          handler: handler
         }
         session[name] = null
       }
     }
   })
-.filter('size',function(){
-    function readablizeBytes(bytes) {
+  .filter('size', function () {
+    function bytes(bytes) {
       var s = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
-      var e = Math.floor(Math.log(bytes)/Math.log(1024));
-      return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2)+" "+s[e];
+      var e = Math.floor(Math.log(bytes) / Math.log(1024));
+      return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
     }
-    return function( size ){
-      return readablizeBytes(size)
+
+    return function (size) {
+      return bytes(size)
     }
   })
