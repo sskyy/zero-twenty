@@ -2,7 +2,7 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 300px;
 }
 .CodeMirror-scroll {
@@ -239,7 +239,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: normal;
-  color: #666;
+  color: #B8B8B8;
 }
 
 .CodeMirror-linebackground {
@@ -294,7 +294,9 @@ div.CodeMirror-cursors {
 }
 
 /* IE7 hack to prevent it from returning funny offsetTops on the spans */
-.CodeMirror span { *vertical-align: text-bottom; }
+.CodeMirror span { 
+  *vertical-align: text-bottom;
+ }
 
 /* Used to force a border model for a node */
 .cm-force-border { padding-right: .1px; }

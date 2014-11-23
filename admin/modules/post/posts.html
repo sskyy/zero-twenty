@@ -1,11 +1,12 @@
 <div class="page posts  vertical" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
     <div class="page-head   pd10 list horizontal ">
         <div class="item">
-            <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}" />
+            <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}" />
         </div>
         <div class="item push-middle" >
             <div>
-                <a ui-sref="create">+ New Story</a>
+                <div class="split-line"></div>
+                <a ui-sref="create" class="fa fa-plus"> New Story</a>
             </div>
         </div>
     </div>
@@ -19,7 +20,7 @@
                             <i class="fa fa-times"></i>
                         </a>
                         <a class="pull-right action" href="#/edit/{{post.id}}?populate=tags">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-pencil-square"></i>
                         </a>
                     </h5>
                     <div class="brief">
@@ -34,8 +35,8 @@
                 </div>
             </div>
             <div class="pages clearfix pd10">
-                <a class="btn btn-grey" ng-show="crud.pagination.index > 0" ng-click="crud.prev()">newer stories</a>
-                <a class="btn btn-grey" ng-show="crud.pagination.index < crud.pagination.count -1" ng-click="crud.next()">older stories</a>
+                <a class="btn btn-grey" ng-show="crud.pagination.index > 0" ng-click="crud.prev()">Newer stories</a>
+                <a class="btn btn-grey" ng-show="crud.pagination.index < crud.pagination.count -1" ng-click="crud.next()">Older stories</a>
             </div>
         </div>
         <div class=" page-right pd20 preview">
