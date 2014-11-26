@@ -29,7 +29,7 @@ var twentyModule = {
   },
   statistics : {
     log : {
-      "GET /*" : "daily",
+      "GET /post/*" : "daily",
       "rest.fire.after" : {
         strategy : "feed",
         argv : ["post"]
