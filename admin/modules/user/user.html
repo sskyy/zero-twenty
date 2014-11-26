@@ -8,11 +8,11 @@
             <div ng-show="user.avatar.status==1" ng-click="upload()">Update</div>
         </div>
 
-        <div class="item   vertical flex-none">
+        <div class="item  username vertical flex-none">
                 <h5>User name</h5>
                 <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
         </div>
-        <div class="item  vertical flex-none">
+        <div class="item email  vertical flex-none">
             <h5>Your email</h5>
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
         </div>

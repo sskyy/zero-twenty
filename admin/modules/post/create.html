@@ -4,7 +4,7 @@
             <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}" /> 
         </div>
         <div class="item push-middle" >
-            <tag-editor ng-init="post.tags=[]" ng-model="post.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+            <tag-editor  placeholder="Tags" ng-init="post.tags=[]" ng-model="post.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
             <a class="btn btn-primary btn-publish" ng-click="post.title&&post.content&&crud.create(post)">Publish</a>

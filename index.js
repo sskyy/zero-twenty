@@ -19,16 +19,10 @@ var twentyModule = {
       }
     }
   },
-
   acl : {
-    roles : {
-      "loggedIn" : function(req){
-        return !!(req.session.user && req.session.user.id)
-      }
-    },
     routes : {
       "/twenty/admin/index" : [{
-        role:"loggedIn",
+        role:"admin",
         "redirect":"/twenty/admin/login"
       }]
     }

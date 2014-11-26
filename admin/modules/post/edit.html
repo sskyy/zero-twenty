@@ -4,7 +4,7 @@
             <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/512.png'}}" />
         </div>
         <div class="item push-middle" >
-            <tag-editor placeholder="enter tags..." ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+            <tag-editor placeholder="Tags" ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
             <a class="btn btn-primary btn-publish" ng-click="crud.data.detail.title&&crud.data.detail.content&&crud.update(crud.data.detail)">Update</a>
