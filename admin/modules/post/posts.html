@@ -1,4 +1,4 @@
-<div class="page posts  vertical" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
+<div class="page posts  vertical fadeInRight animated" ng-controller="node.crud" crud-config='{"type":"post"}' crud-params='{"limit":"10","populate":"tags"}'>
     <div class="page-head   pd10 list horizontal ">
         <div class="item">
             <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}" />
@@ -39,7 +39,7 @@
                 <a class="btn btn-gray" ng-show="crud.pagination.index < crud.pagination.count -1" ng-click="crud.next()">Older stories</a>
             </div>
         </div>
-        <div class=" page-right pd20 preview">
+        <div class=" page-right pd20 preview ">
             <div >
                 <h1 class="title">{{crud.data.detail.title}}</h1>
                 <!--<div>{{crud.data.detail.content}}</div>-->
