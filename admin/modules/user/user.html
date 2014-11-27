@@ -17,9 +17,9 @@
             <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
         </div>
         <div class="item  vertical flex-none">
-            <a class="btn btn-gray" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">Edit</a>
-            <a class="btn btn-primary" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.avatar,name:user.name,email:user.email})">Save</a>
-            <a class="btn btn-danger" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">Cancel</a>
+            <a class="btn btn-gray fadeIn" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">Edit</a>
+            <a class="btn btn-primary fadeInRight animated" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.avatar,name:user.name,email:user.email})">Save</a>
+            <a class="btn btn-danger fadeInRight animated" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">Cancel</a>
         </div>
     </header>
     <div class="page-body ">
@@ -27,8 +27,8 @@
             <h5 class="title">
                 <span>About me</span>
                 <a class="btn btn-gray" ng-show="user.$$editing!='about'" ng-click="user.$$editing='about';cache=user.about" ng-disabled="!user.id">Edit</a>
-                <a class="btn btn-danger" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false;user.about=cache" ng-disabled="!user.id">Cancel</a>
-                <a class="btn btn-blue" ng-show="user.$$editing=='about'" ng-click="update({about:user.about})&&(user.$$editing=false)" ng-disabled="!user.id">Save</a>
+                <a class="btn btn-danger fadeInRight animated" ng-show="user.$$editing=='about'" ng-click="user.$$editing=false;user.about=cache" ng-disabled="!user.id">Cancel</a>
+                <a class="btn btn-blue fadeInRight animated" ng-show="user.$$editing=='about'" ng-click="update({about:user.about})&&(user.$$editing=false)" ng-disabled="!user.id">Save</a>
             </h5>
             <div class="pd20">
                 <div class="" ng-show="user.$$editing!='about'" ng-bind-html="user.about|markdown" ></div>
