@@ -19,6 +19,7 @@
       "statistic": "^0.0.1",
       "security": "^0.0.1",
       "relation": "^0.0.1",
+      "index": "^0.0.1",
       "i18n": "^0.0.1"
     },
     "configs": [
