@@ -22,7 +22,7 @@ angular.module('setting',[]).config(['$stateProvider', '$urlRouterProvider',
   }
 
   $scope.delete = function( key ){
-    delete $scope[key]
+    delete $scope.config[key]
   }
 
   $scope.reset = function(){

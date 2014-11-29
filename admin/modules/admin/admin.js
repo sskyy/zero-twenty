@@ -42,7 +42,6 @@ angular.module('admin',['ui.router',
       }catch(e){
         console.log( "makeHtml failed", e)
       }
-      console.log( marked)
       return marked
     }
 
@@ -80,6 +79,17 @@ angular.module('admin',['ui.router',
             })
           })
         }
+      })
+    }
+  }).directive("confirmClose", function(){
+    return function( scope, ele, attrs){
+
+      //window.onbeforeunload = function (e) {
+      //  return attrs['confirmClose'] || "Are you sure you want to leave?"
+      //}
+
+        scope.$on('$destroy', function(){
+          window.onbeforeunload = null
       })
     }
   })

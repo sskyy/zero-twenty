@@ -1,24 +1,27 @@
 <div class=" vertical page user" ng-controller="user.edit" omit="id,name,avatar,password,email,createdAt,updatedAt,lastLogin" >
-    <header class="column-group page-head pd20 list horizontal flex-display align-items-center" >
-        <div class="item avatar flex-none" node-upload='{"url":"/avatar","attach":"user","field":"avatar","cb":"user.$$editing=\"basic\"","auto":true}'>
+    <header class="column-group page-head pd20 list horizontal flex-display align-items-center" ng-init="user.$$modified={}">
+        <div class="item avatar flex-none" node-upload='{"url":"/avatar","attach":"user.$$modified","field":"avatar","cb":"user.$$editing=\"basic\"","auto":true}'>
             <div>
-                <img ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}">
-                <i class="fa fa-edit" browse-trigger ng-show="!user.avatar.status"></i>
+                <img ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}" ng-if="user.$$editing!='basic'">
+                <img ng-src="/{{user.$$modified.avatar.path||user.avatar.path}}" ng-if="user.$$editing=='basic'">
+                <i class="fa fa-edit" browse-trigger ng-click="user.$$editing='basic'"></i>
             </div>
             <div ng-show="user.avatar.status==1" ng-click="upload()">Update</div>
         </div>
 
         <div class="item  username vertical flex-none">
                 <h5>User name</h5>
-                <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.name">
+                <input type="text" class="form-control" ng-if="!user.$$editing" disabled ng-model="user.name">
+                <input type="text" class="form-control" ng-if="user.$$editing=='basic'" placeholder="name" ng-model="user.$$modified.name">
         </div>
         <div class="item email  vertical flex-none">
             <h5>Your email</h5>
-            <input type="text" class="form-control"  placeholder="Enter ..." ng-disabled="!user.id||user.$$editing!=='basic'" ng-model="user.email">
+            <input type="text" class="form-control"  disabled ng-if="!user.$$editing"  ng-model="user.email">
+            <input type="text" class="form-control" ng-if="user.$$editing=='basic'" placeholder="email" ng-model="user.$$modified.email">
         </div>
         <div class="item  vertical flex-none">
-            <a class="btn btn-gray fadeIn" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic'">Edit</a>
-            <a class="btn btn-primary fadeInRight animated" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.avatar,name:user.name,email:user.email})">Save</a>
+            <a class="btn btn-gray fadeIn" ng-show="user.$$editing!='basic'" ng-click="user.$$editing='basic';user.$$modified.avatar=user.avatar;user.$$modified.email=user.email;user.$$modified.name=user.name">Edit</a>
+            <a class="btn btn-primary fadeInRight animated" ng-show="user.$$editing=='basic'" ng-click="update({avatar:user.$$modified.avatar,name:user.$$modified.name,email:user.$$modified.email})">Save</a>
             <a class="btn btn-danger fadeInRight animated" ng-show="user.$$editing=='basic'" ng-click="user.$$editing=false">Cancel</a>
         </div>
     </header>

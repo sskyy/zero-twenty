@@ -15,7 +15,7 @@ angular.module('ui.codemirror', [])
       compile: function compile() {
 
         // Require CodeMirror
-        if (angular.isUndefined(window.CodeMirror)) {
+        if (angular.isUndefined(CodeMirror)) {
           throw new Error('ui-codemirror need CodeMirror to work... (o rly?)');
         }
 
@@ -26,21 +26,23 @@ angular.module('ui.codemirror', [])
 
           initialTextValue = iElement.text();
 
+          console.log(scope.$eval(iAttrs.uiCodemirror))
+
           options = uiCodemirrorConfig.codemirror || {};
-          opts = angular.extend({value: initialTextValue}, options, scope.$eval(iAttrs.uiCodemirror), scope.$eval(iAttrs.uiCodemirrorOpts));
+          opts = angular.extend({value: initialTextValue}, options, scope.$eval(iAttrs.uiCodemirror), scope.$eval(iAttrs.uiCodemirrorOpts) || {});
 
           if (iElement[0].tagName === 'TEXTAREA') {
             // Might bug but still ...
-            codeMirror = window.CodeMirror.fromTextArea(iElement[0], opts);
+            codeMirror = CodeMirror.fromTextArea(iElement[0], opts);
           } else {
             iElement.html('');
-            codeMirror = new window.CodeMirror(function (cm_el) {
+            codeMirror = new CodeMirror(function (cm_el) {
               iElement.append(cm_el);
             }, opts);
           }
 
           if (iAttrs.uiCodemirror || iAttrs.uiCodemirrorOpts) {
-            var codemirrorDefaultsKeys = Object.keys(window.CodeMirror.defaults);
+            var codemirrorDefaultsKeys = Object.keys(CodeMirror.defaults);
             scope.$watch(iAttrs.uiCodemirror || iAttrs.uiCodemirrorOpts, function updateOptions(newValues, oldValue) {
               if (!angular.isObject(newValues)) {
                 return;
@@ -81,6 +83,7 @@ angular.module('ui.codemirror', [])
               var safeViewValue = ngModel.$viewValue || '';
               codeMirror.setValue(safeViewValue);
               if (firstRender && safeViewValue !== '') {
+                console.log("refreshing")
                 codeMirror.refresh();
                 firstRender = false
               }
@@ -105,6 +108,7 @@ angular.module('ui.codemirror', [])
             scope.$watch(iAttrs.uiRefresh, function (newVal, oldVal) {
               // Skip the initial watch firing
               if (newVal !== oldVal) {
+                console.log("refreshing")
                 codeMirror.refresh();
               }
             });

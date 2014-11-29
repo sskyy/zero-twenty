@@ -8,9 +8,19 @@
         box-sizing: content-box;
     }
     .fa-edit{
+        display: none;
         position: absolute;
         right: 20px;
         top:10px;
+        cursor: pointer;
+        padding: 2px;
+    }
+    &:hover{
+        .fa-edit{
+            display: block;
+            background: #ccc;
+            color:#333;
+        }
     }
 }
 

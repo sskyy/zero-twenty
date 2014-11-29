@@ -1,4 +1,4 @@
-<div class=" vertical page create" ng-controller="node.crud" crud-config="{type:'post'}" ng-init="post={}" redirect="/twenty/admin/index#/posts">
+<div confirm-close class=" vertical page create" ng-controller="node.crud" crud-config="{type:'post'}" ng-init="post={}" redirect="/twenty/admin/index#/posts">
     <header class="column-group page-head pd10 list horizontal">
         <div class="item">
             <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}" /> 
@@ -7,7 +7,7 @@
             <tag-editor  placeholder="Tags" ng-init="post.tags=[]" ng-model="post.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
-            <a class="btn btn-primary btn-publish" ng-click="post.title&&post.content&&crud.create(post)">Publish</a>
+            <a class="btn btn-primary btn-publish" ng-show="post.title&&post.content" ng-click="crud.create(post)">Publish</a>
         </div>
     </header>
     <div class="page-body ">
