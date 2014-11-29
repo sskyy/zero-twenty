@@ -472,7 +472,7 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 16px;
 }
 h5,
 .h5 {
@@ -1031,6 +1031,7 @@ textarea.form-control {
   padding-bottom: 20px;
   margin: 0;
   border-bottom: 1px #eee dashed;
+  font-size: 16px;
 }
 .list .items {
   list-style: none;
@@ -1442,6 +1443,13 @@ p {
   margin-right: 5px;
   color: #d9d9d9;
 }
+.newer {
+  padding-right: 10px;
+  float: right;
+}
+.older {
+  padding-left: 10px;
+}
 .page.user h5 {
   margin-bottom: 0;
 }
@@ -1481,11 +1489,18 @@ p {
 }
 .statistics.title {
   font-size: 16px;
-  color: #525252;
-  font-weight: bold;
+  color: #333;
   border-bottom: 1px #eee dashed;
   padding-bottom: 20px;
   margin: 0;
+}
+.visits {
+  display: inline-block;
+  margin-right: 15px;
+  color: #666;
+}
+.visits span {
+  color: #999;
 }
 .avatar {
   padding-right: 15px;
@@ -1513,6 +1528,19 @@ p {
 .page.user .item.username,
 .page.user .item.email {
   width: 200px;
+}
+.about {
+  padding-bottom: 20px;
+  margin: 0;
+  border-bottom: 1px #eee dashed;
+}
+.about-me {
+  font-size: 16px;
+  color: #333333;
+}
+.edit {
+  display: inline-block;
+  margin-left: 20px;
 }
 .clearfix:before,
 .clearfix:after,

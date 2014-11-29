@@ -7,7 +7,7 @@
             <tag-editor placeholder="Tags" ng-model="crud.data.detail.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
         </div>
         <div class="item push-middle">
-            <a class="btn btn-primary btn-publish" ng-show="crud.data.detail.title&&crud.data.detail.content" ng-click="crud.update(crud.data.detail)">Update</a>
+            <a class="btn btn-primary btn-publish fadeInRight animated" ng-show="crud.data.detail.title&&crud.data.detail.content" ng-click="crud.update(crud.data.detail)">Update</a>
         </div>
     </header>
     <div class="page-body ">
@@ -22,7 +22,7 @@
                 <div ui-codemirror="{}" ng-model="crud.data.detail.content" class="form-control all-100"></div>
             </div>
         </div>
-        <div class=" page-right pd10" scroll-sync=".page-left">
+        <div class=" page-right pd20" scroll-sync=".page-left">
             <p class="label">Preview</p>
             <h1 class=""  ng-bind-html="crud.data.detail.title" ></h1>
             <div class="" ng-bind-html="crud.data.detail.content|markdown"></div>
