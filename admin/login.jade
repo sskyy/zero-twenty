@@ -14,8 +14,7 @@ html
     body(ng-app='user.login')
         .form-box.transparent.hide(ng-controller='login',redirect="/twenty/admin/index")
             .header
-                h3 Hi, welcome back
-                h5 Tell the world your story
+               img(src='./images/admin_logo.svg')
             form()
                 .body
                     .login
@@ -27,7 +26,7 @@ html
                             input(type='checkbox', name='remember_me')
                                 | Remember me
                         .signin
-                            a.btn(ng-click="login(user)") Sign in
+                            .btn(ng-click="login(user)") Sign in
                      div.Prompt
                             .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
                                 p(ng-switch-when="404") Wrong login name or password
