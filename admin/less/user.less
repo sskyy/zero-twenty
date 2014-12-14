@@ -1,0 +1,46 @@
+.avatar{
+    padding-right: 15px;
+    position: relative;
+    &.small{
+        max-height: 50px;
+        max-width: 50px;
+        border-right:1px #efefef solid;
+        box-sizing: content-box;
+    }
+    .fa-edit{
+        display: none;
+        position: absolute;
+        right: 20px;
+        top:10px;
+        cursor: pointer;
+        padding: 2px;
+    }
+    &:hover{
+        .fa-edit{
+            display: block;
+            background: #ccc;
+            color:#333;
+        }
+    }
+}
+
+.page.user{
+    .item.username,.item.email{
+        width: 200px;
+    }
+}
+.about{
+    padding-bottom: 20px;
+    margin: 0;
+    border-bottom: 1px #eee dashed;
+    
+}
+.about-me{
+    font-size: 16px;
+    color: #333333;
+
+}
+.edit{
+    display: inline-block;
+    margin-left: 20px;
+}

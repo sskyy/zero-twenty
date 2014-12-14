@@ -1,0 +1,41 @@
+.page.posts{
+    .posts{
+        .post{
+            border-bottom: 1px @gray-lightest solid;
+            a.action{
+                display: none;
+                color : #aaa;
+                margin-right: 5px;
+            }
+            &:hover{
+                background: @gray-lightest;
+                a.action{
+                    display: inline-block;
+                }
+                cursor: pointer;
+
+            }
+            a.title{
+                color : @gray;
+                font-size: 20px;
+            }
+
+            .brief{
+                color : @gray-light;
+                &:hover{
+                }
+            }
+            .statistic{
+                margin-right: 5px;
+                color : @gray-lighter;
+            }
+        }
+    }
+}
+.newer{
+    padding-right: 10px;
+    float: right;
+}
+.older{
+    padding-left: 10px;
+}

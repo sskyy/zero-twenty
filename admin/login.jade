@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Twenty | Login
+        link(href='./css/twenty.css', rel='stylesheet', type='text/css')
+        link(href='./css/login.css', rel='stylesheet', type='text/css')
+
+        script(src='./lib/jquery-1.10.2.min.js')
+        script(src='./lib/angular.js')
+        script(src='./lib/angular-resource.min.js')
+        script(src='./system/common/util.js')
+        script(src="./system/user/login.js")
+    body(ng-app='user.login')
+        .form-box.transparent.hide(ng-controller='login',redirect="/twenty/admin/index")
+            .header
+                h3 Hi, welcome back
+                h5 Tell the world your story
+            form()
+                .body
+                    .login
+                        .form-group
+                            input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
+                        .form-group
+                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password',ng-keyup='$event.which==13&&login(user)')
+                        //.form-group
+                            input(type='checkbox', name='remember_me')
+                                | Remember me
+                        .signin
+                            a.btn(ng-click="login(user)") Sign in
+                     div.Prompt
+                            .callout.callout-danger(ng-if="failedCode" ng-switch="failedCode")
+                                p(ng-switch-when="404") Wrong login name or password
+                                p(ng-switch-when="500") Server error, check server logs.
+                                p(ng-switch-default) Unknown error, check server logs.
+
+
+        script.
+            $(function(){
+                $('.form-box').addClass('fadeIn animated').removeClass('hide')
+            })

@@ -3,23 +3,24 @@
   "version": "0.0.17",
   "description": "zero module",
   "dependencies": {
-    "xss": "^0.1.12"
   },
   "zero": {
     "dependencies": {
+      "configure": "^0.0.1",
       "file": "^0.0.1",
       "bus": "^0.0.1",
       "request": "^0.0.1",
-      "index": "^0.0.1",
       "node": "^0.0.1",
       "model": "^0.0.1",
       "rest": "^0.0.1",
       "theme": "^0.0.1",
-      "configure": "^0.0.1",
       "rbac": "^0.0.1",
       "user": "^0.0.1",
       "statistic": "^0.0.1",
-      "security": "^0.0.1"
+      "security": "^0.0.1",
+      "relation": "^0.0.1",
+      "index": "^0.0.1",
+      "i18n": "^0.0.1"
     },
     "configs": [
       "./config.js"

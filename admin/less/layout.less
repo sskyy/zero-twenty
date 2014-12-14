@@ -1,0 +1,50 @@
+html,body{
+    height: 100%;
+    overflow-y: hidden;
+}
+
+
+.container{
+    height: 100%;
+    width: 100%;
+    .flex-display;
+}
+
+.left-side{
+    .flex(none);
+    width: 200px;
+    position: relative;
+}
+
+.right-side{
+    .flex(1);
+    height: 100%;
+    overflow-y: auto ;
+}
+
+
+.page{
+    .flex-display;
+    height: 100%;
+    .flex-direction(column);
+    .page-head{
+        border-bottom:1px #eee solid;
+        .flex(none);
+    }
+    .page-body{
+        .flex(1);
+        .flex-display;
+        flex-direction: row;
+        overflow: hidden;
+        .page-left{
+            .flex(1);
+            overflow-y: auto ;
+        }
+        .page-right{
+            .flex(1);
+            border-left:1px #eee solid;
+            overflow-y: auto ;
+        }
+    }
+
+}

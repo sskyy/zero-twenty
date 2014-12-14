@@ -1,0 +1,32 @@
+<div confirm-close class=" vertical page create fadeInRight animated" ng-controller="node.crud" crud-config="{type:'post'}" ng-init="post={}" redirect="/twenty/admin/index#/posts">
+    <header class="column-group page-head pd10 list horizontal">
+        <div class="item">
+            <img class="avatar small" ng-src="/{{user.avatar.path||'twenty/admin/images/avatar.png'}}" /> 
+        </div>
+        <div class="item push-middle" >
+            <tag-editor  placeholder="Tags" ng-init="post.tags=[]" ng-model="post.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+        </div>
+        <div class="item push-middle">
+            <a class="btn btn-primary btn-publish fadeInRight animated" ng-show="post.title&&post.content" ng-click="crud.create(post)">Publish</a>
+        </div>
+    </header>
+    <div class="page-body ">
+        <div class=" page-left pd10">
+            <div class="form-group" ng-init="post.type='markdown'">
+                <p class="label">MARKDOWN</p>
+            </div>
+            <div class="form-group pdv10">
+                <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="post.title">
+            </div>
+            <div class="form-group" >
+                <div ui-codemirror="{placeholder:'Tell your story...'}" ng-model="post.content" class="form-control all-100"></div>
+            </div>
+        </div>
+        <div class=" page-right pd20" scroll-sync=".page-left">
+            <p class="label">PREVIEW</p>
+            <h1 class=""  ng-bind-html="post.title" ></h1>
+            <div class="" markdown-with-image="{model:'post.content',url:'/media'}"></div>
+        </div>
+    </div>
+</div>
+

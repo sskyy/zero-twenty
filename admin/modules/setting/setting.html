@@ -1,0 +1,27 @@
+<div class="page settings pd20 fadeInRight animated" ng-controller="setting.crud">
+    <div class="page-left">
+        <div class="list">
+            <h5 class="title">
+                Settings
+            </h5>
+            <div class="items">
+                <div class="item" ng-repeat="(configName, configContent) in config">
+                    <input type="text" class="form-control" disabled placeholder="Field name" ng-model="configName">
+                    <input type="text" class="form-control" ng-model="config[configName]" placeholder="Content">
+                    <a class="btn btn-danger" ng-click="delete(configName);">Delete</a>
+                </div>
+                <div class="item" ng-init="newConfig={}">
+                    <input type="text" class="form-control" placeholder="Field name" ng-model="newConfig.key">
+                    <input type="text" class="form-control" ng-model="newConfig.value" placeholder="Content">
+                    <a class="btn btn-primary" ng-click="add(newConfig.key, newConfig.value);newConfig={}">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group pdv10">
+            <a class="btn btn-danger" ng-click="reset()">Reset</a>
+            <a class="btn btn-primary" ng-click="save()">Save</a>
+            <label class="label label-info" ng-show="saved">Saved</label>
+        </div>
+    </div>
+
+</div>

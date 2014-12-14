@@ -1,0 +1,16 @@
+article.blog-post(ng-repeat="post in crud.data.records")
+    header.post-header
+        a(href='/twenty/post/{{post.id}}')
+            .title {{post.title}}
+
+    section.post-content(ng-if="post.brief")
+        p {{post.brief}}
+        a(href="/twenty/post/{{post.id}}") Read More
+    section.post-content(ng-if="!post.brief", ng-bind-html="post.content")
+        p {{post.content}}
+    footer.post-footer
+        span.tags
+            span.tag(ng-repeat="tag in post.tags")
+                {{tag.name}}
+        .post_time        
+            time(datetime='') {{post.createdAt|time:"YYYY-MM-DD hh:mm:ss"}}

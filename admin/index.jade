@@ -1,0 +1,14 @@
+doctype html
+html(ng-app='admin')
+    head
+        include partials/head
+        include partials/preload-string
+    body(ng-controller='admin')
+        // header logo: style can be found in header.less
+        .container
+            include partials/sidebar
+            aside.right-side.all-auto(ui-view)
+
+    include partials/scripts
+
+

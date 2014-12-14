@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='HandheldFriendly', content='True')
+    meta(name='MobileOptimized', content='320')
+    meta(name='viewport', content='width=device-width,initial-scale=1.0,maximum-scale=1')
+    link(href='//fonts.googleapis.com/css?family=Roboto+Condensed:300italic,300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='/twenty/css/default.css')
+    link(rel='stylesheet', type='text/css', href='/twenty/css/post.css')
+
+    link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+    link(rel='stylesheet', href='/twenty/css/font-awesome.min.css')
+
+    script(src="/twenty/js/markdown.min.js")
+    script(src='/twenty/modules/init.js')
+  body(onload='checkNightMode(); addTransitionCSS(); showPage();')
+    aside.night-toggle(onclick='nightMode()')
+    .outer-wrapper
+      .inner-wrapper
+        main.blog
+          article.blog-post
+            header.post-header
+              h1 #{title}
+            section.post-content
+              | #{content}
+            footer.post-footer
+              //time(datetime='')
+
+        include partials/duoshuo
+
+    if type == 'markdown'
+      script(src="/twenty/js/jquery.js")
+      script.
+        $(".post-content").html(markdown.toHTML($(".post-content").html()))
+

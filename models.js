@@ -11,12 +11,39 @@ module.exports = [{
   isNode : true,
   rest : true
 },{
-  identity : 'category',
+  identity : 'tag',
   attributes : {
-    name : 'string',
+    name : {
+      type : 'string',
+      unique : true
+    },
     nodes : 'json'
   },
-  isIndex : true,
+  relations : {
+    posts :{
+      model : "post",
+      auth : ['read'],
+      multiple : true,
+      reverse : {
+        name : "tags",
+        index:"name",
+        auth : ['read','write'],
+        multiple : true
+      }
+    }
+  },
+  index : 'name',
+  rest : true
+},{
+  identity : 'avatar',
+  attributes : {
+    'name' : 'string',
+    'originalname' : 'string',
+    'mimetype' : 'string',
+    'extension' : 'string',
+    'size' : 'int'
+  },
+  isFile : true,
   rest : true
 },{
   identity : 'media',

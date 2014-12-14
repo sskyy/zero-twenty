@@ -1,0 +1,83 @@
+.btn-color(@color){
+    color : @color;
+    border-color : @color;
+    background: transparent;
+}
+
+
+.btn {
+    display: inline-block;
+    border:1px @gray solid;
+    text-decoration: none;
+    padding:0 @btn-height/2;
+    height: @btn-height;
+    line-height: @btn-height;
+    cursor: pointer;
+    text-align: center;
+    .border-radius( @btn-height/2);
+    background: transparent;
+    &:hover, &:active, &.hover {
+        text-decoration: none;
+    }
+
+
+
+    &.btn-gray {
+        .btn-color(@gray-light);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @gray-light, -15%) )
+        }
+    }
+
+    &.btn-primary {
+        text-align: center;
+        .btn-color(@light-green);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @light-green, -15%) )
+        }
+    }
+    &.btn-success {
+        .btn-color(@green);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @green, 25%) )
+        }
+    }
+    &.btn-info {
+        .btn-color(@aqua);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @aqua, 25%) )
+        }
+    }
+
+    &.btn-danger {
+        .btn-color(@red);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @red, -15%) )
+        }
+    }
+    &.btn-warning {
+        .btn-color(@yellow);
+        &:hover, &:active, &.hover {
+            .btn-color(lighten( @yellow, 25%) )
+        }
+    }
+    
+
+    // input file btn
+    &.btn-file {
+        position: relative;
+        width: 120px;
+        height: 35px;
+        overflow: hidden;
+        > input[type='file'] {
+            display: block !important;
+            width: 100% !important;
+            height: 35px !important;
+            opacity: 0 !important;
+            position: absolute;
+            top: -10px;
+            cursor: pointer;
+        }
+    }
+
+}

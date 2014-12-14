@@ -1,0 +1,23 @@
+doctype html
+html(ng-app="user")
+    head
+        include partials/head
+        link(rel='stylesheet', href='/twenty/css/duoshuo.css')
+        script(src="./js/markdown.min.js")
+        script(src="./js/angular.min.js")
+        script(src="./js/angular-sanitize.min.js")
+        script(src="./modules/user.js")
+    body.index.loading
+        // Header
+        include partials/header
+        article
+            header.special.container.text-center
+                h2 About me
+            // One
+            section.style4.container.small(ng-controller="me")
+                // Content
+                .content
+                    section(ng-if="!me.about") 博主什么也没写
+                    section(ng-if="me.about" ng-bind-html="me.about")
+        // Footer
+        include partials/footer

@@ -1,0 +1,143 @@
+
+.form-box input[type=text],input[type=password]{
+	border: 0 #fff solid;
+}
+
+.form-box{
+	width: 400px;
+	margin: 170px auto 0 auto;
+	text-align: center;
+}
+
+.form-box img{
+	width: 75%;
+	margin: 15px 0;
+}
+
+.form-box .header h2 {
+    font-size: 2.5em;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    margin: 0;
+    padding-left: 0.05em;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+html,body{
+	background-color: #292929;
+}
+p{
+    color: #6C6C6C;
+    
+}
+h5{
+    color: #6C6C6C;
+    text-align: left;
+    padding-left: 55px;
+}
+h3{
+    color: #fff;
+    text-align: left;
+    padding-left: 55px;
+
+}
+.login{
+    padding-top: 30px;
+    width: 320px;
+    margin: 0px auto;
+}
+.install{
+    padding-top: 30px;
+    width: 320px;
+    margin: 0px auto;
+}
+.form-group{
+	margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-group input{
+    display: block;
+    margin: 0;
+    padding: 0 0 0.15em;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #232323;
+    background-color: transparent;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 0;
+    margin-bottom: 20px;
+
+}
+.form-group input[type=text]{
+	color: #fff ;
+    padding-left: 15px;
+    border-bottom: 2px solid #232323;
+
+}
+.form-group input[type=password]{
+    color: #fff;
+    padding-left: 15px;
+    border-bottom: 2px solid #232323;
+
+}
+.form-group input:focus {
+	
+	border-bottom: 2px solid #232323;
+
+}
+input::-webkit-input-placeholder {
+    color:    #6C6C6C;
+}
+input:-moz-placeholder {
+    color:    #6C6C6C;
+}
+.callout.callout-danger {
+	background-color: rgba(31,31,31,0.2);
+	 width: 320px;
+	 height: 60px;
+	 border-radius: 5px !important;
+	 margin: 0 auto;
+     border-color:#fff;
+     border-left:0px;
+}
+.Prompt{
+	margin-top: 42px;
+}
+.callout.callout-danger.ng-scope p{
+	color: #6C6C6C;
+	margin-top:5px;
+    text-align: center;
+    padding-top: 18px;
+}
+.signin{
+    text-align: left;
+    padding-top: 10px;
+}
+
+.signup{
+    text-align: left;
+    padding-top: 10px;
+}
+.btn{
+    padding: 0.5em 1.0em;
+    border:2px solid #1F1F1F;
+    border-radius: 40px;
+    font-weight: 600;
+    color: #1E1E1E;
+    font-size: 1.25em;
+    line-height: 32px;
+    text-align: center;
+    display: inline;
+}
+
+.btn:hover{
+    color: #fff;
+    background:#1F1F1F;
+
+
+}

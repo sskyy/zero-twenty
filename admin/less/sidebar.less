@@ -1,0 +1,98 @@
+/*
+    Component: Sidebar
+--------------------------
+*/
+
+.sidebar {
+    background: #292929;
+    padding: 20px 22px;
+    a {
+        display: block;
+        font-size:14px;
+        &:hover{
+            color:#fff;
+            text-decoration: none;
+        }
+    }
+
+    .logo{
+        img{
+            width: 100%;
+        }
+    }
+    .sidebar-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        > li {
+            margin: 0;
+            padding: 0;
+            > a {
+                padding: 14px 5px 14px 15px;
+                display: block;
+                font-size:14px;
+                color:rgba(255,255,255,0.65);
+                outline: none;
+                text-decoration: none;
+                letter-spacing:0.02em;
+                :hover{
+                    color:rgba(255,255,255,1);
+
+                }
+                
+                
+            }
+
+            &.active  a {
+                    color: rgba(255,255,255,1);
+                }
+        }
+    }
+    .slogon{
+        text-align: center;
+        font-size: 14px;
+        color: #494747;
+    }
+
+    .logout{
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        display: block;
+        text-align: center;
+        width: 100%;
+        a{
+            color:rgba(255,255,255,0.25);
+            padding: 0 80px 10px 0px;
+        }
+    }
+}
+
+//Sidebar user panel
+.user-panel {
+    padding: 10px;
+    .clearfix();
+    > .image > img {
+        width: 45px;
+        height: 45px;        
+    }
+    > .info {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 45px;
+    }
+    > .info > p {
+        margin-bottom: 9px;
+    }
+    > .info > a {
+        text-decoration: none;
+        color:#fff;
+        padding-right: 5px;
+        margin-top: 3px;
+        font-size: 11px;
+        font-weight: normal;
+        > .fa, > .ion, > .glyphicon {
+            margin-right: 3px;
+        }
+    }
+}

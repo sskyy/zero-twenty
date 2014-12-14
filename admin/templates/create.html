@@ -1,0 +1,70 @@
+<div class="ink-flex vertical page create" ng-controller="node.create" node-type="post" redirect="/twenty/admin/index#/posts">
+    <header class="column-group page-head pd10 ink-flex list horizontal">
+        <div class="item" ng-controller="node.index" index-type='tag'>
+            <img class="avatar small" ng-src="/{{user.avatar.path}}" />
+        </div>
+        <div class="item push-middle" >
+            <tag-editor ng-init="$parent.node.tags=[]" ng-model="$parent.node.tags" suggestions="tags" output="name" template="./lib/ngTagEditor/ngTagEditor.html"></tag-editor>
+        </div>
+        <div class="item push-middle">
+            <a class="btn btn-primary" ng-click="submit()">Publish</a>
+        </div>
+    </header>
+    <div class="all-auto ink-flex">
+        <div class="all-50 page-left pd10">
+            <div class="form-group" ng-init="node.type='markdown'">
+                <p class="fontmark">MARKDOWN</p>
+            </div>
+            <div class="form-group pdv10">
+                <input type="text" class="form-control title pdv10" auto-focus="true" placeholder="Title" ng-model="node.title">
+            </div>
+            <div class="form-group" >
+                <!--<textarea text-angular class="form-control" rows="17" ng-model="htmlVariable" placeholder="Enter ..."></textarea>-->
+                <div text-angular ng-show="node.type!=='markdown'"
+                     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','ul','ol'],[
+                 'justifyLeft','justifyCenter','justifyRight','indent','outdent','insertImage','insertLink','insertVideo','uploadFile','html']]"
+                     ng-model="node.content" placeholder="Enter ..."></div>
+
+                <div ng-show="node.type==='markdown'">
+                    <div class="form-group">
+                        <textarea ng-model="node.content" class="form-control all-100 js-auto-resize" rows="20" placeholder="Show your story, text is beautiful"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="all-50 page-right pd10" ng-if="node" >
+            <p class="fontmark">Preview</p>
+
+            <h1 class=""  ng-bind-html="node.title" ></h1>
+            <div class="" ng-if="node.type==='markdown'" ng-bind-html="node.content|markdown" ></div>
+            <div class="" ng-if="node.type!=='markdown'" ng-bind-html="node.content" ></div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $('textarea.js-auto-resize').textareaAutoSize();
+        })
+    </script>
+
+    <div class="modal" ng-show="upload.active">
+        <div class="modal-content small">
+            <div class="modal-content-body">
+                <input type="file" class="margin" ng-file-select="onFileSelect($files)" multiple>
+
+                <table class="table ">
+                    <tr ng-repeat="file in upload.files">
+                        <td>{{file.originalname}}</td>
+                        <td width="90"><a class="btn btn-primary" ng-click="select(file)">insert</a></td>
+                        <td width="90">
+                            <span class="label label-success" ng-show="file.inserted">inserted</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-content-foot clearfix">
+                <a class="btn btn-danger pull-right" ng-click="onUploadComplete()">close</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+doctype html
+html(ng-modules="index.crud,node.crud")
+  head
+    meta(charset='UTF-8')
+    title Twenty
+    meta(name='description', content='')
+    meta(name='HandheldFriendly', content='True')
+    meta(name='MobileOptimized', content='320')
+    meta(name='viewport', content='width=device-width,initial-scale=1.0,maximum-scale=1')
+    link(href='//fonts.googleapis.com/css?family=Roboto+Condensed:300italic,300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='/twenty/css/default.css')
+    link(rel='stylesheet', type='text/css', href='/twenty/css/index.css')
+    script(src='modules/init.js')
+
+  body(onload='checkNightMode(); addTransitionCSS(); showPage();',ng-controller="node.crud",crud-config='{"type":"post"}',crud-params='{"limit":"5","populate":"tags"}',crud-search-fields="['category.id']")
+    aside.site-cover
+      header.site-header
+        div.header-wrapper
+          .blog-title The new Twenty
+          .blog-description More than blogging
+
+    .outer-wrapper
+      .inner-wrapper
+        main.site-main
+          aside.night-toggle(onclick='nightMode()')
+          section.blog-list(ng-init="crud.query()")
+            include partials/post
+          footer.blog-footer
+            nav.pagination
+              a.previous(ng-show="crud.pagination.index > 0",ng-click="crud.prev()") ←
+              a.next(ng-show="crud.pagination.index < crud.pagination.count -1",ng-click="crud.next()") →
+
+    script(src="./js/moment.min.js")
+    script(src="./js/lodash.compat.min.js")
+    script(src="./js/angular.min.js")
+    script(src="./js/angular.ng-modules.js")
+    script(src="./js/angular-resource.min.js")
+    script(src="./js/angular-sanitize.min.js")
+    script(src="./system/common/util.js")
+    script(src="./system/node/crud.js")
+    script(src="./system/index/crud.js")

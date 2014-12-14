@@ -1,0 +1,34 @@
+aside.left-side.sidebar
+    // sidebar: style can be found in sidebar.less
+    section
+        .logo.pd10
+            a(href='/')
+                img(src='/twenty/admin/images/logo.svg',alt='User Image')
+        .slogon
+            | More than blogging
+        .user-panel
+            .info
+                //a Hello, {{user.name}}
+
+        // sidebar menu: : style can be found in sidebar.less
+        ul.sidebar-menu
+            li(ui-sref-active='active')
+                a(ui-sref='create')
+                    span New Stroy
+            li.treeview(ui-sref-active='active')
+                a(ui-sref='posts')
+                    span Story
+            li.treeview(ui-sref-active='active')
+                a(ui-sref='statistic')
+                    span Statistics
+            li.treeview(ui-sref-active='active')
+                a(ui-sref='user')
+                    span Account
+            li.treeview(ui-sref-active='active')
+                a(ui-sref='setting')
+                    span Settings
+
+        div.logout
+            a(href="/user/logout") Log out
+
+    // /.sidebar

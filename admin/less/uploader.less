@@ -1,0 +1,41 @@
+.image-uploader{
+    &.noContent{
+        overflow: hidden;
+        background: #F9F8F5;
+        border: #edece4 3px dashed;
+        color : #aaa9a2;
+        cursor: pointer;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        .description{
+            display: block;
+        }
+        .description:before{
+            display: block;
+            content: "\f03e";
+            font-family: FontAwesome;
+            font-size:36px;
+            margin: 10px;
+        }
+        input[type=file]{
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+            direction: ltr;
+            cursor: pointer;
+        }
+    }
+
+    input{
+        display: none;
+    }
+    .description{
+        display: none;
+    }
+}

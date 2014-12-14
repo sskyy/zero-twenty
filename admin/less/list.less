@@ -1,0 +1,29 @@
+.list{
+    .title{
+        padding-bottom: 20px;
+        margin: 0;
+        border-bottom: 1px #eee dashed;
+        font-size: 16px;
+    }
+
+    .items{
+        list-style: none;
+        .item{
+            border-bottom: 1px #eee dashed;
+            padding: 15px 0;
+
+//            &:last-child{
+//                border-bottom: 1px #eee dashed;
+//            }
+        }
+    }
+
+    &.horizontal{
+        height: auto;
+        width: auto;
+        .item{
+            display: inline-block;
+            margin-right: 15px;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Twenty | Install
+        meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
+        link(href='./css/twenty.css', rel='stylesheet', type='text/css')
+        link(href='./css/animate.css', rel='stylesheet', type='text/css')
+        link(href='./css/login.css', rel='stylesheet', type='text/css')
+        script(src='./lib/jquery-1.10.2.min.js')
+        script(src='./lib/angular.js')
+        script(src='./lib/angular-resource.min.js')
+        script(src='./system/common/util.js')
+        script(src="./system/user/login.js")
+    body
+        .form-box.transparent.hide(ng-app="user.login")
+            .header
+                h3 Hi ~ welcome to twentyjs
+                h5 Tell the world your story
+            form(ng-controller="register",redirect='/twenty/admin/index')
+                .body
+                    .install
+                        .form-group
+                            input.form-control(type='text', name='name', placeholder='Full name',ng-model='user.name')
+                        .form-group
+                            input.form-control(type='text', name='email', placeholder='Email',ng-model='user.email')
+                        .form-group
+                            input.form-control(type='password', name='password', placeholder='Password',ng-model='user.password')
+                        .signup
+                            a.btn(type='submit',ng-click='register(user)') Install
+        script.
+            $(function(){
+                $('.form-box').addClass('fadeIn animated').removeClass('hide')
+            })
