@@ -9,7 +9,7 @@ Twenty is a blog system based on [zerojs](http://github.com/sskyy/zero). While s
  
 ## Quick start
 
-Less than five minute.
+First, you need to use zero to install twenty.
 
 
 ```
@@ -24,6 +24,11 @@ cp modules/twenty/config.sample.js modules/twenty/config.js
 
 node app
 ```
+
+Visit `http://127.0.0.1/twenty/install` to register as admin.
+
+After registration, navigate to `http://127.0.0.1/twenty/admin` and login, then you can write your story.
+
 
 ## Next
 
